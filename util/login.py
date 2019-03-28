@@ -19,12 +19,12 @@ def getUserInfo(code,access_token):
     }
     res=requests.get('https://ucpay.ncut.edu.cn/open/user/user/user-by-code',params=data)
     tempInfo=json.loads(res.text)
-    userInfo = {}
-    userInfo['name'] = tempInfo["d"]["realname"]
-    userInfo['email'] = tempInfo["d"]["email"]
-    userInfo['mobile'] = tempInfo["d"]["mobile"]
-    userInfo['sex'] = tempInfo["d"]["sex"]
-    return userInfo
+    # userInfo = {}
+    # userInfo['name'] = tempInfo["d"]["realname"]
+    # userInfo['email'] = tempInfo["d"]["email"]
+    # userInfo['mobile'] = tempInfo["d"]["mobile"]
+    # userInfo['sex'] = tempInfo["d"]["sex"]
+    return tempInfo
 
 if __name__=="__main__":
     APPID='31b1e992583074382'
