@@ -1,8 +1,25 @@
+# -*- coding: utf-8 -*-
 import requests
 import json
 from setting import *
 
-# at='71808fd2c8c8d88fa7910d6567fce87b'
+def getOpenid(code):
+    '''
+    传入小程序临时登陆凭证code
+    返回openid
+    :param code:
+    :return:
+    '''
+    grant_type='authorization_code'
+    data={}
+    data['appid']=APPID
+    data['secret']=APPSECRET
+    data['grant_type']=grant_type
+    data['js_code']=code
+    r=requests.get('https://api.weixin.qq.com/sns/jscode2session?appid='+appid+'&secret='+secret+'&grant_type='+grant_type+'&js_code='+code)
+    return(json.loads(r.text)['openid'])
+
+
 
 def getAccess_token():
     data={
@@ -25,9 +42,3 @@ def getUserInfo(code,access_token):
     # userInfo['mobile'] = tempInfo["d"]["mobile"]
     # userInfo['sex'] = tempInfo["d"]["sex"]
     return tempInfo
-
-if __name__=="__main__":
-    APPID='31b1e992583074382'
-    APPSECRET='f5e030ee903dbc29c6e76375253d1ee6'
-    print(getUserInfo('228399',at))
-    # print(getAccess_token(APPID,APPSECRET))
