@@ -31,7 +31,7 @@ def getAccess_token():
         'appsecret':yxAPPSECRET
     }
     res=requests.get('https://ucpay.ncut.edu.cn/open/api/access/token',params=data)
-    return json.loads(res.text)['b']['access_token']
+    return json.loads(res.text)['d']['access_token']
 
 def getUserInfo(code,access_token):
     '''
@@ -51,4 +51,4 @@ def getUserInfo(code,access_token):
     userInfo['email'] = tempInfo["d"]["email"]
     userInfo['mobile'] = tempInfo["d"]["mobile"]
     userInfo['sex'] = tempInfo["d"]["sex"]
-    return json.dumps(userInfo)
+    return userInfo
