@@ -5,7 +5,7 @@ from setting import *
 
 def getOpenid(code):
     '''
-    传入小程序临时登陆凭证code
+    传入小程序临时登陆凭证code.
     返回openid
     :param code:
     :return:
