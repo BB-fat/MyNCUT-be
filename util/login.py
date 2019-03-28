@@ -51,4 +51,4 @@ def getUserInfo(code,access_token):
     userInfo['email'] = tempInfo["d"]["email"]
     userInfo['mobile'] = tempInfo["d"]["mobile"]
     userInfo['sex'] = tempInfo["d"]["sex"]
-    return tempInfo
+    return userInfo
