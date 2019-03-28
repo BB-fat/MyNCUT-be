@@ -12,8 +12,8 @@ def getOpenid(code):
     '''
     grant_type='authorization_code'
     data={}
-    data['appid']=APPID
-    data['secret']=APPSECRET
+    # data['appid']=wxAPPID
+    # data['secret']=wxAPPSECRET
     data['grant_type']=grant_type
     data['js_code']=code
     r=requests.get('https://api.weixin.qq.com/sns/jscode2session?appid='+appid+'&secret='+secret+'&grant_type='+grant_type+'&js_code='+code)
@@ -22,14 +22,24 @@ def getOpenid(code):
 
 
 def getAccess_token():
+    '''
+    获取授权码
+    :return:
+    '''
     data={
-        'appid':APPID,
-        'appsecret':APPSECRET
+        'appid':yxAPPID,
+        'appsecret':yxAPPSECRET
     }
     res=requests.get('https://ucpay.ncut.edu.cn/open/api/access/token',params=data)
-    return json.loads(res.text)
+    return json.loads(res.text)['b']['access_token']
 
 def getUserInfo(code,access_token):
+    '''
+    获取用户数据
+    :param code:
+    :param access_token:
+    :return:
+    '''
     data={
         'code':code,
         'access_token':access_token

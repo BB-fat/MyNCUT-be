@@ -14,6 +14,3 @@ def login():
     code=request.args.get('code')
     userInfo=getUserInfo(code,AT)
     return  json.dumps(userInfo)
-
-
-
