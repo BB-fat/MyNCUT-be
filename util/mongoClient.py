@@ -18,7 +18,9 @@ class mongoClient ():
         user 集合（openid 字段、userInfo 字段）
         """
         userdata={"openid":openid,"userInfo":userInfo}
-        self.client.userData["user"].insert_one(userdata)
+        if self.client.userData["user"].find_one({"openid":openid})==None:
+            #正常使用情况下不会出现重复
+            self.client.userData["user"].insert_one(userdata)
     def getUserInfo(self,openid):
         """
         获取用户全部信息
