@@ -21,7 +21,7 @@ def oauth():
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
     mongoClient().newUser(openid,userInfo)
-    return "认证成功！"
+    return send_file("../static/redirect.html")
 
 @app.route('/login/code')
 def getUserInfoByCode():
