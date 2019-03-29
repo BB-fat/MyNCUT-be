@@ -7,7 +7,7 @@ import json
 
 @app.route('/')
 def index():
-    return "Hello world"
+    return "Hello world！"
 
 @app.route('/login/oauth')
 def oauth():
