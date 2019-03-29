@@ -19,7 +19,7 @@ def oauth():
     openid=request.args.get('state')
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
-    mongoClient.newUser(openid,userInfo)
+    mongoClient().newUser(openid,userInfo)
     return json.dumps(userInfo)
 
 @app.route('/login/openid')
@@ -30,7 +30,7 @@ def aquireOpenid():
     '''
     code=request.args.get('code')
     openid=getOpenid(code)
-    userInfo=mongoClient.getUserInfo(openid)
+    userInfo=mongoClient().getUserInfo(openid)
     userInfoTemp={
         'openid':openid,
        'userInfo':userInfo,
@@ -43,7 +43,7 @@ def bannerAndNotice():
     获取首页Banner新闻和notice滚动条的信息
     :return:
     """
-    return json.dumps(mongoClient.getPublicInfo())
+    return json.dumps(mongoClient().getPublicInfo())
 
 
 
