@@ -1,12 +1,14 @@
 from app import app
-from flask import request,render_template
+from flask import request,render_template,send_file
 from util.login import *
 from util.mongoClient import *
 import json
 
+from static.redirect import *
+
 @app.route('/')
 def test():
-    return render_template("../static/redirect.html")
+    return send_file("../static/redirect.html")
 
 @app.route('/login/oauth')
 def oauth():
