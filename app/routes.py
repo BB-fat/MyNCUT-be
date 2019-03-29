@@ -2,7 +2,6 @@ from app import app
 from flask import request
 from util.login import *
 from util.mongoClient import *
-import setting
 
 import json
 
@@ -20,7 +19,7 @@ def oauth():
     openid=request.args.get('state')
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
-    #newUser(openid,userInfo)
+    mongoClient.newUser(openid,userInfo)
     return json.dumps(userInfo)
 
 @app.route('/login/openid')
@@ -31,10 +30,10 @@ def aquireOpenid():
     '''
     code=request.args.get('code')
     openid=getOpenid(code)
-    #userInfo=getUserInfo()
+    userInfo=mongoClient.getUserInfo(openid)
     userInfoTemp={
         'openid':openid,
-#        'userInfo':userInfo,
+       'userInfo':userInfo,
     }
     return json.dumps(userInfoTemp)
 
