@@ -13,36 +13,44 @@ def getOpenid(code):
     '''
     grant_type='authorization_code'
     data={}
-    data['appid']=APPID
-    data['secret']=APPSECRET
+    data['appid']=wxAPPID
+    data['secret']=wxAPPSECRET
     data['grant_type']=grant_type
     data['js_code']=code
-    r=requests.get('https://api.weixin.qq.com/sns/jscode2session?appid='+appid+'&secret='+secret+'&grant_type='+grant_type+'&js_code='+code)
+    r=requests.get('https://api.weixin.qq.com/sns/jscode2session',params=data)
     return(json.loads(r.text)['openid'])
 
 
 
 def getAccess_token():
     data={
-        'appid':APPID,
-        'appsecret':APPSECRET
+        'appid':yxAPPID,
+        'appsecret':yxAPPSECRET
     }
     res=requests.get('https://ucpay.ncut.edu.cn/open/api/access/token',params=data)
-    return json.loads(res.text)['d']["openid"]
+    return json.loads(res.text)['d']['access_token']
 
 def getUserInfo(code,access_token):
+    '''
+    筛选从云校服务器上拿到的数据，返回筛选后的用户信息
+    :param code:
+    :param access_token:
+    :return:
+    '''
     data={
         'code':code,
         'access_token':access_token
     }
     res=requests.get('https://ucpay.ncut.edu.cn/open/user/user/user-by-code',params=data)
     tempInfo=json.loads(res.text)
-    print(tempInfo)
-    #userInfo = {}
-    #userInfo['name'] = tempInfo["d"]["realname"]
-    #userInfo['email'] = tempInfo["d"]["email"]
-    #userInfo['mobile'] = tempInfo["d"]["mobile"]
-    #userInfo['sex'] = tempInfo["d"]["sex"]
-    #userInfo['hobby']="programming"
-    return tempInfo
-    #return userInfo
+    userInfo = {}
+    userInfo['uid']=tempInfo['d']['uid']
+    userInfo['email'] = tempInfo['d']['email']
+    userInfo['mobile'] = tempInfo['d']['mobile']
+    userInfo['sex'] = tempInfo['d']['sex']
+    userInfo['avatar'] = tempInfo['d']['avatar']
+    userInfo['degree']= tempInfo['d']['department']['identity']
+    userInfo['major'] = tempInfo['d']['department']['rolename']
+    userInfo['userid'] = tempInfo['d']['userid']
+    userInfo['name']=tempInfo['d']['name']
+    return userInfo
