@@ -1,6 +1,7 @@
 from app import app
 from flask import request
 from util.login import *
+from util.mongoClient import *
 import setting
 
 import json
@@ -36,6 +37,14 @@ def aquireOpenid():
 #        'userInfo':userInfo,
     }
     return json.dumps(userInfoTemp)
+
+@app.route('/publicinfo')
+def bannerAndNotice():
+    """
+    获取首页Banner新闻和notice滚动条的信息
+    :return:
+    """
+    return json.dumps(mongoClient.getPublicInfo())
 
 
 
