@@ -20,7 +20,7 @@ def oauth():
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
     mongoClient().newUser(openid,userInfo)
-    return json.dumps(userInfo)
+    return "认证成功！"
 
 @app.route('/login/openid')
 def aquireOpenid():
