@@ -48,7 +48,7 @@ def getUserInfoByOpenid():
     userInfo=mongoClient().getUserInfo(openid)
     if userInfo!=None:
         return json.dumps(userInfo['userInfo'])
-    return None
+    return userInfo
 
 @app.route('/publicinfo')
 def getBannerAndNotice():
