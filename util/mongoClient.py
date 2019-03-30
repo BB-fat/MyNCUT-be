@@ -29,7 +29,8 @@ class mongoClient ():
         :return: userInfo
         """
         getUserInfoResult=self.client.userData["user"].find_one({"openid":openid})
-        getUserInfoResult.pop('_id')
+        if getUserInfoResult.get('_id')!=None:
+            getUserInfoResult.pop('_id')
         return getUserInfoResult
 
     def getPublicInfo(self):
