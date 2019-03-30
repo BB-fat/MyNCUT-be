@@ -2,11 +2,10 @@ from app import app
 from flask import request
 from util.login import *
 from util.mongoClient import *
-
 import json
 
 @app.route('/')
-def index():
+def test():
     return "Hello world！"
 
 @app.route('/login/oauth')
@@ -22,8 +21,8 @@ def oauth():
     mongoClient().newUser(openid,userInfo)
     return "认证成功！"
 
-@app.route('/login/openid')
-def aquireOpenid():
+@app.route('/login/code')
+def getUserInfoByCode():
     '''
     服务器返回openid和用户基本信息
     :return:
@@ -37,8 +36,13 @@ def aquireOpenid():
     }
     return json.dumps(userInfoTemp)
 
+@app.route("/login/openid")
+def getUserInfoByOpenid():
+    openid=request.args.get('openid')
+    return json.dumps(mongoClient().getUserInfo(openid))
+
 @app.route('/publicinfo')
-def bannerAndNotice():
+def getBannerAndNotice():
     """
     获取首页Banner新闻和notice滚动条的信息
     :return:
