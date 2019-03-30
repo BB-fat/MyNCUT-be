@@ -21,6 +21,7 @@ class mongoClient ():
         if self.client.userData["user"].find_one({"openid":openid})==None:
             #正常使用情况下不会出现重复
             self.client.userData["user"].insert_one(userdata)
+
     def getUserInfo(self,openid):
         """
         获取用户全部信息
@@ -28,7 +29,9 @@ class mongoClient ():
         :return: userInfo
         """
         getUserInfoResult=self.client.userData["user"].find_one({"openid":openid})
+        getUserInfoResult.pop('_id')
         return getUserInfoResult
+
     def getPublicInfo(self):
         """
         获取新闻信息
