@@ -1,12 +1,12 @@
 from app import app
-from flask import request
+from flask import request,render_template
 from util.login import *
 from util.mongoClient import *
 import json
 
 @app.route('/')
 def test():
-    return "Hello world！"
+    return render_template("../static/redirect.html")
 
 @app.route('/login/oauth')
 def oauth():
@@ -38,6 +38,10 @@ def getUserInfoByCode():
 
 @app.route("/login/openid")
 def getUserInfoByOpenid():
+    '''
+    通过openid获取用户信息
+    :return:
+    '''
     openid=request.args.get('openid')
     return json.dumps(mongoClient().getUserInfo(openid))
 
@@ -48,10 +52,3 @@ def getBannerAndNotice():
     :return:
     """
     return json.dumps(mongoClient().getPublicInfo())
-
-
-
-
-
-
-

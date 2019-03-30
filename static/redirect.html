@@ -1,0 +1,53 @@
+<!--重定向后的欢迎页面 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="static/css/redirect.css">
+</head>
+
+<body>	
+
+	<div class="main">			    
+	    <div class="shang"> 
+	        <div class="jiantou">
+	        	 <img src="static/imgs/jiantou.png" alt="首页" id="dianji">
+	        </div> 
+	        <div class="gongxi">
+	        	 <img src="static/imgs/gongxi.png" alt="恭喜你">
+	        </div> 
+	        <div class="yanzheng">
+	        	 <img src="static/imgs/yanzheng.png" alt="认证成功">
+	        </div> 
+	    </div>
+
+	    <div class="xia"> 
+	        <div class="word" style="font-size:30px;">请点击左上方返回按钮返回主界面</div>
+        </div>
+	</div>
+
+    <script src="https://test.com/jquery.js"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+	    <script type="text/javascript">		
+		    $(function(){
+                $('#dianji').on('click',function(s) {
+                    wx.miniProgram.redirectTo({
+                        url:'/pages/index/index',   //传参 url: '/pages/index/index?id='+id+'&title='+title
+                        success: function(){
+                            console.log('success')
+                        },
+                        fail: function(){
+                            console.log('fail');
+                        },
+                        complete:function(){
+                            console.log('complete');
+                        } 
+                    });
+                });
+            });		
+	    </script>
+
+</body>
+</html>

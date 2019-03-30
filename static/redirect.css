@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main .shang{
+    /*background: aqua;*/
+    width: 100%;
+    height: 600px;
+    background-color: #619AFE;
+ }
+.main .shang .jiantou{
+	position: absolute;
+	left: 55px;
+	top: 137px;
+}
+.main .shang .gongxi{
+	position: absolute;
+	left: 165px;
+	top: 379px;
+}
+.main .shang .yanzheng{
+	position: absolute;
+	left: 167px;
+	top: 494px;
+}
+.main .xia{
+    width: 100%;
+    height: 80px;    
+ }
+.main .xia .word{
+	position: absolute;
+	left: 156px;
+	top: 28px;
+}
+
+
