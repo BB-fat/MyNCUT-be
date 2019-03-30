@@ -41,11 +41,14 @@ def getUserInfoByCode():
 @app.route("/login/openid")
 def getUserInfoByOpenid():
     '''
-    通过openid获取用户信息
+    通过openid获取用户基本信息
     :return:
     '''
     openid=request.args.get('openid')
-    return json.dumps(mongoClient().getUserInfo(openid)['userInfo'])
+    userInfo=mongoClient().getUserInfo(openid)
+    if userInfo!=None:
+        return json.dumps(userInfo['userInfo'])
+    return None
 
 @app.route('/publicinfo')
 def getBannerAndNotice():
