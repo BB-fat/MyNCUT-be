@@ -30,7 +30,7 @@ class mongoClient ():
         """
         getUserInfoResult=self.client.userData["user"].find_one({"openid":openid})
         if getUserInfoResult!=None:
-            return getUserInfoResult['userInfo']
+            getUserInfoResult.pop('_id')
         return getUserInfoResult
 
     def getPublicInfo(self):
