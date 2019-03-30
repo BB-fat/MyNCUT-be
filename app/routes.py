@@ -1,14 +1,14 @@
-from app import app
-from flask import request,render_template,send_file
+from flask import request
 from util.login import *
 from util.mongoClient import *
 import json
 
-from static.redirect import *
+# 导入重定向的静态网页路由函数
+from static.loginSuccess.routes import *
 
-@app.route('/')
+@app.route('/login/')
 def test():
-    return send_file("../static/redirect.html")
+    return send_file("../static/loginSuccess/redirect.html")
 
 @app.route('/login/oauth')
 def oauth():
@@ -21,7 +21,7 @@ def oauth():
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
     mongoClient().newUser(openid,userInfo)
-    return send_file("../static/redirect.html")
+    return send_file("../static/loginSuccess/redirect.html")
 
 @app.route('/login/code')
 def getUserInfoByCode():
@@ -34,7 +34,7 @@ def getUserInfoByCode():
     userInfo=mongoClient().getUserInfo(openid)
     userInfoTemp={
         'openid':openid,
-       'userInfo':userInfo,
+        'userInfo':userInfo,
     }
     return json.dumps(userInfoTemp)
 
