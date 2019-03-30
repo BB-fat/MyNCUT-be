@@ -6,7 +6,7 @@ import json
 # 导入重定向的静态网页路由函数
 from static.loginSuccess.routes import *
 
-@app.route('/login/')
+@app.route('/')
 def test():
     return send_file("../static/loginSuccess/redirect.html")
 
