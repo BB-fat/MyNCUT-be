@@ -1,33 +1,25 @@
-<!--重定向后的欢迎页面 -->
+﻿<!--重定向后的欢迎页面 -->
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title></title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="redirect.css">
+	<title>我的北方</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="redirect.css">	
+	
 </head>
 
 <body>	
-
-	<div class="main">			    
-	    <div class="shang"> 
-	        <div class="jiantou">
-	        	 <img src="jiantou.png" alt="首页" id="dianji">
-	        </div> 
-	        <div class="gongxi">
-	        	 <img src="gongxi.png" alt="恭喜你">
-	        </div> 
-	        <div class="yanzheng">
-	        	 <img src="yanzheng.png" alt="认证成功">
-	        </div> 
-	    </div>
-
-	    <div class="xia"> 
-	        <div class="word" style="font-size:30px;">请点击左上方返回按钮返回主界面</div>
+	<div class="main">        
+        <img src="imgs/top.png" alt="首页">   
+        <div class="word">    	
+        	<div class="renzheng">{{name}},身份认证成功 :)</div>
+        	<div class="fanhui">请点击左上角返回首页</div>            
         </div>
-	</div>
+    </div>
 
+	
+    <!--
     <script src="https://test.com/jquery.js"></script>
 	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
 	    <script type="text/javascript">		
@@ -47,7 +39,7 @@
                     });
                 });
             });		
-	    </script>
+	    </script> -->
 
 </body>
 </html>

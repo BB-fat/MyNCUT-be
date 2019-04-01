@@ -1,17 +1,17 @@
-from flask import request
+from flask import request,render_template
 from util.login import *
 from util.mongoClient import *
 import json
 
 # 登陆成功的网页路由函数
-from static.loginSuccess.routes import *
+from app.templates.loginsuccess.routes import *
 
-# 导入首页轮播图图片路由函数
-from static.publicInfo.routes import *
+# 首页轮播图图片路由函数
+from static.publicinfo.routes import *
 
-@app.route('/')
+@app.route('/login/')
 def test():
-    return send_file("../static/loginSuccess/redirect.html")
+    return render_template("loginsuccess/redirect.html",name='bbfat')
 
 @app.route('/login/oauth')
 def oauth():
@@ -24,7 +24,7 @@ def oauth():
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
     mongoClient().newUser(openid,userInfo)
-    return send_file("../static/loginSuccess/redirect.html")
+    return render_template("loginsuccess/redirect.html",name=userInfo['userInfo']['name'])
 
 @app.route('/login/code')
 def getUserInfoByCode():

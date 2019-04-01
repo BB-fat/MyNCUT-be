@@ -1,0 +1,31 @@
+.main{
+	position: absolute;
+	width:640px;
+	height:660px;
+	left:50%;
+	top:50%; 
+    margin-left:-320px;
+    margin-top:-200px;
+    background-color: #ffffff;
+}
+.main img{	
+	display: block;
+    margin: auto;    	
+}
+
+.main .word .renzheng{
+	padding-top: 100px;
+    color: #130c0e;
+    font-size: 35px;
+    font-weight: bolder;
+    text-align: center;
+    font-family: "微软雅黑";
+}
+
+.main .word .fanhui{	
+	padding-top: 10px;
+    color: #130c0e;
+    font-size: 20px;   
+    text-align: center;
+    font-family: "微软雅黑";
+}
