@@ -24,7 +24,7 @@ def oauth():
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
     mongoClient().newUser(openid,userInfo)
-    return render_template("loginsuccess/redirect.html",name=userInfo['userInfo']['name'])
+    return render_template("loginsuccess/redirect.html",name=userInfo['name'])
 
 @app.route('/login/code')
 def getUserInfoByCode():
