@@ -3,9 +3,8 @@
 	width:640px;
 	height:660px;
 	left:50%;
-	top:40%;
     margin-left:-320px;
-    margin-top:-100px;
+    margin-top:350px;
     background-color: #ffffff;
 }
 .main img{	
@@ -16,7 +15,7 @@
 .main .word .renzheng{
 	padding-top: 100px;
     color: #130c0e;
-    font-size: 35px;
+    font-size: 45px;
     font-weight: bolder;
     text-align: center;
     font-family: "微软雅黑";
