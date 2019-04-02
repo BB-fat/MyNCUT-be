@@ -41,7 +41,9 @@ class mongoClient ():
         bannner=[]
         notice=[]
         for eachBanner in self.client.publicInfo["indexBanner"].find():
+            eachBanner.pop('_id')
             bannner.append(eachBanner)
-        for eachNotice in self.client.publicIndo["indexNotice"].find():
+        for eachNotice in self.client.publicInfo["indexNotice"].find():
+            eachNotice.pop('_id')
             notice.append(eachNotice)
         return {"indexBanner":bannner,"indexNotice":notice}
