@@ -48,7 +48,7 @@ def getUserInfoByOpenid():
     :return:
     '''
     openid=request.args.get('openid')
-    return json.dumps(mongoClient().getUserInfo(openid)['userInfo'])
+    return json.dumps(mongoClient().getUserInfo(openid))
 
 @app.route('/publicinfo')
 def getBannerAndNotice():
