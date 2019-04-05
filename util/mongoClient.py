@@ -7,7 +7,6 @@ class mongoClient ():
         """
         self.client =MongoClient(DATABASEIP,DATABASEPORT)
 
-
     def newUser(self,openid,userInfo):
         """
         插入用户信息
@@ -47,3 +46,46 @@ class mongoClient ():
             eachNotice.pop('_id')
             notice.append(eachNotice)
         return {"indexBanner":bannner,"indexNotice":notice}
+
+    def saveCourseware(self,openid,courseware):
+        """
+        :param openid:
+        :param courseware: 新课件，字典形式
+        :return:
+        """
+        getCoursewareResult = self.client.userData["user"].find_one({"openid": openid})["courseware"]
+        #获取当前收藏课件
+        if getCoursewareResult!=None:
+            #若不为空
+            if not courseware in getCoursewareResult:
+                #去重
+                newCoursewareList=getCoursewareResult.append(courseware)
+                #添加新课件
+                self.client.userData["user"].update_one(
+                    {"openid": openid},
+                    {
+                        "$set": {
+                            "courseware":newCoursewareList
+                        }
+                    }
+                )
+        else:
+            newCoursewareList=[].append(courseware)
+            self.client.userData["user"].update_one(
+                {"openid": openid},
+                {
+                    "$set": {
+                        "courseware": newCoursewareList
+                    }
+                }
+            )
+
+
+    def getCourseware(self, openid):
+        """
+        :param openid:
+        :return: getCoursewareResult(列表)
+        """
+        getCoursewareResult=self.client.userData["user"].find_one({"openid":openid})["courseware"]
+        return getCoursewareResult
+
