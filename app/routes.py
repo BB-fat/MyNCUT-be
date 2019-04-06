@@ -59,7 +59,6 @@ def getBannerAndNotice():
 @app.route('/courselist')
 def getCourseList():
     """
-    Parameters：openid
     获取课程列表
     """
     openid=request.args.get('openid')
@@ -69,7 +68,7 @@ def getCourseList():
     res= requests.get('http://v.ncut.edu.cn/course',params=data).text
     return res
 
-#记得更改userid
+
 @app.route('/homework')
 def getDocument():
     """
@@ -82,7 +81,7 @@ def getDocument():
     }
     res = requests.get('http://v.ncut.edu.cn/course', params=data).text
     classlist=json.loads(res)
-    # 获取所有的课程编号到course_codes列表
+    # 获取所有的课程编号添加到course_codes字典
     course_codes = {}
     for i in classlist["data"]:
         data = {
@@ -90,7 +89,6 @@ def getDocument():
         }
         course_codes[i['course_name']] = (i['course_code'])
         course_codes[i['course_code']] = requests.get('http://v.ncut.edu.cn/work',params=data).text
-    #从服务器获取课程作业
     return json.dumps(course_codes)
 
 
@@ -104,42 +102,43 @@ def getWareList():
     data = {
         'code' :coursecode
     }
+    #请求到所有的课件字典
     res = requests.get('http://v.ncut.edu.cn/document', params=data).text
-    return res
+    #将课件字典其中的url的"&"取地址符换成"¥"符号
+    coursewarelist = json.loads(res)
+    for key in coursewarelist['data']:
+        coursewarelist['data'][key]['url'] = coursewarelist['data'][key]['url'].replace('&', '¥')
+    return json.dumps(coursewarelist)
 
 
 @app.route('/courseware')
 def readCourseware():
     """
-    Parameters：openid、course（课件字典）
     浏览单个课件
     """
     openid = request.args.get('openid')
     course = json.loads(request.args.get('course'))
-    #返回课件的二进制数据
-    url = course['url']
+    #将字典中的"¥"符号换成"&"取地址符，再返回课件的二进制数据
+    url = course['url'].replace('¥', '&')
     res=requests.get(url).content
     return make_response(res)
 
 
-
 @app.route('/favourite/courseware')
-def BookmarkCourseware():
+def markCourseware():
     """
-    Parameters：openid、mode=add、course（课件字典）
     收藏单个课件
     """
     openid = request.args.get('openid')
     course = json.loads(request.args.get('course'))
     mode = request.args.get('mode')
     if mode == 'add':
-        mongoClient.saveCourseware(openid,course)
+        mongoClient.addCourseware(openid,course)
 
 
 @app.route('/favourite/courseware')
 def deleteCourseware():
     """
-    Parameters：openid、mode=del、course（课件字典）
     删除收藏的课件
     """
     openid = request.args.get('openid')
@@ -147,7 +146,6 @@ def deleteCourseware():
     mode = request.args.get('mode')
     if mode == 'del':
         mongoClient.deleteCourseware(openid,course)
-
 
 
 
