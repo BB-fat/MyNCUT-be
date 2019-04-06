@@ -56,7 +56,7 @@ def getBannerAndNotice():
 
 
 
-@app.route('/course')
+@app.route('/courselist')
 def getCourseList():
     """
     Parameters：openid
