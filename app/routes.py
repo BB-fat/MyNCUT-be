@@ -67,7 +67,7 @@ def getCourseList():
          'sno':(mongoClient().getUserInfo(openid))['userInfo']['uid']
     }
     res= requests.get('http://v.ncut.edu.cn/course',params=data).text
-    return json.dumps(res)
+    return res
 
 
 @app.route('/homework')
