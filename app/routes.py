@@ -145,7 +145,7 @@ def deleteCourseware():
     openid = request.args.get('openid')
     course = json.loads(request.args.get('course'))
     mode = request.args.get('mode')
-    if mode == 'delete':
+    if mode == 'del':
         mongoClient.deleteCourseware(openid,course)
 
 
