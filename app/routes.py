@@ -66,8 +66,7 @@ def getCourseList():
     data = {
          'sno':(mongoClient().getUserInfo(openid))['userInfo']['userid']
     }
-    res= requests.get('http://v.ncut.edu.cn/course',params=data)
-    print(res)
+    res= requests.get('http://v.ncut.edu.cn/course',params=data).text
     return res
 
 #记得更改userid
