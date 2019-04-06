@@ -64,13 +64,13 @@ def getCourseList():
     """
     openid=request.args.get('openid')
     data = {
-         'sno':(mongoClient().getUserInfo(openid))['userInfo']['uid']
+         'sno':(mongoClient().getUserInfo(openid))['userInfo']['userid']
     }
     res= requests.get('http://v.ncut.edu.cn/course',params=data)
     print(res)
     return res
 
-
+#记得更改userid
 @app.route('/homework')
 def getDocument():
     """
@@ -79,7 +79,7 @@ def getDocument():
     #请求所有的课程信息
     openid = request.args.get('openid')
     data = {
-        'sno':mongoClient().getUserInfo(openid)['userInfo']['uid']
+        'sno':(mongoClient().getUserInfo(openid))['userInfo']['userid']
     }
     res = requests.get('http://v.ncut.edu.cn/course', params=data).text
     classlist=json.loads(res)
@@ -105,8 +105,8 @@ def getWareList():
     data = {
         'code' :coursecode
     }
-    res = requests.get('http://v.ncut.edu.cn/document', params=data)
-    return json.dumps(res.text)
+    res = requests.get('http://v.ncut.edu.cn/document', params=data).text
+    return res
 
 
 @app.route('/courseware')
