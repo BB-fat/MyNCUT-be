@@ -100,7 +100,7 @@ def getWareList():
     获取当前课程所有的课件
     """
     openid = request.args.get('openid')
-    coursecode = request.args.get('coursecode').text
+    coursecode = request.args.get('coursecode')
     data = {
         'code' :coursecode
     }
