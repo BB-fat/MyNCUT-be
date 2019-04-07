@@ -28,7 +28,7 @@ class mongoClient ():
         :return: userInfo
         """
         getUserInfoResult=self.client.userData["user"].find_one({"openid":openid})
-        if getUserInfoResult!=None:
+        if getUserInfoResult is not None:
             getUserInfoResult.pop('_id')
         return getUserInfoResult
 

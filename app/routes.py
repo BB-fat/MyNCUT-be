@@ -146,18 +146,3 @@ def deleteCourseware():
     mode = request.args.get('mode')
     if mode == 'del':
         mongoClient.deleteCourseware(openid,course)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
