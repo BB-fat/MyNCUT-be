@@ -119,7 +119,6 @@ def readCourseware():
     course = json.loads(request.args.get('course').replace('ç', '&').replace('Ω','%'))
     #将字典中的"¥"符号换成"&"取地址符，再返回课件的二进制数据
     url = course['url']
-    print(url)
     res=requests.get(url).content
     return make_response(res)
 
