@@ -94,4 +94,17 @@ class mongoClient ():
         """
         getCoursewareResult=self.client.userData["user"].find_one({"openid":openid})["courseware"]
         return getCoursewareResult
+    def saveFeedback(self,feedback):
+        state=feedback["type"]
+        feedback.pop("type")
+        feedback["read"]=False
+        if state==0:
+            self.client.feedback["bug"].insert_one(feedback)
+        elif state == 1:
+            self.client.feedback["update"].insert_one(feedback)
+        elif state == 2:
+            self.client.feedback["other"].insert_one(feedback)
+    def pushFeedback(self):
+        pass
+
 
