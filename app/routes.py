@@ -118,7 +118,7 @@ def readCourseware():
     openid = request.args.get('openid')
     course = json.loads(request.args.get('course'))
     #将字典中的"¥"符号换成"&"取地址符，再返回课件的二进制数据
-    url = course['url'].replace('¥', '&').replace('%2F','/')
+    url = course['url'].replace('¥', '&').replace('/','%2F')
     print(url)
     res=requests.get(url).content
     return make_response(res)
