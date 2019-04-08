@@ -11,7 +11,7 @@ from static.publicinfo.routes import *
 
 @app.route('/login/')
 def test():
-    return render_template("loginsuccess/redirect.html",name='bbfat')
+    pass
 
 @app.route('/login/oauth')
 def oauth():
@@ -87,8 +87,7 @@ def getDocument():
         data = {
             'code': i['course_code']
         }
-        course_codes[i['course_name']] = (i['course_code'])
-        course_codes[i['course_code']] = requests.get('http://v.ncut.edu.cn/work',params=data).text
+        course_codes[i['course_name']] = json.loads(requests.get('http://v.ncut.edu.cn/work', params=data).text)['data']
     return json.dumps(course_codes)
 
 
