@@ -106,7 +106,7 @@ def getWareList():
     #将课件字典其中的url的"&"取地址符换成"¥"符号
     coursewarelist = json.loads(res)
     for key in coursewarelist['data']:
-        coursewarelist['data'][key]['url'] = coursewarelist['data'][key]['url'].replace('&', '¥').replace('%','#')
+        coursewarelist['data'][key]['url'] = coursewarelist['data'][key]['url'].replace('&', 'ç').replace('%','Ω')
     return json.dumps(coursewarelist)
 
 
@@ -116,9 +116,9 @@ def readCourseware():
     浏览单个课件
     """
     openid = request.args.get('openid')
-    course = json.loads(request.args.get('course'))
+    course = json.loads(request.args.get('course').replace('ç', '&').replace('Ω','%'))
     #将字典中的"¥"符号换成"&"取地址符，再返回课件的二进制数据
-    url = course['url'].replace('¥', '&').replace('#','%')
+    url = course['url']
     print(url)
     res=requests.get(url).content
     return make_response(res)
