@@ -2,6 +2,7 @@ from flask import request,render_template,Response,make_response
 from util.login import *
 from util.mongoClient import *
 import json
+from util.parseurl import parseUrl
 
 # 登陆成功的网页路由函数
 from app.templates.loginsuccess.routes import *
@@ -11,7 +12,43 @@ from static.publicinfo.routes import *
 
 @app.route('/')
 def test():
-    pass
+    """
+    获取当前课程所有的课件
+    """
+    openid =0
+    mode='dir'
+    if mode=='all':
+        coursecode = request.args.get('coursecode')
+        data = {
+            'code' :coursecode
+        }
+        #请求到所有的课件字典
+        res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
+    elif mode=='dir':
+        courseware={
+            "date": 1554347574,
+            "sign": "dGVzdA%3D%3D",
+            "size": 10026,
+            "type": "dir",
+            "url": "L3Rlc3Q%3D",
+            "coursecode": "TEST_003"
+        }
+        data={
+            'code':courseware['coursecode'],
+            'item':courseware['sign']
+        }
+        res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
+    wareList={'data':[]}
+    for key,value in res['data'].items():
+        tempDict=value
+        quote=parseUrl(tempDict['url'])
+        tempDict['url']=quote['url']
+        tempDict['coursecode']=quote['cidReq']
+        tempDict['file_name'] = key.split('/')[-1]
+        if tempDict['type']!='dir':
+            tempDict['type'] = key.split('.')[-1]
+        wareList['data'].append(tempDict)
+    return json.dumps(wareList)
 
 
 @app.route('/login/oauth')
@@ -107,13 +144,19 @@ def getWareList():
         #请求到所有的课件字典
         res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
     elif mode=='dir':
-        # 暂时缺省
-        pass
+        courseware=json.loads(request.args.get('courseware'))
+        data={
+            'code':courseware['coursecode'],
+            'item':courseware['sign']
+        }
+        res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
     wareList={'data':[]}
     for key,value in res['data'].items():
         tempDict=value
-        tempDict['file_name']=key
-        tempDict['url']=tempDict['url'].replace('&', 'ç').replace('%','Ω')
+        quote=parseUrl(tempDict['url'])
+        tempDict['url']=quote['url']
+        tempDict['coursecode']=quote['cidReq']
+        tempDict['file_name'] = key.split('/')[-1]
         if tempDict['type']!='dir':
             tempDict['type'] = key.split('.')[-1]
         wareList['data'].append(tempDict)
@@ -126,9 +169,13 @@ def readCourseware():
     浏览单个课件
     """
     openid = request.args.get('openid')
-    course = json.loads(request.args.get('course').replace('ç', '&').replace('Ω','%'))
-    url = course['url']
-    res=requests.get(url).content
+    courseware = json.loads(request.args.get('courseware'))
+    data={
+        'url':courseware['url'],
+        'cidReset':True,
+        'cidReq':courseware['coursecode']
+    }
+    res=requests.get('http://iclass.ncut.edu.cn/iclass/netclass/backends/download_api.php',params=data).content
     return make_response(res)
 
 
