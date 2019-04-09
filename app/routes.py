@@ -148,10 +148,11 @@ def markCourseware():
     收藏单个课件
     """
     openid = request.args.get('openid')
-    courseware = json.loads(request.args.get('courseware'))
     mode = request.args.get('mode')
     if mode == 'add':
+        courseware = json.loads(request.args.get('courseware'))
         app.DB.addCourseware(openid,courseware)
     elif mode=='del':
-        app.DB.deleteCourseware(openid,courseware)
+        index=request.args.get('index')
+        app.DB.deleteCourseware(openid,index)
     return "success"
