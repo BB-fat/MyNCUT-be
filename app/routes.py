@@ -98,12 +98,17 @@ def getWareList():
     获取当前课程所有的课件
     """
     openid = request.args.get('openid')
-    coursecode = request.args.get('coursecode')
-    data = {
-        'code' :coursecode
-    }
-    #请求到所有的课件字典
-    res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
+    mode=request.args.get('mode')
+    if mode=='all':
+        coursecode = request.args.get('coursecode')
+        data = {
+            'code' :coursecode
+        }
+        #请求到所有的课件字典
+        res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
+    elif mode=='dir':
+        # 暂时缺省
+        pass
     wareList={'data':[]}
     for key,value in res['data'].items():
         tempDict=value
