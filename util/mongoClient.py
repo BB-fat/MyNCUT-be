@@ -57,7 +57,8 @@ class mongoClient ():
         #获取当前收藏课件
         if not courseware in getCoursewareResult:
             #去重
-            newCoursewareList=getCoursewareResult.append(courseware)
+            getCoursewareResult.append(courseware)
+            newCoursewareList=getCoursewareResult
             #添加新课件
             self.client.userData["user"].update_one(
                 {"openid": openid},
