@@ -64,7 +64,7 @@ def getCourseList():
     """
     openid=request.args.get('openid')
     data = {
-         'sno':(app.DB.getUserInfo(openid))['userInfo']['userid']
+         'sno':app.DB.getUserInfo(openid)['userInfo']['userid']
     }
     res= requests.get('http://v.ncut.edu.cn/course',params=data).text
     return res
@@ -148,7 +148,7 @@ def markCourseware():
     收藏单个课件
     """
     openid = request.args.get('openid')
-    course = json.loads(request.args.get('course'))
+    course = json.loads(request.args.get('courseware'))
     mode = request.args.get('mode')
     if mode == 'add':
         app.DB.addCourseware(openid,course)
