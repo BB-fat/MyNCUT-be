@@ -23,7 +23,7 @@ def oauth():
     openid=request.args.get('state')
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
-    mongoClient().newUser(openid,userInfo)
+    app.DB.newUser(openid,userInfo)
     return render_template("loginsuccess/redirect.html",name=userInfo['name'])
 
 @app.route('/login/code')
@@ -33,7 +33,7 @@ def getUserInfoByCode():
     '''
     code=request.args.get('code')
     openid=getOpenid(code)
-    userInfo=mongoClient().getUserInfo(openid)
+    userInfo=app.DB.getUserInfo(openid)
     userInfoTemp={
         'openid':openid,
         'userInfo':userInfo,
@@ -46,14 +46,14 @@ def getUserInfoByOpenid():
     通过openid获取用户基本信息
     '''
     openid=request.args.get('openid')
-    return json.dumps(mongoClient().getUserInfo(openid))
+    return json.dumps(app.DB.getUserInfo(openid))
 
 @app.route('/publicinfo')
 def getBannerAndNotice():
     """
     获取首页Banner新闻和notice滚动条的信息
     """
-    return json.dumps(mongoClient().getPublicInfo())
+    return json.dumps(app.DB.getPublicInfo())
 
 
 
@@ -64,7 +64,7 @@ def getCourseList():
     """
     openid=request.args.get('openid')
     data = {
-         'sno':(mongoClient().getUserInfo(openid))['userInfo']['userid']
+         'sno':(app.DB.getUserInfo(openid))['userInfo']['userid']
     }
     res= requests.get('http://v.ncut.edu.cn/course',params=data).text
     return res
@@ -78,7 +78,7 @@ def getDocument():
     #请求所有的课程信息
     openid = request.args.get('openid')
     data = {
-        'sno':(mongoClient().getUserInfo(openid))['userInfo']['userid']
+        'sno':(app.DB.getUserInfo(openid))['userInfo']['userid']
     }
     res = requests.get('http://v.ncut.edu.cn/course', params=data).text
     classlist=json.loads(res)
@@ -151,16 +151,7 @@ def markCourseware():
     course = json.loads(request.args.get('course'))
     mode = request.args.get('mode')
     if mode == 'add':
-        mongoClient.addCourseware(openid,course)
-
-
-@app.route('/favourite/courseware')
-def deleteCourseware():
-    """
-    删除收藏的课件
-    """
-    openid = request.args.get('openid')
-    course = json.loads(request.args.get('course'))
-    mode = request.args.get('mode')
-    if mode == 'del':
-        mongoClient.deleteCourseware(openid,course)
+        app.DB.addCourseware(openid,course)
+    elif mode=='del':
+        app.DB.deleteCourseware(openid,course)
+    return "success"
