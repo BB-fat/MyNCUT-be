@@ -9,9 +9,10 @@ from app.templates.loginsuccess.routes import *
 # 首页轮播图图片路由函数
 from static.publicinfo.routes import *
 
-@app.route('/login/')
+@app.route('/')
 def test():
     pass
+
 
 @app.route('/login/oauth')
 def oauth():
@@ -102,11 +103,16 @@ def getWareList():
         'code' :coursecode
     }
     #请求到所有的课件字典
-    res = requests.get('http://v.ncut.edu.cn/document', params=data).text
-    coursewarelist = json.loads(res)
-    for key in coursewarelist['data']:
-        coursewarelist['data'][key]['url'] = coursewarelist['data'][key]['url'].replace('&', 'ç').replace('%','Ω')
-    return json.dumps(coursewarelist)
+    res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
+    wareList={'data':[]}
+    for key,value in res['data'].items():
+        tempDict=value
+        tempDict['file_name']=key
+        tempDict['url']=tempDict['url'].replace('&', 'ç').replace('%','Ω')
+        if tempDict['type']!='dir':
+            tempDict['type'] = key.split('.')[-1]
+        wareList['data'].append(tempDict)
+    return json.dumps(wareList)
 
 
 @app.route('/courseware')
