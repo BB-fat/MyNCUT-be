@@ -68,7 +68,7 @@ class mongoClient ():
                 }
             )
 
-    def deleteCourseware(self,openid,courseware):
+    def deleteCourseware(self,openid,index):
         """
         :param openid:
         :param courseware:
@@ -76,16 +76,15 @@ class mongoClient ():
         """
         getCoursewareResult = self.client.userData["user"].find_one({"openid": openid})["courseware"]
         # 获取当前收藏课件
-        if courseware in getCoursewareResult:
-            newCoursewareList = getCoursewareResult.pop(courseware)
-            # 删除
-            self.client.userData["user"].update_one(
-                {"openid": openid},
-                {
-                    "$set": {
-                        "courseware": newCoursewareList
-                    }
+        newCoursewareList = getCoursewareResult.pop(index)
+        # 删除
+        self.client.userData["user"].update_one(
+            {"openid": openid},
+            {
+                "$set": {
+                    "courseware": newCoursewareList
                 }
+            }
             )
     def getCourseware(self, openid):
         """
@@ -95,6 +94,10 @@ class mongoClient ():
         getCoursewareResult=self.client.userData["user"].find_one({"openid":openid})["courseware"]
         return getCoursewareResult
     def saveFeedback(self,feedback):
+        """
+        :param feedback:
+        :return:
+        """
         state=feedback["type"]
         feedback.pop("type")
         feedback["read"]=False
@@ -104,6 +107,10 @@ class mongoClient ():
             self.client.feedback["update"].insert_one(feedback)
         elif state == 2:
             self.client.feedback["other"].insert_one(feedback)
+    def getFavorite(self,openid):
+        favoriteDict={}
+        favoriteDict["courseware"]=self.getCourseware(openid)
+        return favoriteDict
     def pushFeedback(self):
         pass
 
