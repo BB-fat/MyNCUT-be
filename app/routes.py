@@ -12,44 +12,7 @@ from static.publicinfo.routes import *
 
 @app.route('/')
 def test():
-    """
-    获取当前课程所有的课件
-    """
-    openid =0
-    mode='dir'
-    if mode=='all':
-        coursecode = request.args.get('coursecode')
-        data = {
-            'code' :coursecode
-        }
-        #请求到所有的课件字典
-        res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
-    elif mode=='dir':
-        courseware={
-            "date": 1554347574,
-            "sign": "dGVzdA%3D%3D",
-            "size": 10026,
-            "type": "dir",
-            "url": "L3Rlc3Q%3D",
-            "coursecode": "TEST_003"
-        }
-        data={
-            'code':courseware['coursecode'],
-            'item':courseware['sign']
-        }
-        res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
-    wareList={'data':[]}
-    for key,value in res['data'].items():
-        tempDict=value
-        quote=parseUrl(tempDict['url'])
-        tempDict['url']=quote['url']
-        tempDict['coursecode']=quote['cidReq']
-        tempDict['file_name'] = key.split('/')[-1]
-        if tempDict['type']!='dir':
-            tempDict['type'] = key.split('.')[-1]
-        wareList['data'].append(tempDict)
-    return json.dumps(wareList)
-
+    pass
 
 @app.route('/login/oauth')
 def oauth():
