@@ -77,7 +77,8 @@ class mongoClient ():
         """
         getCoursewareResult = self.client.userData["user"].find_one({"openid": openid})["courseware"]
         # 获取当前收藏课件
-        newCoursewareList = getCoursewareResult.pop(index)
+        getCoursewareResult.pop(index)
+        newCoursewareList =getCoursewareResult
         # 删除
         self.client.userData["user"].update_one(
             {"openid": openid},
