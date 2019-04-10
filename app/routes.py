@@ -114,11 +114,11 @@ def getWareList():
         }
         res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
     wareList={'data':[]}
-    print(res['data'])
     for key,value in res['data'].items():
         tempDict=value
-        quote=parseUrl(tempDict['url'])
+        quote=parseUrl(tempDict['url'].replace('%','∫'))
         tempDict['url']=quote['url']
+        print(tempDict['url'])
         tempDict['coursecode']=quote['cidReq']
         tempDict['file_name'] = key.split('/')[-1]
         if tempDict['type']!='dir':
