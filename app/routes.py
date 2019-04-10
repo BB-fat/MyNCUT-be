@@ -123,7 +123,6 @@ def getWareList():
         if tempDict['type']!='dir':
             tempDict['type'] = key.split('.')[-1]
         wareList['data'].append(tempDict)
-    print(wareList)
     return json.dumps(wareList)
 
 
@@ -133,12 +132,13 @@ def readCourseware():
     浏览单个课件
     """
     openid = request.args.get('openid')
-    courseware = json.loads(request.args.get('courseware').replace('ç','%'))
+    courseware = json.loads(request.args.get('courseware'))
     data={
-        'url':courseware['url'],
+        'url':courseware['url'].replace('ç','%'),
         'cidReset':True,
         'cidReq':courseware['coursecode']
     }
+    print(data)
     res=requests.get('http://iclass.ncut.edu.cn/iclass/netclass/backends/download_api.php',params=data).content
     return make_response(res)
 
