@@ -133,9 +133,8 @@ def readCourseware():
     """
     openid = request.args.get('openid')
     courseware = json.loads(request.args.get('courseware'))
-    print(courseware)
     data={
-        'url':courseware['url'],
+        'url':courseware['url'].replace("∫",'%'),
         'cidReset':True,
         'cidReq':courseware['coursecode']
     }
