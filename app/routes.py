@@ -116,8 +116,8 @@ def getWareList():
     wareList={'data':[]}
     for key,value in res['data'].items():
         tempDict=value
-        quote=parseUrl(tempDict['url'])
-        tempDict['url']=quote['url'].replace('%','ç')
+        quote=parseUrl(tempDict['url'].replace('%','ç'))
+        tempDict['url']=quote['url']
         tempDict['coursecode']=quote['cidReq']
         tempDict['file_name'] = key.split('/')[-1]
         if tempDict['type']!='dir':
