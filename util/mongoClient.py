@@ -95,6 +95,7 @@ class mongoClient ():
         """
         getCoursewareResult=self.client.userData["user"].find_one({"openid":openid})["courseware"]
         return getCoursewareResult
+
     def saveFeedback(self,feedback):
         """
         :param feedback:

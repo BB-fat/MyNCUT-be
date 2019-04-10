@@ -156,3 +156,26 @@ def markCourseware():
         index=request.args.get('index')
         app.DB.deleteCourseware(openid,index)
     return "success"
+
+@app.route('/favourite/get')
+def getFavorite():
+    """
+    获取收藏夹
+    """
+    openid = request.args.get('openid')
+    return json.dumps(app.DB.getCourseware(openid))
+
+@app.route('/feedback')
+def submitFeedback():
+    """
+    提交反馈
+    """
+    data = {
+        'type' : request.args.get('type'),
+        'openid' :request.args.get('openid'),
+        'time' :request.args.get('time'),
+        'text':request.args.get('text')
+    }
+    app.DB.saveFeedback(data)
+    return "success"
+
