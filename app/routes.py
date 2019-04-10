@@ -134,12 +134,12 @@ def readCourseware():
     openid = request.args.get('openid')
     courseware = json.loads(request.args.get('courseware'))
     data={
-        'url':courseware['url'].replace("∫",'%'),
+        # 'url':courseware['url'].replace("∫",'%'),
         'cidReset':True,
         'cidReq':courseware['coursecode']
     }
     print(data)
-    res=requests.get('http://iclass.ncut.edu.cn/iclass/netclass/backends/download_api.php',params=data).content
+    res=requests.get('http://iclass.ncut.edu.cn/iclass/netclass/backends/download_api.php?url='+courseware['url'].replace("∫",'%'),params=data).content
     return make_response(res)
 
 
