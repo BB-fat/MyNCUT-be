@@ -114,6 +114,7 @@ def getWareList():
         }
         res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
     wareList={'data':[]}
+    print(res['data'])
     for key,value in res['data'].items():
         tempDict=value
         quote=parseUrl(tempDict['url'])
