@@ -118,7 +118,6 @@ def getWareList():
         tempDict=value
         quote=parseUrl(tempDict['url'].replace('%','∫'))
         tempDict['url']=quote['url']
-        print(tempDict['url'])
         tempDict['coursecode']=quote['cidReq']
         tempDict['file_name'] = key.split('/')[-1]
         if tempDict['type']!='dir':
@@ -134,6 +133,7 @@ def readCourseware():
     """
     openid = request.args.get('openid')
     courseware = json.loads(request.args.get('courseware'))
+    print(courseware)
     data={
         'url':courseware['url'],
         'cidReset':True,
