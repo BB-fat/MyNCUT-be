@@ -123,6 +123,7 @@ def getWareList():
         if tempDict['type']!='dir':
             tempDict['type'] = key.split('.')[-1]
         wareList['data'].append(tempDict)
+    print(wareList)
     return json.dumps(wareList)
 
 
