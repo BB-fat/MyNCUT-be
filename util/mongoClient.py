@@ -96,6 +96,11 @@ class mongoClient ():
         getCoursewareResult=self.client.userData["user"].find_one({"openid":openid})["courseware"]
         return getCoursewareResult
 
+    def getFavorite(self,openid):
+        favoriteDict={}
+        favoriteDict["courseware"]=self.getCourseware(openid)
+        return favoriteDict
+
     def saveFeedback(self,feedback):
         """
         :param feedback:
@@ -110,11 +115,26 @@ class mongoClient ():
             self.client.feedback["update"].insert_one(feedback)
         elif state == 2:
             self.client.feedback["other"].insert_one(feedback)
-    def getFavorite(self,openid):
-        favoriteDict={}
-        favoriteDict["courseware"]=self.getCourseware(openid)
-        return favoriteDict
-    def pushFeedback(self):
-        pass
+
+    def ckeckFeedback(self):
+        feedback={"bug":0,"update":0,"other":0}
+        panduan=False
+        newbugFeedback=self.client.feedback["bug"].find({"read":False})
+        for bug in newbugFeedback:
+            feedback["bug"]+=1
+            panduan=True
+        newupdateFeedback=self.client.feedback["update"].find({"read":False})
+        for upate in newupdateFeedback:
+            feedback["update"]+=1
+            panduan = True
+        newotherFeedback=self.client.feedback["other"].find({"read":False})
+        for other in newotherFeedback:
+            feedback["other"]+=1
+            panduan = True
+        if panduan==True:
+            return feedback
+        else:
+            return None
+
 
 
