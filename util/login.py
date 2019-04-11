@@ -50,7 +50,7 @@ def getUserInfo(code,access_token):
     userInfo['sex'] = tempInfo['d']['sex']
     userInfo['avatar'] = tempInfo['d']['avatar']
     userInfo['degree']= tempInfo['d']['department']['identity']
-    userInfo['major'] = tempInfo['d']['department']['rolename']
+    userInfo['class'] = tempInfo['d']['department']['rolename'].items()[0]
     userInfo['userid'] = tempInfo['d']['userid']
     userInfo['name']=tempInfo['d']['name']
     return userInfo
