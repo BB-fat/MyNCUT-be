@@ -35,6 +35,10 @@ def getUserInfoByCode():
     code=request.args.get('code')
     openid=getOpenid(code)
     userInfo=app.DB.getUserInfo(openid)
+    userInfoTemp={
+        'openid':openid,
+        'userInfo':userInfo
+    }
     return json.dumps(userInfo)
 
 @app.route("/login/openid")
