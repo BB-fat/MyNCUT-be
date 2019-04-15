@@ -114,6 +114,8 @@ def getWareList():
             'item':courseware['sign']
         }
         res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
+    if res['data']==[]:
+        return json.dumps(None)
     wareList={'data':[]}
     for key,value in res['data'].items():
         tempDict=value
