@@ -1,29 +1,46 @@
 import smtplib
-
+from pymongo import MongoClient
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-from setting import *
+def ckeckFeedback(client):
+    feedback = {"bug": 0, "update": 0, "other": 0}
+    panduan = False
+    newbugFeedback = client.feedback["bug"].find({"read": False})
+    for bug in newbugFeedback:
+        feedback["bug"] += 1
+        panduan = True
+    newupdateFeedback = client.feedback["update"].find({"read": False})
+    for upate in newupdateFeedback:
+        feedback["update"] += 1
+        panduan = True
+    newotherFeedback = client.feedback["other"].find({"read": False})
+    for other in newotherFeedback:
+        feedback["other"] += 1
+        panduan = True
+    if panduan == True:
+        return feedback
+    else:
+        return None
 
-from util.mongoClient import *
+if "__name__"=="__main__":
+    client = MongoClient()
+    feedback = ckeckFeedback(client)
+    if feedback!=None:
+        text = "Halo!there is a new feedback in DB.\nbug:%d\nupdate:%d\nother:%d"(feedback["bug"],feedback["update"],feedback["other"])
 
-feedback=mongoClient().ckeckFeedback()
+        text_plain = MIMEText(text,'plain', 'utf-8')
 
-if feedback!=None:
-    text = "Halo!there is a new feedback in DB.\nbug:%d\nupdate:%d\nother:%d"(feedback["bug"],feedback["update"],feedback["other"])
+        msg=MIMEMultipart("mixed")
+        msg.attach(text_plain)
 
-    text_plain = MIMEText(text,'plain', 'utf-8')
+        smtp = smtplib.SMTP()
 
-    msg=MIMEMultipart("mixed")
-    msg.attach(text_plain)
+        smtp.connect("smtp.qq.com",587)
 
-    smtp = smtplib.SMTP()
+        smtp.login('1056871944@qq.com','snjpnnztwsnxbbbf')
 
-    smtp.connect(FEEDBACK_EMAILHOST,FEEDBACK_EMAILPORT)
-
-    smtp.login(FEEDBACK_EMAILUSER,FEEDBACK_EMAILPASSWORD)
-
-    smtp.send_message(FEEDBACK_EMAIL_FROMADRESS,FEEDBACK_EMAIL_TOADRESS,msg.as_string())
+        smtp.send_message('1056871944@qq.com','1056871944@qq.com',msg.as_string())
 
 
 

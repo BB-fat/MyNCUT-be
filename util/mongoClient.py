@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from setting import *
+import time
 class mongoClient ():
     def __init__(self):
         """
@@ -115,26 +116,25 @@ class mongoClient ():
             self.client.feedback["update"].insert_one(feedback)
         elif state == '2':
             self.client.feedback["other"].insert_one(feedback)
+    def newfile(self,id,courseware):
+        """
 
-    def ckeckFeedback(self):
-        feedback={"bug":0,"update":0,"other":0}
-        panduan=False
-        newbugFeedback=self.client.feedback["bug"].find({"read":False})
-        for bug in newbugFeedback:
-            feedback["bug"]+=1
-            panduan=True
-        newupdateFeedback=self.client.feedback["update"].find({"read":False})
-        for upate in newupdateFeedback:
-            feedback["update"]+=1
-            panduan = True
-        newotherFeedback=self.client.feedback["other"].find({"read":False})
-        for other in newotherFeedback:
-            feedback["other"]+=1
-            panduan = True
-        if panduan==True:
-            return feedback
-        else:
-            return None
+        :param id:
+        :param courseware:
+        :return:
+        """
+        tempfileData={"id":id,"courseware":courseware,"time":time.time()}
+        self.client.file["tempfile"].insert_one(tempfileData)
+    def getfile(self,id):
+        """
+
+        :param id:
+        :return:
+        """
+        getCoursewareResult = self.client.file["tempfile"].insert_one({"id":id})
+        return getCoursewareResult
+
+
 
 
 
