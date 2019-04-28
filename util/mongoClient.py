@@ -70,7 +70,7 @@ class mongoClient ():
                 }
             )
 
-    def deleteCourseware(self,openid,index):
+    def deleteCourseware(self,openid,courseware):
         """
         :param openid:
         :param courseware:
@@ -78,17 +78,19 @@ class mongoClient ():
         """
         getCoursewareResult = self.client.userData["user"].find_one({"openid": openid})["courseware"]
         # 获取当前收藏课件
-        getCoursewareResult.pop(int(index))
-        newCoursewareList =getCoursewareResult
+        for i in range(len(getCoursewareResult)):
+            if getCoursewareResult[i]['url']==courseware['url']:
+                getCoursewareResult.pop(i)
         # 删除
         self.client.userData["user"].update_one(
             {"openid": openid},
             {
                 "$set": {
-                    "courseware": newCoursewareList
+                    "courseware": getCoursewareResult
                 }
             }
             )
+
     def getCourseware(self, openid):
         """
         :param openid:
@@ -133,8 +135,3 @@ class mongoClient ():
         """
         getCoursewareResult = self.client.file["tempfile"].find_one({"id":id})
         return getCoursewareResult
-
-
-
-
-

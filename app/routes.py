@@ -172,8 +172,8 @@ def markCourseware():
         courseware = json.loads(request.args.get('courseware'))
         app.DB.addCourseware(openid,courseware)
     elif mode=='del':
-        index=request.args.get('index')
-        app.DB.deleteCourseware(openid,index)
+        courseware=request.args.get('courseware')
+        app.DB.deleteCourseware(openid,courseware)
     return "success"
 
 @app.route('/favourite/get')
