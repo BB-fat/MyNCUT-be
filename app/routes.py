@@ -3,6 +3,7 @@ from util.login import *
 from util.mongoClient import *
 import json
 from util.parseurl import parseUrl
+from setting import *
 import uuid
 
 # 登陆成功的网页路由函数
