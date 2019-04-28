@@ -131,7 +131,7 @@ class mongoClient ():
         :param id:
         :return:
         """
-        getCoursewareResult = self.client.file["tempfile"].insert_one({"id":id})
+        getCoursewareResult = self.client.file["tempfile"].find_one({"id":id})
         return getCoursewareResult
 
 

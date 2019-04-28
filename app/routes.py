@@ -2,6 +2,7 @@ from flask import request,render_template,Response,make_response
 from util.login import *
 from util.mongoClient import *
 import json
+from util.download import *
 from util.parseurl import parseUrl
 from setting import *
 import uuid
@@ -156,11 +157,7 @@ def readCourseware():
     """
     openid = request.args.get('openid')
     courseware = json.loads(request.args.get('courseware'))
-    data={
-        'cidReset':True,
-        'cidReq':courseware['coursecode']
-    }
-    res=requests.get('http://iclass.ncut.edu.cn/iclass/netclass/backends/download_api.php?url='+courseware['url'].replace("∫",'%'),params=data).content
+    res=downloadCourseware(courseware)
     return make_response(res)
 
 
@@ -210,7 +207,7 @@ def requestDownload():
     """
     openid = request.args.get('openid')
     courseware = json.loads(request.args.get('courseware'))
-    id = uuid.uuid1()
+    id = uuid.uuid1().hex
     app.DB.newFile(id, courseware)
     return id
 
@@ -221,18 +218,11 @@ def downloadfile():
     :return:file(json)
     """
     id = request.args.get('id')
-    #不确定的地方3.1  返回的是json字符串是吗？ 是的话，我就需要把json变成列表，然后再将积分符号换回来。
-    file = json.loads(app.DB.getfile(id))
-    data = {
-        'cidReset': True,
-        'cidReq': file['coursecode']
-    }
-    #不确定的地方3.2 文件的格式用在哪里呢？
-    type = file['type']
-    # 不确定的地方3.3 如何返回给前端一个文件
-    url = requests.get('http://iclass.ncut.edu.cn/iclass/netclass/backends/download_api.php?url=' + file['url'].replace("∫", '%'),params=data).content
-    return url
-
-
-
-
+    downloadItem = app.DB.getFile(id)
+    nowTime=time.time()
+    if nowTime-downloadItem['time']<=VALIDTIME:
+        res=make_response(downloadCourseware(downloadItem['courseware']))
+        res.headers['Content-Disposition']="attachment;filename="+downloadItem['courseware']['file_name'].encode("utf-8").decode("latin-1")
+        return res
+    else:
+        return send_file("../static/failure/failure.html")
