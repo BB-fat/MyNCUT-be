@@ -172,7 +172,7 @@ def markCourseware():
         courseware = json.loads(request.args.get('courseware'))
         app.DB.addCourseware(openid,courseware)
     elif mode=='del':
-        courseware=request.args.get('courseware')
+        courseware=json.loads(request.args.get('courseware'))
         app.DB.deleteCourseware(openid,courseware)
     return "success"
 
