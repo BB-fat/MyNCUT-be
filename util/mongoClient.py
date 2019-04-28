@@ -81,6 +81,7 @@ class mongoClient ():
         for i in range(len(getCoursewareResult)):
             if getCoursewareResult[i]['url']==courseware['url']:
                 getCoursewareResult.pop(i)
+                break
         # 删除
         self.client.userData["user"].update_one(
             {"openid": openid},
