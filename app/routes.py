@@ -11,6 +11,9 @@ from app.templates.loginsuccess.routes import *
 # 首页轮播图图片路由函数
 from static.publicinfo.routes import *
 
+# 下载超时页面图片路由函数
+from static.failure.routes import *
+
 @app.route('/')
 def test():
     pass
