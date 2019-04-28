@@ -3,6 +3,7 @@ from util.login import *
 from util.mongoClient import *
 import json
 from util.parseurl import parseUrl
+import uuid
 
 # 登陆成功的网页路由函数
 from app.templates.loginsuccess.routes import *
@@ -67,8 +68,12 @@ def getCourseList():
     data = {
          'sno':app.DB.getUserInfo(openid)['userInfo']['userid']
     }
-    res= requests.get('http://v.ncut.edu.cn/course',params=data).text
-    return res
+    courselist = json.loads(requests.get('http://v.ncut.edu.cn/course',params=data).text)['data']
+    for course in courselist:
+        course['course_name'],course['course_class']=course['course_name'].split('：')
+    return json.dumps(courselist)
+
+
 
 
 @app.route('/homework')
@@ -89,8 +94,11 @@ def getDocument():
         data = {
             'code': i['course_code']
         }
-        course_codes[i['course_name']] = json.loads(requests.get('http://v.ncut.edu.cn/work', params=data).text)['data']
+        assignment  = json.loads(requests.get('http://v.ncut.edu.cn/work', params=data).text)['data']
+        if assignment !=[]:
+            course_codes[i['course_name']] = assignment
     return json.dumps(course_codes)
+
 
 
 @app.route('/coursewarelist')
@@ -116,7 +124,11 @@ def getWareList():
         res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
     if res['data']==[]:
         return json.dumps(None)
-    wareList={'data':[]}
+    wareList=[]
+    favourite=app.DB.getFavorite(openid)['courseware']
+    favList=[]
+    for item in favourite:
+        favList.append(item['url'])
     for key,value in res['data'].items():
         tempDict=value
         quote=parseUrl(tempDict['url'].replace('%','∫'))
@@ -125,7 +137,11 @@ def getWareList():
         tempDict['file_name'] = key.split('/')[-1]
         if tempDict['type']!='dir':
             tempDict['type'] = key.split('.')[-1]
-        wareList['data'].append(tempDict)
+        if tempDict['url'] in favList:
+            tempDict['favourite']=True
+        else:
+            tempDict['favourite']=False
+        wareList.append(tempDict)
     return json.dumps(wareList)
 
 
@@ -180,4 +196,39 @@ def submitFeedback():
     }
     app.DB.saveFeedback(data)
     return "success"
+
+@app.route('/reqdownload')
+def requestDownload():
+    """
+    请求下载课件
+    params:openid,courseware(json)
+    :return id
+    """
+    openid = request.args.get('openid')
+    courseware = request.args.get('courseware')
+    id = uuid.uuid1()
+    app.DB.newfile(id, courseware)
+    return id
+
+@app.route('/download')
+def downloadfile():
+    """
+    下载课件
+    :return:file(json)
+    """
+    id = request.args.get('id')
+    #不确定的地方3.1  返回的是json字符串是吗？ 是的话，我就需要把json变成列表，然后再将积分符号换回来。
+    file = json.loads(app.DB.getfile(id))
+    data = {
+        'cidReset': True,
+        'cidReq': file['coursecode']
+    }
+    #不确定的地方3.2 文件的格式用在哪里呢？
+    type = file['type']
+    # 不确定的地方3.3 如何返回给前端一个文件
+    url = requests.get('http://iclass.ncut.edu.cn/iclass/netclass/backends/download_api.php?url=' + file['url'].replace("∫", '%'),params=data).content
+    return url
+
+
+
 
