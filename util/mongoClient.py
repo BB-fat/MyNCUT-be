@@ -117,7 +117,7 @@ class mongoClient ():
         elif state == '2':
             self.client.feedback["other"].insert_one(feedback)
 
-    def newfile(self,id,courseware):
+    def newFile(self,id,courseware):
         """
         :param id:
         :param courseware:
@@ -126,7 +126,7 @@ class mongoClient ():
         tempfileData={"id":id,"courseware":courseware,"time":time.time()}
         self.client.file["tempfile"].insert_one(tempfileData)
 
-    def getfile(self,id):
+    def getFile(self,id):
         """
         :param id:
         :return:

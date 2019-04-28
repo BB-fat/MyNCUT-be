@@ -209,9 +209,9 @@ def requestDownload():
     :return id
     """
     openid = request.args.get('openid')
-    courseware = request.args.get('courseware')
+    courseware = json.loads(request.args.get('courseware'))
     id = uuid.uuid1()
-    app.DB.newfile(id, courseware)
+    app.DB.newFile(id, courseware)
     return id
 
 @app.route('/download')
