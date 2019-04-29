@@ -16,7 +16,7 @@ from static.publicinfo.routes import *
 # 下载超时页面图片路由函数
 from static.failure.routes import *
 
-@app.route('/myncut.ncut.edu.cn/kSyoZqkJwk.txt')
+@app.route('/kSyoZqkJwk.txt')
 def test():
     return send_file('kSyoZqkJwk.txt')
     pass
