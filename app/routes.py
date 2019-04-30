@@ -72,7 +72,9 @@ def getCourseList():
     }
     courselist = json.loads(requests.get('http://v.ncut.edu.cn/course',params=data).text)['data']
     for course in courselist:
-        course['course_name'],course['course_class']=course['course_name'].split('：')
+        tmpList=course['course_name'].split('：')
+        course['course_name']='：'.join(tmpList[:-1])
+        course['course_class'] =tmpList[-1]
     return json.dumps(courselist)
 
 
