@@ -216,6 +216,8 @@ def downloadfile():
     """
     id = request.args.get('id')
     downloadItem = app.DB.getFile(id)
+    if downloadItem is None:
+        return send_file("../static/failure/failure.html")
     nowTime=time.time()
     if nowTime-downloadItem['time']<=VALIDTIME:
         res=make_response(downloadCourseware(downloadItem['courseware']))
