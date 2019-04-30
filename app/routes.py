@@ -98,7 +98,7 @@ def getDocument():
         }
         assignment  = json.loads(requests.get('http://v.ncut.edu.cn/work', params=data).text)['data']
         if assignment !=[]:
-            course_codes[i['course_name'].split('：')[-1]] = assignment
+            course_codes[i['course_name'].split('：')[0]] = assignment
     return json.dumps(course_codes)
 
 
