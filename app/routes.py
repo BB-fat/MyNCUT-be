@@ -217,6 +217,12 @@ def downloadfile():
     types={
         'pdf':'application/pdf',
         'ppt':'application/x-ppt',
+        'pptx':'application/x-ppt',
+        'doc':'application/msword',
+        'docx':'application/msword',
+        'zip':'application/zip',
+        'xls':'application/x-xls',
+        'xlsx':'application/x-xls'
     }
     id = request.args.get('id')
     downloadItem = app.DB.getFile(id)
@@ -226,7 +232,7 @@ def downloadfile():
     if nowTime-downloadItem['time']<=VALIDTIME:
         res=make_response(downloadCourseware(downloadItem['courseware']))
         res.headers['Content-Disposition']="attachment;filename="+downloadItem['courseware']['file_name'].encode("utf-8").decode("latin-1")
-        res.headers['Content-type']='application/x-ppt'
+        res.headers['Content-type']=types[downloadItem['courseware']['type']]
         return res
     else:
         return send_file("../static/failure/failure.html")
