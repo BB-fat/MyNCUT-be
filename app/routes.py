@@ -30,7 +30,7 @@ def oauth():
     openid=request.args.get('state')
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
-    app.DB.newUser(openid,userInfo)
+    app.DB.setUserInfo(openid,userInfo)
     return render_template("loginsuccess/redirect.html",name=userInfo['name'])
 
 @app.route('/login/code')

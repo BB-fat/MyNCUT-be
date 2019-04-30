@@ -22,6 +22,16 @@ class mongoClient ():
             #正常使用情况下不会出现重复
             self.client.userData["user"].insert_one(userdata)
 
+    def setUserInfo(self,openid,userInfo):
+        self.client.userData["user"].update_one(
+            {"openid": openid},
+            {
+                "$set": {
+                    "userInfo": userInfo
+                }
+            }
+        )
+
     def getUserInfo(self,openid):
         """
         获取用户全部信息
