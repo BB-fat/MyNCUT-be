@@ -17,7 +17,7 @@ class mongoClient ():
         userData 数据库
         user 集合（openid 字段、userInfo 字段）
         """
-        userdata={"openid":openid,"userInfo":{},"courseware":[]}
+        userdata={"openid":openid,"userInfo":None,"courseware":[]}
         if self.client.userData["user"].find_one({"openid":openid})==None:
             #正常使用情况下不会出现重复
             self.client.userData["user"].insert_one(userdata)
