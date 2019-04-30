@@ -214,6 +214,10 @@ def downloadfile():
     下载课件
     :return:file(json)
     """
+    types={
+        'pdf':'application/pdf',
+        'ppt':'application/x-ppt',
+    }
     id = request.args.get('id')
     downloadItem = app.DB.getFile(id)
     if downloadItem is None:
@@ -222,6 +226,7 @@ def downloadfile():
     if nowTime-downloadItem['time']<=VALIDTIME:
         res=make_response(downloadCourseware(downloadItem['courseware']))
         res.headers['Content-Disposition']="attachment;filename="+downloadItem['courseware']['file_name'].encode("utf-8").decode("latin-1")
+        res.headers['Content-type']='application/x-ppt'
         return res
     else:
         return send_file("../static/failure/failure.html")
