@@ -12,7 +12,6 @@ class mongoClient ():
         """
         插入用户信息
         :param openid:
-        :param userInfo:
         :return:
         userData 数据库
         user 集合（openid 字段、userInfo 字段）
