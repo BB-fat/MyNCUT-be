@@ -12,6 +12,19 @@ wxAPPSECRET="dbd5ecc6424d1ce668c93e7f98120c53"
 
 VALIDTIME=300
 
+FILE_TYPES = {
+    'pdf': 'application/pdf',
+    'ppt': 'application/x-ppt',
+    'pptx': 'application/x-ppt',
+    'doc': 'application/msword',
+    'docx': 'application/msword',
+    'zip': 'application/zip',
+    'xls': 'application/x-xls',
+    'xlsx': 'application/x-xls',
+    'avi':'video/avi',
+    'jpg':'image/jpeg',
+    'mp4':'video/mpeg4'
+}
 # FEEDBACK_EMAILHOST=""
 #
 # FEEDBACK_EMAILPORT=""
