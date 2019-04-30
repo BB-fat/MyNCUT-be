@@ -30,7 +30,6 @@ def oauth():
     openid=request.args.get('state')
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
-    print(userInfo)
     app.DB.newUser(openid,userInfo)
     return render_template("loginsuccess/redirect.html",name=userInfo['name'])
 
@@ -42,11 +41,7 @@ def getUserInfoByCode():
     code=request.args.get('code')
     openid=getOpenid(code)
     userInfo=app.DB.getUserInfo(openid)
-    userInfoTemp={
-        'openid':openid,
-        'userInfo':userInfo
-    }
-    return json.dumps(userInfoTemp)
+    return json.dumps(userInfo)
 
 @app.route("/login/openid")
 def getUserInfoByOpenid():
