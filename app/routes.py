@@ -139,6 +139,11 @@ def getWareList():
         tempDict['url']=quote['url']
         tempDict['coursecode']=quote['cidReq']
         tempDict['file_name'] = key.split('/')[-1]
+        # 格式化文件大小
+        if tempDict['size']<1000000:
+            tempDict['size'] = '%.1fKB' % (tempDict['size'] / 1000)
+        else:
+            tempDict['size']='%.1fMB'%(tempDict['size']/1000000)
         if tempDict['type']!='dir':
             tempDict['type'] = key.split('.')[-1]
         if tempDict['url'] in favList:
@@ -146,6 +151,11 @@ def getWareList():
         else:
             tempDict['favourite']=False
         wareList.append(tempDict)
+    # 按照课件发布时间进行排序
+    wareList.sort(key=lambda k: (k.get('date', 0)))
+    # 格式化时间
+    for i in range(len(wareList)):
+        wareList[i]['date'] = time.strftime("%Y-%m-%d", time.localtime(wareList[i]['date']))
     return json.dumps(wareList)
 
 
