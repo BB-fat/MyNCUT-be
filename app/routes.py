@@ -152,7 +152,7 @@ def getWareList():
             tempDict['favourite']=False
         wareList.append(tempDict)
     # 按照课件发布时间进行排序
-    wareList.sort(key=lambda k: (k.get('date', 0)))
+    wareList.sort(key=lambda k: (k.get('date', 0)),reverse=True)
     # 格式化时间
     for i in range(len(wareList)):
         wareList[i]['date'] = time.strftime("%Y-%m-%d", time.localtime(wareList[i]['date']))
