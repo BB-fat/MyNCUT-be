@@ -23,7 +23,8 @@ FILE_TYPES = {
     'xlsx': 'application/x-xls',
     'avi':'video/avi',
     'jpg':'image/jpeg',
-    'mp4':'video/mpeg4'
+    'mp4':'video/mpeg4',
+    'zip':'application/x-zip-compressed'
 }
 # FEEDBACK_EMAILHOST=""
 #

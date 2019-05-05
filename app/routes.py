@@ -234,7 +234,10 @@ def downloadfile():
     if nowTime-downloadItem['time']<=VALIDTIME:
         res=make_response(downloadCourseware(downloadItem['courseware']))
         res.headers['Content-Disposition']="attachment;filename="+downloadItem['courseware']['file_name'].encode("utf-8").decode("latin-1")
-        res.headers['Content-type']=FILE_TYPES[downloadItem['courseware']['type']]
+        try:
+            res.headers['Content-type']=FILE_TYPES[downloadItem['courseware']['type']]
+        except:
+            pass
         return res
     else:
         return send_file("../static/failure/failure.html")
