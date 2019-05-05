@@ -24,7 +24,7 @@ FILE_TYPES = {
     'avi':'video/avi',
     'jpg':'image/jpeg',
     'mp4':'video/mpeg4',
-    'zip':'application/x-zip-compressed'
+    'rar':'application/octet-stream'
 }
 # FEEDBACK_EMAILHOST=""
 #
