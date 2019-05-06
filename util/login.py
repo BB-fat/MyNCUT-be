@@ -52,6 +52,9 @@ def getUserInfo(code,access_token):
     userInfo['userid'] = tempInfo['d']['userid']
     userInfo['name']=tempInfo['d']['name']
     # userInfo['degree']= tempInfo['d']['department']['identity']
-    # for value in tempInfo['d']['department']['rolename'].values():
-    #     userInfo['class']=value
+    try:
+        for value in tempInfo['d']['department']['rolename'].values():
+            userInfo['class']=value
+    except:
+        pass
     return userInfo
