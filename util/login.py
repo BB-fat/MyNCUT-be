@@ -42,8 +42,6 @@ def getUserInfo(code,access_token):
         'access_token':access_token
     }
     res=requests.get('https://ucpay.ncut.edu.cn/open/user/user/user-by-code',params=data)
-    with open("data.txt",'w') as f:
-        f.write(res.text)
     tempInfo=json.loads(res.text)
     userInfo = {}
     userInfo['uid']=tempInfo['d']['uid']
