@@ -2,10 +2,13 @@ from flask import request,render_template,make_response
 from util.login import *
 from util.mongoClient import *
 import json
+import uuid
+
 from util.download import *
 from util.parseurl import parseUrl
 from setting import *
-import uuid
+from util.schoolNet import *
+
 
 # 登陆成功的网页路由函数
 from app.templates.loginsuccess.routes import *
@@ -241,3 +244,9 @@ def downloadfile():
         return res
     else:
         return send_file("../static/failure/failure.html")
+
+@app.route("/wifi")
+def getWifi():
+    openid=request.args.get("openid")
+    uid=app.DB.getUserInfo(openid)['userInfo']['userid']
+    return getNetInfo(uid)[7]
