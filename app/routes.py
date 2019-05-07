@@ -39,7 +39,7 @@ def oauth():
 @app.route('/login/code')
 def getUserInfoByCode():
     '''
-    服务器返回openid和用户基本信息
+    服务器返回用户基本信息openid
     '''
     code=request.args.get('code')
     openid=getOpenid(code)
