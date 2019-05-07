@@ -140,7 +140,7 @@ def getWareList():
         tempDict=value
         quote=parseUrl(tempDict['url'].replace('%','∫'))
         tempDict['url']=quote['url']
-        tempDict['coursecode']=quote['cidReq']
+        tempDict['course_code']=quote['cidReq']
         tempDict['file_name'] = key.split('/')[-1]
         # 格式化文件大小
         if tempDict['size']<1000000:
