@@ -116,7 +116,7 @@ def getWareList():
     openid = request.args.get('openid')
     mode=request.args.get('mode')
     if mode=='all':
-        coursecode = request.args.get('coursecode')
+        coursecode = request.args.get('course_code')
         data = {
             'code' :coursecode
         }
@@ -125,7 +125,7 @@ def getWareList():
     elif mode=='dir':
         courseware=json.loads(request.args.get('courseware'))
         data={
-            'code':courseware['coursecode'],
+            'code':courseware['course_code'],
             'item':courseware['sign']
         }
         res = json.loads(requests.get('http://v.ncut.edu.cn/document', params=data).text)
