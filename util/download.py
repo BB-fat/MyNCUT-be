@@ -9,7 +9,7 @@ def downloadCourseware(courseware):
     '''
     data={
         'cidReset':True,
-        'cidReq':courseware['coursecode']
+        'cidReq':courseware['course_code']
     }
     res=requests.get('http://iclass.ncut.edu.cn/iclass/netclass/backends/download_api.php?url='+courseware['url'].replace("∫",'%'),params=data).content
     return res
