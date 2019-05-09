@@ -26,6 +26,7 @@ class mongoClient ():
             {"openid": openid},
             {
                 "$set": {
+                    "userid": userInfo['userid'],
                     "userInfo": userInfo
                 }
             }
