@@ -160,7 +160,7 @@ def getWareList():
         else:
             tempDict['size']='%.1fMB'%(tempDict['size']/1000000)
         if tempDict['type']!='dir':
-            tempDict['type'] = key.split('.')[-1]
+            tempDict['type'] = key.split('.')[-1].lower()
         if tempDict['url'] in favList:
             tempDict['favourite']=True
         else:
