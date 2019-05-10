@@ -28,7 +28,7 @@ def wxAuth():
     pass
 
 @app.route('/login/oauth')
-def oauth():
+def auth():
     '''
     身份认证函数
     '''
@@ -272,3 +272,7 @@ def getWifi():
     openid=request.args.get("openid")
     uid=app.DB.getUserInfo(openid)['userInfo']['userid']
     return getNetInfo(uid)[7]
+
+@app.route("/getauth")
+def getAuth():
+    return app.DB.getPasswd()

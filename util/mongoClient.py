@@ -146,3 +146,13 @@ class mongoClient ():
         """
         getCoursewareResult = self.client.file["tempfile"].find_one({"id":id})
         return getCoursewareResult
+
+    def getPasswd(self):
+        '''
+        临时后台的密码
+        :return:
+        '''
+        res=self.client.publicInfo['auth'].find_one({
+            "name":"admin"
+        })
+        return res['passwd']
