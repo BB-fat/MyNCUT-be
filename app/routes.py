@@ -9,18 +9,21 @@ from util.parseurl import parseUrl
 from setting import *
 from util.schoolNet import *
 
-
-# 登陆成功的网页路由函数
-from app.templates.loginsuccess.routes import *
-
 # 首页轮播图图片路由函数
 from static.publicinfo.routes import *
 
-# 下载超时页面图片路由函数
-from static.failure.routes import *
+
+@app.route("/download/")
+def test():
+    return send_file("../static/failure/failure.html")
+
 
 @app.route('/kSyoZqkJwk.txt')
-def test():
+def wxAuth():
+    '''
+    微信业务域名认证文件
+    :return:
+    '''
     return send_file('kSyoZqkJwk.txt')
     pass
 
@@ -35,6 +38,15 @@ def oauth():
     userInfo=getUserInfo(code,access_token)
     app.DB.setUserInfo(openid,userInfo)
     return render_template("loginsuccess/redirect.html",name=userInfo['name'])
+
+@app.route('/login/<path:subpath>')
+def show_loginsuccess(subpath):
+    '''
+    辅助加载认证成功页面
+    :param subpath:
+    :return:
+    '''
+    return send_file("templates/loginsuccess/"+subpath)
 
 @app.route('/login/code')
 def getUserInfoByCode():
@@ -244,6 +256,16 @@ def downloadfile():
         return res
     else:
         return send_file("../static/failure/failure.html")
+
+@app.route('/download/<path:subpath>')
+def show_failure(subpath):
+    '''
+    辅助加载下载失败页面
+    :param subpath:
+    :return:
+    '''
+    return send_file("../static/failure/"+subpath)
+
 
 @app.route("/wifi")
 def getWifi():

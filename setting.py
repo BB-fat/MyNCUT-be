@@ -26,15 +26,3 @@ FILE_TYPES = {
     'mp4':'video/mpeg4',
     'rar':'application/octet-stream'
 }
-# FEEDBACK_EMAILHOST=""
-#
-# FEEDBACK_EMAILPORT=""
-#
-# FEEDBACK_EMAILUSER=""
-#
-# FEEDBACK_EMAILPASSWORD=""
-#
-# FEEDBACK_EMAIL_FROMADRESS=""
-#
-# FEEDBACK_EMAIL_TOADRESS=""
-
