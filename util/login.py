@@ -35,7 +35,6 @@ def getUserInfo(code,access_token):
     筛选从云校服务器上拿到的数据，返回筛选后的用户信息
     :param code:
     :param access_token:
-    :return:
     '''
     data={
         'code':code,

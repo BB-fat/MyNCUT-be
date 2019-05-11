@@ -29,7 +29,6 @@ def oauth():
     openid=request.args.get('state')
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
-    print(userInfo)
     app.DB.newUser(openid,userInfo)
     return render_template("loginsuccess/redirect.html",name=userInfo['name'])
 
