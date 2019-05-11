@@ -8,19 +8,29 @@ class mongoClient ():
         """
         self.client =MongoClient(DATABASEIP,DATABASEPORT)
 
-    def newUser(self,openid,userInfo):
+    def newUser(self,openid):
         """
         插入用户信息
         :param openid:
-        :param userInfo:
         :return:
         userData 数据库
         user 集合（openid 字段、userInfo 字段）
         """
-        userdata={"openid":openid,"userInfo":userInfo,"courseware":[]}
+        userdata={"openid":openid,"userInfo":None,"courseware":[]}
         if self.client.userData["user"].find_one({"openid":openid})==None:
             #正常使用情况下不会出现重复
             self.client.userData["user"].insert_one(userdata)
+
+    def setUserInfo(self,openid,userInfo):
+        self.client.userData["user"].update_one(
+            {"openid": openid},
+            {
+                "$set": {
+                    "userid": userInfo['userid'],
+                    "userInfo": userInfo
+                }
+            }
+        )
 
     def getUserInfo(self,openid):
         """
@@ -136,3 +146,13 @@ class mongoClient ():
         """
         getCoursewareResult = self.client.file["tempfile"].find_one({"id":id})
         return getCoursewareResult
+
+    def getPasswd(self):
+        '''
+        临时后台的密码
+        :return:
+        '''
+        res=self.client.publicInfo['auth'].find_one({
+            "name":"admin"
+        })
+        return res['passwd']

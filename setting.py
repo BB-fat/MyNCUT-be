@@ -12,15 +12,17 @@ wxAPPSECRET="dbd5ecc6424d1ce668c93e7f98120c53"
 
 VALIDTIME=300
 
-# FEEDBACK_EMAILHOST=""
-#
-# FEEDBACK_EMAILPORT=""
-#
-# FEEDBACK_EMAILUSER=""
-#
-# FEEDBACK_EMAILPASSWORD=""
-#
-# FEEDBACK_EMAIL_FROMADRESS=""
-#
-# FEEDBACK_EMAIL_TOADRESS=""
-
+FILE_TYPES = {
+    'pdf': 'application/pdf',
+    'ppt': 'application/x-ppt',
+    'pptx': 'application/x-ppt',
+    'doc': 'application/msword',
+    'docx': 'application/msword',
+    'zip': 'application/zip',
+    'xls': 'application/x-xls',
+    'xlsx': 'application/x-xls',
+    'avi':'video/avi',
+    'jpg':'image/jpeg',
+    'mp4':'video/mpeg4',
+    'rar':'application/octet-stream'
+}
