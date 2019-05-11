@@ -281,11 +281,7 @@ def getAuth():
 def storeData():
     tempInfo =request.form
     if tempInfo['type']== 'banner':
-        print("ok_1")
-        app.DB.saveIndexBanner(tempInfo)
+        app.DB.setIndexBanner(tempInfo)
     else:
-        print("ok_2")
-        app.DB.saveIndexNotice(tempInfo)
-    return "scucess"
-
-
+        app.DB.setIndexNotice(tempInfo)
+    return "success"

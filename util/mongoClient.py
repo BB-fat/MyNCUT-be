@@ -157,31 +157,25 @@ class mongoClient ():
         })
         return res['passwd']
 
-    def saveIndexBanner(self,tempInfo):
+
+    def setIndexBanner(self,tempInfo):
         self.client.publicInfo['indexBanner'].update_one(
             {"index":tempInfo['index']},
             {
                 "$set":{
                     "msgUrl":tempInfo['msgUrl'],
                     "imgUrl":tempInfo['imgUrl'],
-                    "index":tempInfo['index']
                 }
             }
         )
 
 
-    def saveIndexNotice(self,tempInfo):
+    def setIndexNotice(self,tempInfo):
         self.client.publicInfo['indexNotice'].update_one(
             {"index": tempInfo['index']},
             {
                 "$set": {
                     "text": tempInfo['text'],
-                    "index": tempInfo['index']
                 }
             }
         )
-
-
-
-
-
