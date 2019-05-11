@@ -285,3 +285,7 @@ def storeData():
     else:
         app.DB.setIndexNotice(tempInfo)
     return "success"
+
+@app.route("/license")
+def sendLicense():
+    return send_file("../static/license.pdf")
