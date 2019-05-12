@@ -276,3 +276,16 @@ def getWifi():
 @app.route("/getauth")
 def getAuth():
     return app.DB.getPasswd()
+
+@app.route("/storedata",methods=['POST'])
+def storeData():
+    tempInfo =request.form
+    if tempInfo['type']== 'banner':
+        print("ok_1")
+        app.DB.saveIndexBanner(tempInfo)
+    else:
+        print("ok_2")
+        app.DB.saveIndexNotice(tempInfo)
+    return "scuess"
+
+
