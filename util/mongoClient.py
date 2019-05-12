@@ -163,7 +163,7 @@ class mongoClient ():
             {
                 "$set":{
                     "msgUrl":tempInfo['msgUrl'],
-                    "imgurl":tempInfo['imgUrl'],
+                    "imgUrl":tempInfo['imgUrl'],
                     "index":tempInfo['index']
                 }
             }

@@ -286,6 +286,6 @@ def storeData():
     else:
         print("ok_2")
         app.DB.saveIndexNotice(tempInfo)
-    return "scuess"
+    return "scucess"
 
 
