@@ -10,13 +10,12 @@ from setting import *
 from util.schoolNet import *
 
 # 首页轮播图图片路由函数
-from static.publicinfo.routes import *
+from app.static.publicinfo.routes import *
 
 
-@app.route("/download/")
+@app.route("/test")
 def test():
-    return send_file("../static/failure/failure.html")
-
+    return render_template("redirect.html")
 
 @app.route('/kSyoZqkJwk.txt')
 def wxAuth():
@@ -25,7 +24,6 @@ def wxAuth():
     :return:
     '''
     return send_file('kSyoZqkJwk.txt')
-    pass
 
 @app.route('/login/oauth')
 def auth():
@@ -37,16 +35,7 @@ def auth():
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
     app.DB.setUserInfo(openid,userInfo)
-    return render_template("loginsuccess/redirect.html",name=userInfo['name'])
-
-@app.route('/login/<path:subpath>')
-def show_loginsuccess(subpath):
-    '''
-    辅助加载认证成功页面
-    :param subpath:
-    :return:
-    '''
-    return send_file("templates/loginsuccess/"+subpath)
+    return render_template("redirect.html", name=userInfo['name'])
 
 @app.route('/login/code')
 def getUserInfoByCode():
@@ -75,7 +64,6 @@ def getBannerAndNotice():
     return json.dumps(app.DB.getPublicInfo())
 
 
-
 @app.route('/courselist')
 def getCourseList():
     """
@@ -91,8 +79,6 @@ def getCourseList():
         course['course_name']='：'.join(tmpList[:-1])
         course['course_class'] =tmpList[-1]
     return json.dumps(courselist)
-
-
 
 
 @app.route('/homework')
@@ -236,7 +222,7 @@ def requestDownload():
     return id
 
 @app.route('/download')
-def downloadfile():
+def downloadFile():
     """
     下载课件
     :return:file(json)
@@ -255,17 +241,7 @@ def downloadfile():
             pass
         return res
     else:
-        return send_file("../static/failure/failure.html")
-
-# @app.route('/download/<path:subpath>')
-# def show_failure(subpath):
-#     '''
-#     辅助加载下载失败页面
-#     :param subpath:
-#     :return:
-#     '''
-#     return send_file("../static/failure/"+subpath)
-
+        return render_template("failure.html")
 
 @app.route("/wifi")
 def getWifi():
@@ -275,6 +251,10 @@ def getWifi():
 
 @app.route("/getauth")
 def getAuth():
+    '''
+    用于给临时后台提供登陆凭证
+    :return:
+    '''
     return app.DB.getPasswd()
 
 @app.route("/storedata",methods=['POST'])
@@ -285,7 +265,3 @@ def storeData():
     else:
         app.DB.setIndexNotice(tempInfo)
     return "success"
-
-@app.route("/license")
-def sendLicense():
-    return send_file("../static/license.pdf")
