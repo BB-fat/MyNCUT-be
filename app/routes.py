@@ -257,14 +257,14 @@ def downloadfile():
     else:
         return send_file("../static/failure/failure.html")
 
-@app.route('/download/<path:subpath>')
-def show_failure(subpath):
-    '''
-    辅助加载下载失败页面
-    :param subpath:
-    :return:
-    '''
-    return send_file("../static/failure/"+subpath)
+# @app.route('/download/<path:subpath>')
+# def show_failure(subpath):
+#     '''
+#     辅助加载下载失败页面
+#     :param subpath:
+#     :return:
+#     '''
+#     return send_file("../static/failure/"+subpath)
 
 
 @app.route("/wifi")
