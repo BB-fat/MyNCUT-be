@@ -8,49 +8,33 @@
     .box-2{
         opacity: 0;
     }
-body {
-
-    background-color: #fff;
+    body {
 
     width: 100%;
-
+    padding:0px;
     height: 100%;
-
-    overflow: hidden;
-
-    text-align: center;
-
     position: fixed;
-
-    font-size: 14px;
-
-    line-height: 20px;
-
-   }
-   #wrap {
-
-    width: 100%;
-
-    height: 100%;
-
-    overflow: hidden;
-
-    position: relative;
-
-    background: url(static/2019SchoolLife/img/ground.png);
-
-    overflow: hidden;
-
-}
+    background-image: url(static/2019SchoolLife/img/ground.png);
+    }
+   .girljumpbig{
+    text-align: center;
+    margin:0 auto;
+    }
+    .girljumpbig img{
+        width: 90px;
+    }
     </style>
     
 </head>
 <body>
-
    <div id="wrap">
+
         <div class="item"> <!--  页面1 -->
             <div class="box-0">
-               12321
+             
+    <div class="girljumpbig" >
+        <img src="{{url_for('static', filename='2019SchoolLife/img/girljumpbig.gif')}}" >
+    </div>
             </div>
         </div>
 
@@ -74,12 +58,15 @@ body {
     <script type="text/javascript"src="{{url_for('static', filename='2019SchoolLife/js/iSlider.js')}}"></script>
 
 <!-- 调用move.js -->
-<!--  <script type="text/javascript" src="move.js/move.js"></script>-->
-    <script type="text/javascript" src="{{url_for('static', filename='2019SchoolLife/js/move.min.js')}}"></script>
+<!--  <script type="text/javascript" src="js/move.min.js"></script>-->
+    <script type="text/javascript" src="{{url_for('static', filename='2019SchoolLife/move.js/move.js')}}"></script>
     <script>
+
+
         var myslider = new iSlider({
             wrap: '#wrap',
             item: '.item',
+            fullSrc: true,
             onslide: function (index) {
                 console.log(index)
                 if (index == 2) {
@@ -89,7 +76,7 @@ body {
                         .end();
                 }else if(index==1){
                     move('.box-1')
-                        .set("margin-top","500px")
+                        .set("opacity","0")
                         .duration('5s')
                         .end();
                 }
