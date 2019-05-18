@@ -35,9 +35,9 @@
             direction: 'vertical', // 垂直切换选项
             loop: true, // 循环模式选项
             on:{
-                activeIndexChange:function () {
-                    if(this.activeIndex==2){
-                        move(".page3")
+                slideChange:function () {
+                    if(this.activeIndex==1){
+                        move(".page2")
                             .set("opacity","0")
                             .duration("5s")
                             .end()
