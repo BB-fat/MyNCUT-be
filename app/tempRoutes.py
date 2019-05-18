@@ -13,7 +13,7 @@ def wxAuth():
 
 @app.route("/test")
 def test():
-    return render_template("redirect.html")
+    return render_template("2019SchoolLife.html")
 
 @app.route("/getauth")
 def getAuth():
