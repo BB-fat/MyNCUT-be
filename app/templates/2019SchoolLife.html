@@ -20,7 +20,7 @@ body {
 
     text-align: center;
 
-    position: relative;
+    position: fixed;
 
     font-size: 14px;
 
@@ -77,12 +77,6 @@ body {
 <!--  <script type="text/javascript" src="move.js/move.js"></script>-->
     <script type="text/javascript" src="{{url_for('static', filename='2019SchoolLife/js/move.min.js')}}"></script>
     <script>
-document.querySelector('body').addEventListener('touchmove', function(e) {
-    if (!document.querySelector('#wrap').contains(e.target)) {
-        e.preventDefault();
-    }
-})
-
         var myslider = new iSlider({
             wrap: '#wrap',
             item: '.item',
