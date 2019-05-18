@@ -36,6 +36,9 @@ def storeData():
 def schoolLife():
     openid = request.args.get('openid')
     userInfo = app.DB.getUserInfo(openid)
+    #
+    # 请求数据并整理
+    #
     data={
         'userid':userInfo['userid']
     }
@@ -43,10 +46,15 @@ def schoolLife():
 
 @app.route("/schoollifeauth")
 def schoolLifeAuth():
+    '''
+    通过点滴校园认证
+    :return:
+    '''
     access_token = getAccess_token()
     openid = request.args.get('state')
     code = request.args.get('code')
     userInfo = getUserInfo(code, access_token)
+    app.DB.newUser(openid)
     app.DB.setUserInfo(openid, userInfo)
     data={
         'userid':userInfo['userid']
