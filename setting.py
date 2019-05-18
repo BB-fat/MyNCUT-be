@@ -1,10 +1,10 @@
 
-DEBUG=False
+DEBUG=True
 
 if DEBUG:
     DATABASEIP = '10.100.1.222'
 else:
-    DATABASEIP = '10.102.1.34'
+    DATABASEIP = '10.102.1.35'
     DB_USER = "myncut"
     DB_PASSWD = "myNCUT@wx315wdbf"
 
