@@ -1,92 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="stylesheet" href="swiper.min.css">
+    <script src="swiper.min.js"></script>
     <meta charset="UTF-8">
     <title>2019SchoolLife</title>
 
     <style>
-    .box-2{
-        opacity: 0;
-    }
-    body {
-    width: 100%;
-    padding:0px;
-    height: 100%;
-    position: fixed;
-    background-image: url(static/2019SchoolLife/img/ground.png);
-    }
-   .girljumpbig{
-       position: fixed;
-    text-align: center;
-    margin:0 auto;
-    }
-    .girljumpbig img{
-        width: 90px;
-    }
+        .box-2 {
+            opacity: 0;
+        }
+
+        body {
+            width: 100%;
+            padding: 0px;
+            height: 100%;
+            position: fixed;
+            background-image: url(static/2019SchoolLife/img/ground.png);
+        }
+
+        .girljumpbig {
+            position: fixed;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .girljumpbig img {
+            width: 90px;
+        }
     </style>
-    
+
 </head>
+
 <body>
-   <div id="wrap">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!--  页面1 -->
+            <div class="swiper-slide box-0">
 
-        <div class="item"> <!--  页面1 -->
-            <div class="box-0">
-             
-    <div class="girljumpbig" >
-        <img src="{{url_for('static', filename='2019SchoolLife/img/girljumpbig.gif')}}" >
-    </div>
+                <div class="girljumpbig">
+                    <img src="{{url_for('static', filename='2019SchoolLife/img/girljumpbig.gif')}}">
+                </div>
             </div>
-        </div>
-
-        <div class="item">  <!-- 页面2 -->
-            <div class="box-1">
+            <!-- 页面2 -->
+            <div class="swiper-slide box-1">
                 123213214
             </div>
-        </div>
-
-        <div class="item">  <!-- 页面3 -->
-            <div class="box-2">
-                   213213
+            <!-- 页面3 -->
+            <div class="swiper-slide box-2">
+                213213
             </div>
         </div>
-    </div> 
+    </div>
 
-<!-- JavaScript -->
+    <!-- JavaScript -->
 
-<!-- 调用翻页 -->
-<!--<script type="text/javascript" src="js/iSlider.js"></script>-->
-    <script type="text/javascript"src="{{url_for('static', filename='2019SchoolLife/js/iSlider.js')}}"></script>
+    <!-- 调用翻页 -->
+    <!--<script type="text/javascript" src="js/iSlider.js"></script>-->
+    <!-- <script type="text/javascript" src="{{url_for('static', filename='2019SchoolLife/js/iSlider.js')}}"></script> -->
 
-<!-- 调用move.js -->
-<!--  <script type="text/javascript" src="js/move.min.js"></script>-->
-    <script type="text/javascript" src="{{url_for('static', filename='2019SchoolLife/js/move.min.js')}}"></script>
+    <!-- 调用move.js -->
+    <!--  <script type="text/javascript" src="js/move.min.js"></script>-->
+    <!-- <script type="text/javascript" src="{{url_for('static', filename='2019SchoolLife/js/move.min.js')}}"></script> -->
     <script>
-        var myslider = new iSlider({
-            wrap: '#wrap',
-            item: '.item',
-            fullSrc: true,
-            onslide: function (index) {
-                console.log(index)
-                if (index == 2) {
-                    move('.box-2')
-                        .set('opacity', '1')
-                        .duration('5s')
-                        .end();
-                }else if(index==1){
-                    move('.box-1')
-                        .set("opacity","0")
-                        .duration('5s')
-                        .end();
+        // var myslider = new iSlider({
+        //     wrap: '#wrap',
+        //     item: '.item',
+        //     fullSrc: true,
+        //     onslide: function (index) {
+        //         console.log(index)
+        //         if (index == 2) {
+        //             move('.box-2')
+        //                 .set('opacity', '1')
+        //                 .duration('5s')
+        //                 .end();
+        //         } else if (index == 1) {
+        //             move('.box-1')
+        //                 .set("opacity", "0")
+        //                 .duration('5s')
+        //                 .end();
+        //         }
+        //     }
+        // });
+        var mySwiper = new Swiper('.swiper-container', {
+            direction: 'vertical', // 垂直切换选项
+            loop: true, // 循环模式选项
+            on:{
+                slideChange:function(){
+                    console.log(activeIndex)
                 }
             }
-        });
+        })
     </script>
 
 </body>
+
 </html>
-
-
-
-
-    
- 
