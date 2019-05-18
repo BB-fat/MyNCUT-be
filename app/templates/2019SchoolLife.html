@@ -1,2 +1,85 @@
-<h1>测试成功</h1>
-<img src="{{url_for('static', filename='2019SchoolLife/img/img1.png')}}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2019SchoolLife</title>
+
+    <style>
+    .box-2{
+        opacity: 0;
+    }
+    body {
+        background-image: url(/static/2019SchoolLife/img/ground.png);
+        background-repeat: no-repeat;
+        position: absolute;
+        width:640px;
+        height:660px;
+        left:50%;
+        margin-left:-320px;
+        margin-top:350px;
+    }
+    </style>
+    
+</head>
+<body>
+
+   <div id="wrap">
+        <div class="item"> <!--  页面1 -->
+            <div class="box-0">
+               12321
+            </div>
+        </div>
+
+        <div class="item">  <!-- 页面2 -->
+            <div class="box-1">
+                123213214
+            </div>
+        </div>
+
+        <div class="item">  <!-- 页面3 -->
+            <div class="box-2">
+                   213213
+            </div>
+        </div>
+    </div> 
+
+<!-- JavaScript -->
+
+<!-- 调用翻页 -->
+<script type="text/javascript" src="js/iSlider.js"></script>
+<!--    <script type="text/javascript"src="/{{url_for('static', filename='2019SchoolLife/js/iSlider.js')}}"></script> -->
+
+<!-- 调用move.js -->
+  <script type="text/javascript" src="move.js/move.js"></script>
+<!--    <script type="text/javascript" src="{{url_for('static', filename='2019SchoolLife/move.js/move.js')}}"></script> -->
+    <script>
+
+
+        var myslider = new iSlider({
+            wrap: '#wrap',
+            item: '.item',
+            onslide: function (index) {
+                console.log(index)
+                if (index == 2) {
+                    move('.box-2')
+                        .set('opacity', '1')
+                        .duration('5s')
+                        .end();
+                }else if(index==1){
+                    move('.box-1')
+                        .set("margin-top","500px")
+                        .duration('5s')
+                        .end();
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+    
+ 
