@@ -1,4 +1,5 @@
-from flask import request,render_template,make_response
+from app import app
+from flask import render_template,send_file,make_response,request
 from util.login import *
 from util.mongoClient import *
 import json
@@ -9,21 +10,7 @@ from util.parseurl import parseUrl
 from setting import *
 from util.schoolNet import *
 
-# 首页轮播图图片路由函数
-from app.static.publicinfo.routes import *
-
-
-@app.route("/test")
-def test():
-    return render_template("redirect.html")
-
-@app.route('/kSyoZqkJwk.txt')
-def wxAuth():
-    '''
-    微信业务域名认证文件
-    :return:
-    '''
-    return send_file('kSyoZqkJwk.txt')
+from app.tempRoutes import *
 
 @app.route('/login/oauth')
 def auth():
@@ -209,7 +196,7 @@ def submitFeedback():
     return "success"
 
 @app.route('/reqdownload')
-def requestDownload():
+def reqDownload():
     """
     请求下载课件
     params:openid,courseware(json)
@@ -248,20 +235,3 @@ def getWifi():
     openid=request.args.get("openid")
     uid=app.DB.getUserInfo(openid)['userInfo']['userid']
     return getNetInfo(uid)[7]
-
-@app.route("/getauth")
-def getAuth():
-    '''
-    用于给临时后台提供登陆凭证
-    :return:
-    '''
-    return app.DB.getPasswd()
-
-@app.route("/storedata",methods=['POST'])
-def storeData():
-    tempInfo =request.form
-    if tempInfo['type']== 'banner':
-        app.DB.setIndexBanner(tempInfo)
-    else:
-        app.DB.setIndexNotice(tempInfo)
-    return "success"
