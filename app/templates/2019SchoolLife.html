@@ -1,108 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="static/2019SchoolLife/js/swiper.min.css">
+<script src="static/2019SchoolLife/js/swiper.min.js"></script>
+<style>
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
 
-<head>
-    <link rel="stylesheet" href="static/2019SchoolLife/js/swiper.min.css">
-    <script src="static/2019SchoolLife/js/swiper.min.js"></script>
-    <meta charset="UTF-8">
-    <title>2019SchoolLife</title>
+    .page1 {
+        background-color: #fff;
+    }
 
-    <style>
-        .box-2 {
-            opacity: 0;
-        }
+    .page2 {
+        background-color: rgb(250, 15, 15);
+    }
 
-        body {
-            width: 100%;
-            padding: 0px;
-            height: 100%;
-            position: fixed;
-            background-image: url(static/2019SchoolLife/img/ground.png);
-        }
-
-        .swiper-container {
-            width: 100%;
-            height: 100%;
-            position: fixed;
-        }
-
-        /* .girljumpbig {
-            position: fixed;
-            text-align: center;
-            margin: 0 auto;
-        }
-
-        .girljumpbig img {
-            width: 90px;
-        } */
-    </style>
-
-</head>
+    .page3 {
+        background-color: rgb(66, 28, 206);
+    }
+</style>
 
 <body>
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <!--  页面1 -->
-            <div class="swiper-slide box-0">
-
-                <div class="girljumpbig">
-                    <img src="{{url_for('static', filename='2019SchoolLife/img/girljumpbig.gif')}}">
-                </div>
-            </div>
-            <!-- 页面2 -->
-            <div class="swiper-slide box-1">
-                123213214
-            </div>
-            <!-- 页面3 -->
-            <div class="swiper-slide box-2">
-                213213
-            </div>
+            <div class="swiper-slide page1">Slide 1</div>
+            <div class="swiper-slide page2">Slide 2</div>
+            <div class="swiper-slide page3">Slide 3</div>
         </div>
     </div>
-
-    <!-- JavaScript -->
-
-    <!-- 调用翻页 -->
-    <!--<script type="text/javascript" src="js/iSlider.js"></script>-->
-    <!-- <script type="text/javascript" src="{{url_for('static', filename='2019SchoolLife/js/iSlider.js')}}"></script> -->
-
-    <!-- 调用move.js -->
-    <!--  <script type="text/javascript" src="js/move.min.js"></script>-->
-    <!-- <script type="text/javascript" src="{{url_for('static', filename='2019SchoolLife/js/move.min.js')}}"></script> -->
     <script>
-        // var myslider = new iSlider({
-        //     wrap: '#wrap',
-        //     item: '.item',
-        //     fullSrc: true,
-        //     onslide: function (index) {
-        //         console.log(index)
-        //         if (index == 2) {
-        //             move('.box-2')
-        //                 .set('opacity', '1')
-        //                 .duration('5s')
-        //                 .end();
-        //         } else if (index == 1) {
-        //             move('.box-1')
-        //                 .set("opacity", "0")
-        //                 .duration('5s')
-        //                 .end();
-        //         }
-        //     }
-        // });
         var mySwiper = new Swiper('.swiper-container', {
             direction: 'vertical', // 垂直切换选项
-            loop: false, // 循环模式选项
-            on: {
-                slideChange: function () {
-                    console.log(this.activeIndex)
-                },
-                transitionStart: function () {
-                    console.log("调用")
-                }
-            }
+            loop: true, // 循环模式选项
         })
     </script>
-
 </body>
 
 </html>
