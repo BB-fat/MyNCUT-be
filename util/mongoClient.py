@@ -2,11 +2,14 @@ from pymongo import MongoClient
 from setting import *
 import time
 class mongoClient ():
-    def __init__(self):
+    def __init__(self,debug):
         """
         数据库初始化，初始化userInfo集合
         """
-        self.client =MongoClient(DATABASEIP,DATABASEPORT)
+        if debug:
+            self.client =MongoClient(DATABASEIP,DATABASEPORT)
+        else:
+            self.client = MongoClient(DATABASEIP, DATABASEPORT, username=DB_USER, password=DB_PASSWD)
 
     def newUser(self,openid):
         """

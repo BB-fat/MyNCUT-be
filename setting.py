@@ -1,3 +1,13 @@
+
+DEBUG=True
+
+if DEBUG:
+    DATABASEIP = '10.100.1.222'
+else:
+    DATABASEIP = '10.102.1.34'
+    DB_USER = "myncut"
+    DB_PASSWD = "myNCUT@wx315wdbf"
+
 yxAPPID = '31b1e992583074382'
 
 yxAPPSECRET = 'f5e030ee903dbc29c6e76375253d1ee6'
