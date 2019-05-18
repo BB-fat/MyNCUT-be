@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="{{url_for('static',filename='2019SchoolLife/css/swiper.min.css')}}">
 <script src="{{url_for('static',filename='2019SchoolLife/js/swiper.min.js')}}"></script>
+<script src="{{url_for('static',filename='2019SchoolLife/js/move.min.js')}}"></script>
 <style>
     body{
         margin: 0;
@@ -17,6 +18,7 @@
     }
     .page3{
         background-color: rgb(66, 28, 206);
+
     }
 </style>
 
@@ -32,6 +34,16 @@
         var mySwiper = new Swiper('.swiper-container', {
             direction: 'vertical', // 垂直切换选项
             loop: true, // 循环模式选项
+            on:{
+                activeIndexChange:function () {
+                    if(this.activeIndex==2){
+                        new move(".page3")
+                            .set("opacity","0")
+                            .duration("5s")
+                            .end()
+                    }
+                }
+            }
         })
     </script>
 </body>
