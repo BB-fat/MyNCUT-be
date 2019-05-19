@@ -21,5 +21,5 @@ ORDER BY sum(x.SMT_TRANSMONEY) desc
 '''
 res=c.execute(sql)
 print (res.fetchone())
-c.close()                                                 #关闭cursor
+c.close()
 conn.close()  
