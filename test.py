@@ -5,9 +5,9 @@ dsn=cx_Oracle.makedsn("10.100.1.248",1521,"epps")
 connect=cx_Oracle.connect("C##MYNUCT","c8SYjM05x7U",dsn)
 c=connect.cursor()
 sql='''
-SELECT * from  *.DDXY_STU_BASICINFO where XH='17152010921'
+select XH,KCS,ZXF,ZGFKC,ZGF,ZDFKC,ZDF from DDXY_STU_COURSE  where XH='xuehao'
 '''
 res=c.execute(sql)
-print (res.fetchone())
+print (res.fetchall())
 c.close()
 connect.close()
