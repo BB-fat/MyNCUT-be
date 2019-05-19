@@ -10,6 +10,6 @@ where XH='15104050234' AND SKXQ=(select MIN(SKXQ) from DDXY_STU_FIRSTCOURSE wher
 AND SKDY=(select MIN(SKDY) from DDXY_STU_FIRSTCOURSE where XH=F1.XH and (SKXQ=(select MIN(SKXQ) from DDXY_STU_FIRSTCOURSE where XH=F1.XH) ))
 '''
 res=c.execute(sql)
-print (res)
+# print (res)
 c.close()
 connect.close()
