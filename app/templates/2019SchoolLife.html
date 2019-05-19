@@ -1,48 +1,61 @@
-<link rel="stylesheet" href="{{url_for('static',filename='2019SchoolLife/css/swiper.min.css')}}">
-<script src="{{url_for('static',filename='2019SchoolLife/js/swiper.min.js')}}"></script>
-<script src="{{url_for('static',filename='2019SchoolLife/js/move.min.js')}}"></script>
-<style>
-    body{
-        margin: 0;
-        padding: 0;
-    }
-    .swiper-container {
-        width: 100%;
-        height: 100%;
-    }
-    .page1{
-        background-color: #fff;
-    }
-    .page2{
-        background-color: rgb(250, 15, 15);
-    }
-    .page3{
-        background-color: rgb(66, 28, 206);
+<head>
+    <link rel="stylesheet" href="static/2019SchoolLife/css/swiper.min.css">
+    <link rel="stylesheet" href="static/2019SchoolLife/css/style.css">
+    <link rel="stylesheet" href="static/2019SchoolLife/css/animate.css">
+</head>
 
-    }
-</style>
 
 <body>
+    <div class="topDiv">
+        <img id="girl" class="girl" src="static/2019SchoolLife/img/girl.png">
+    </div>
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide page1">Slide 1</div>
-            <div class="swiper-slide page2">Slide 2</div>
-            <div class="swiper-slide page3">Slide 3</div>
+            <div class="swiper-slide page0">
+                <img class="stone" src="static/2019SchoolLife/img/stone.png">
+                <img class="bgimg" src="static/2019SchoolLife/img/ground.png">
+            </div>
+            <div class="swiper-slide page0">
+                <img class="library" src="static/2019SchoolLife/img/library.png">
+                <img class="bgimg" src="static/2019SchoolLife/img/ground.png">
+            </div>
+            <div class="swiper-slide page2">
+                <p class="text">
+                    岁月荏苒，花开花灭，又是一年毕业季。如今即将各奔东西的大家，还记得四年前刚刚迈入大学校园的，青涩懵懂的你们吗？
+                </p>
+            </div>
         </div>
     </div>
+
+    <script src="static/2019SchoolLife/js/swiper.min.js"></script>
+    <script src="static/2019SchoolLife/js/move.min.js"></script>
+    <script src="static/2019SchoolLife/js/jQuery.js"></script>
+    <script src="static/2019SchoolLife/js/jquery.fittext.js"></script>
+    <script src="static/2019SchoolLife/js/jquery.lettering.js"></script>
+    <script src="static/2019SchoolLife/js/jquery.textillate.js"></script>
+
     <script>
         var mySwiper = new Swiper('.swiper-container', {
             direction: 'vertical', // 垂直切换选项
-            loop: true, // 循环模式选项
-            on:{
-                slideChange:function () {
-                    if(this.activeIndex==1){
-                        move(".page2")
-                            .set("opacity","0")
-                            .duration("5s")
-                            .end()
+            loop: false, // 循环模式选项
+            speed: 1200,
+            on: {
+                touchStart: function (e) {
+                    document.getElementById("girl").src = "static/2019SchoolLife/img/girljumpbig.gif"
+                },
+                transitionEnd: function () {
+                    document.getElementById("girl").src = "static/2019SchoolLife/img/girl.png"
+                },
+                slideChange: function () {
+                    if (this.activeIndex == 2) {
+                        $('.text')
+                            .fitText(3.2, { minFontSize: '40px', maxFontSize: '50px' })
+                            .textillate({
+                                loop: false,
+                                in: { effect: 'flipInX' }
+                            });
                     }
-                }
+                },
             }
         })
     </script>
