@@ -5,7 +5,7 @@ dsn=cx_Oracle.makedsn("10.100.1.248",1521,"epps")
 connect=cx_Oracle.connect("C##MYNUCT","c8SYjM05x7U",dsn)
 c=connect.cursor()
 sql='''
-SELECT owner FROM all_tables WHERE table_name = 'DDXY_STU_COURS';
+SELECT owner FROM all_tables WHERE table_name = 'DDXY_STU_COURS'
 select XH,KCS,ZXF,ZGFKC,ZGF,ZDFKC,ZDF from DDXY_STU_COURSE  where XH='xuehao'
 '''
 res=c.execute(sql)
