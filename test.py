@@ -18,6 +18,7 @@ AND SKDY=(select MIN(SKDY) from C##NCUTDATA.DDXY_STU_FIRSTCOURSE where XH=F1.XH 
 
 cursor = conn.cursor()
 
-for each in cursor.execute(sql):
-  print(each[0])
-  print(each[1])
+# for each in cursor.execute(sql):
+#   print(each[0])
+#   print(each[1])
+print(cursor.execute(sql).fetchall())
