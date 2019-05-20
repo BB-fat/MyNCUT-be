@@ -11,7 +11,7 @@ class SchoolLife():
         self.c12 = cx_Oracle.connect(
             "C##MYNUCT", "c8SYjM05x7U", "10.100.1.248/orcl").cursor()
 
-    def getData():
+    def getData(self):
         '''
         获得数据
         '''
@@ -23,7 +23,7 @@ class SchoolLife():
             **self.__birthday(),
         }
 
-    def __consum():
+    def __consum(self):
         '''
         消费总次数、金额
         '''
@@ -38,7 +38,7 @@ class SchoolLife():
             'sum_consum_money': res[1]
         }
 
-    def __dining_hall():
+    def __dining_hall(self):
         '''
         食堂消费相关
         '''
@@ -64,7 +64,7 @@ class SchoolLife():
             'dining_hall':res
         }
 
-    def __school_net_sum():
+    def __school_net_sum(self):
         '''
         校园网使用总量
         '''
@@ -76,7 +76,7 @@ class SchoolLife():
             'school_net_sum':res[0]
         }
 
-    def __school_net_day():
+    def __school_net_day(self):
         '''
         校园网分小时使用情况
         '''
@@ -89,7 +89,7 @@ class SchoolLife():
             'school_net_day':res
         }
 
-    def __birthday():
+    def __birthday(self):
         '''
         生日
         '''
