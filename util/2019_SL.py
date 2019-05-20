@@ -83,7 +83,7 @@ class SchoolLife():
                 elif "后勤集团海陆天" == res[i][0]:
                     hailutian=res.pop(i)
             except:
-                break
+                pass
         shop_all={
             'consum':shop[2]+shop_wenju[2]+shop_xuefu[2],
             'times':shop[1]+shop_wenju[1]+shop_xuefu[1]
