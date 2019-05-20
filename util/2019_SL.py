@@ -79,30 +79,29 @@ class SchoolLife():
                 map[item[0]]=item
             else:
                 dining_hall.append(item)
-        # shop_all={
-        #     'consum':shop[2]+shop_wenju[2]+shop_xuefu[2],
-        #     'times':shop[1]+shop_wenju[1]+shop_xuefu[1]
-        # }
-        # guojiao=[]
-        # guojiao.append("国教餐厅")
-        # guojiao.append(guojiao_2[1]+guojiao_5[1]+guojiao_jici[1])
-        # guojiao.append(guojiao_2[2]+guojiao_5[2]+guojiao_jici[2])
-        # res.append(guojiao)
-        # res.sort(key=lambda money: res[2])
-        # base_money=res[0][2]*1.2
-        # for i in range(len(res)):
-        #     tmp=list(res[i])
-        #     tmp.append(tmp[2]/base_money*100)
-        #     res[i]=tmp
+        shop_all={
+            'consum':map["后勤集团校园超市"][2]+map["后勤集团超市文具店"][2]+map["饮食服务部学三小卖部"][2],
+            'times':map["后勤集团校园超市"][1]+map["后勤集团超市文具店"][1]+map["饮食服务部学三小卖部"][1]
+        }
+        guojiao=[]
+        guojiao.append("国教餐厅")
+        guojiao.append(map["国教餐厅二区"][1]+map["国教餐厅五区"][1]+map["国教餐厅国教计次收费"][1])
+        guojiao.append(map["国教餐厅二区"][2]+map["国教餐厅五区"][2]+map["国教餐厅国教计次收费"][2])
+        dining_hall.append(guojiao)
+        dining_hall.sort(key=lambda money: dining_hall[2])
+        base_money=dining_hall[0][2]*1.2
+        for i in range(len(dining_hall)):
+            tmp=list(dining_hall[i])
+            tmp.append(tmp[2]/base_money*100)
+            dining_hall[i]=tmp
         return {
             'dining_hall':dining_hall,
-            'map':map
-            # 'dining_hall':res[:3],
-            # 'shop':shop_all,
-            # 'dian':dian,
-            # 'yushi':yushi,
-            # 'tiyuguan':tiyuguan,
-            # 'hailutian':hailutian
+            'dining_hall':dining_hall[:4],
+            'shop':shop_all,
+            'dian':map["后勤集团缴纳电费"],
+            'yushi':map["动力修缮淋浴转账机"],
+            'tiyuguan':map["理学院体育馆"],
+            'hailutian':map["后勤集团海陆天"]
         }
 
     def __school_net_sum(self):
