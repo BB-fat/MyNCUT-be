@@ -84,7 +84,7 @@ class SchoolLife():
         select to_char(ZXSJ,'HH24') as HOUR,ROUND(SUM(C.LL)/1024) as G from DBM.NCUT_CSRDLLSJ C where  C.YHM='{}'  GROUP BY to_char(ZXSJ,'HH24')
         ORDER BY to_char(ZXSJ,'HH24') ASC
         '''.format(self.userid)
-        res=c11.execute(sql).fetchall()
+        res=self.c11.execute(sql).fetchall()
         return {
             'school_net_day':res
         }
