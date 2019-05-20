@@ -60,34 +60,29 @@ class SchoolLife():
         ORDER BY sum(x.SMT_TRANSMONEY) desc
         '''.format(self.userid)
         res = self.c11.execute(sql).fetchall()
-        for i in range(len(res)):
-            try:
-                if "后勤集团校园超市" == res[i][0]:
-                    shop=res.pop(i)
-                elif "后勤集团缴纳电费" == res[i][0]:
-                    dian=res.pop(i)
-                elif "动力修缮淋浴转账机" == res[i][0]:
-                    yushi=res.pop(i)
-                elif "后勤集团超市文具店" == res[i][0]:
-                    shop_wenju=res.pop(i)
-                elif "饮食服务部学三小卖部" == res[i][0]:
-                    shop_xuefu=res.pop(i)
-                elif "国教餐厅二区" == res[i][0]:
-                    guojiao_2=res.pop(i)
-                elif "理学院体育馆" == res[i][0]:
-                    tiyuguan=res.pop(i)
-                elif  "国教餐厅五区" == res[i][0]:
-                    guojiao_5=res.pop(i)
-                elif  "国教餐厅国教计次收费" == res[i][0]:
-                    guojiao_jici=res.pop(i)
-                elif "后勤集团海陆天" == res[i][0]:
-                    hailutian=res.pop(i)
-            except:
-                pass
-        shop_all={
-            'consum':shop[2]+shop_wenju[2]+shop_xuefu[2],
-            'times':shop[1]+shop_wenju[1]+shop_xuefu[1]
-        }
+        outList=[
+            "后勤集团校园超市",
+            "后勤集团缴纳电费",
+            "动力修缮淋浴转账机",
+            "后勤集团超市文具店",
+            "饮食服务部学三小卖部",
+            "国教餐厅二区",
+            "理学院体育馆",
+            "国教餐厅五区",
+            "国教餐厅国教计次收费",
+            "后勤集团海陆天"
+        ]
+        map={}
+        dining_hall=[]
+        for item in res:
+            if item[0] in outList:
+                map[item[0]]=item
+            else:
+                dining_hall.append(item)
+        # shop_all={
+        #     'consum':shop[2]+shop_wenju[2]+shop_xuefu[2],
+        #     'times':shop[1]+shop_wenju[1]+shop_xuefu[1]
+        # }
         # guojiao=[]
         # guojiao.append("国教餐厅")
         # guojiao.append(guojiao_2[1]+guojiao_5[1]+guojiao_jici[1])
@@ -100,7 +95,8 @@ class SchoolLife():
         #     tmp.append(tmp[2]/base_money*100)
         #     res[i]=tmp
         return {
-            'dining_hall':res
+            'dining_hall':dining_hall,
+            'map':map
             # 'dining_hall':res[:3],
             # 'shop':shop_all,
             # 'dian':dian,
