@@ -12,7 +12,7 @@ conn = cx_Oracle.connect("MYNUCT", "AQU1m0Lhp8", "10.100.0.1/orcl")
 # SELECT * from C##NCUTDATA.DDXY_STU_BASICINFO where XH='17152010921'
 # """
 sql='''
-select round(SUM(C.LL)/1024) as TotalGib from DBM.NCUT_CSRDLLSJ  C where  C.YHM = '000120'
+select round(SUM(C.LL)/1024) as TotalGib from DBM.NCUT_CSRDLLSJ  C where  C.YHM = '17152010921'
 '''
 
 #sql = "select * from C##NCUTDATA.DDXY_STU_FIRSTCOURSE where rownum <=5"
