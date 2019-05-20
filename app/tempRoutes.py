@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template,send_file,make_response,request
 from util.login import *
-from utils.SL_2019 import *
+from util.SL_2019 import *
 
 @app.route('/kSyoZqkJwk.txt')
 def wxAuth():
