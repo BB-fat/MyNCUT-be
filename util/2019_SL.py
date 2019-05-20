@@ -88,7 +88,7 @@ class SchoolLife():
         guojiao.append(map["国教餐厅二区"][1]+map["国教餐厅五区"][1]+map["国教餐厅国教计次收费"][1])
         guojiao.append(map["国教餐厅二区"][2]+map["国教餐厅五区"][2]+map["国教餐厅国教计次收费"][2])
         dining_hall.append(guojiao)
-        dining_hall.sort(key=lambda money: dining_hall[2])
+        dining_hall.sort(key=lambda money: money[2])
         base_money=dining_hall[0][2]*1.2
         for i in range(len(dining_hall)):
             tmp=list(dining_hall[i])
