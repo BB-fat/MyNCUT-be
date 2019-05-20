@@ -85,24 +85,25 @@ class SchoolLife():
             'consum':shop[2]+shop_wenju[2]+shop_xuefu[2],
             'times':shop[1]+shop_wenju[1]+shop_xuefu[1]
         }
-        guojiao=[]
+        # guojiao=[]
         # guojiao.append("国教餐厅")
         # guojiao.append(guojiao_2[1]+guojiao_5[1]+guojiao_jici[1])
         # guojiao.append(guojiao_2[2]+guojiao_5[2]+guojiao_jici[2])
         # res.append(guojiao)
-        res.sort(key=lambda money: res[2])
-        base_money=res[0][2]*1.2
-        for i in range(len(res)):
-            tmp=list(res[i])
-            tmp.append(tmp[2]/base_money*100)
-            res[i]=tmp
+        # res.sort(key=lambda money: res[2])
+        # base_money=res[0][2]*1.2
+        # for i in range(len(res)):
+        #     tmp=list(res[i])
+        #     tmp.append(tmp[2]/base_money*100)
+        #     res[i]=tmp
         return {
-            'dining_hall':res[:3],
-            'shop':shop_all,
-            'dian':dian,
-            'yushi':yushi,
-            'tiyuguan':tiyuguan,
-            'hailutian':hailutian
+            'dining_hall':res
+            # 'dining_hall':res[:3],
+            # 'shop':shop_all,
+            # 'dian':dian,
+            # 'yushi':yushi,
+            # 'tiyuguan':tiyuguan,
+            # 'hailutian':hailutian
         }
 
     def __school_net_sum(self):
