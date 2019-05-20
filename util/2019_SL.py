@@ -1,5 +1,6 @@
 import cx_Oracle
 import os
+import json
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
 
@@ -60,11 +61,8 @@ class SchoolLife():
         ORDER BY sum(x.SMT_TRANSMONEY) desc
         '''.format(self.userid)
         res = self.c11.execute(sql).fetchall()
-        tmp=[]
-        for item in res:
-            tmp.append(list(item))
         return {
-            'dining_hall':tmp
+            'dining_hall':res
         }
 
     def __school_net_sum(self):
@@ -88,11 +86,8 @@ class SchoolLife():
         ORDER BY to_char(ZXSJ,'HH24') ASC
         '''.format(self.userid)
         res=self.c11.execute(sql).fetchall()
-        tmp=[]
-        for item in res:
-            tmp.append(list(item))
         return {
-            'school_net_day':tmp
+            'school_net_day':res
         }
 
     def __birthday(self):
@@ -113,4 +108,4 @@ class SchoolLife():
 
 if __name__=="__main__":
     A=SchoolLife("17152010921")
-    print(A.getData())
+    print(json.dumps(A.getData()))
