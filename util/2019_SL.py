@@ -61,6 +61,7 @@ class SchoolLife():
         '''.format(self.userid)
         res = self.c11.execute(sql).fetchall()
         for i in range(len(res)):
+            print(i)
             if "后勤集团校园超市" == res[i][0]:
                 shop=res.pop(i)
             elif "后勤集团缴纳电费" == res[i][0]:
