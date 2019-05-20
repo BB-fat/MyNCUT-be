@@ -17,7 +17,7 @@ class SchoolLife():
         '''
         return {
             **self.__consum(),
-            **self.__dining_hall(),
+            **self.__consum_every(),
             **self.__school_net_sum(),
             **self.__school_net_day(),
             **self.__birthday(),
@@ -38,9 +38,9 @@ class SchoolLife():
             'sum_consum_money': res[1]
         }
 
-    def __dining_hall(self):
+    def __consum_every(self):
         '''
-        食堂消费相关
+        消费相关项目分类
         '''
         sql = '''
         select case 
@@ -60,8 +60,49 @@ class SchoolLife():
         ORDER BY sum(x.SMT_TRANSMONEY) desc
         '''.format(self.userid)
         res = self.c11.execute(sql).fetchall()
+        for item in res:
+            if "后勤集团校园超市" in item:
+                shop=res.pop(res.index(item))
+            elif "后勤集团缴纳电费" in item:
+                dian=res.pop(res.index(item))
+            elif "动力修缮淋浴转账机" in item:
+                yushi=res.pop(res.index(item))
+            elif "后勤集团超市文具店" in item:
+                shop_wenju=res.pop(res.index(item))
+            elif "饮食服务部学三小卖部" in item:
+                shop_xuefu=res.pop(res.index(item))
+            elif "国教餐厅二区" in item:
+                guojiao_2=res.pop(res.index(item))
+            elif "理学院体育馆" in item:
+                tiyuguan=res.pop(res.index(item))
+            elif  "国教餐厅五区" in item:
+                guojiao_5=res.pop(res.index(item))
+            elif  "国教餐厅国教计次收费" in item:
+                guojiao_jici=res.pop(res.index(item))
+            elif "后勤集团海陆天" in item:
+                hailutian=res.pop(res.index(item))
+        shop_all={
+            'consum':shop[2]+shop_wenju[2]+shop_xuefu[2],
+            'times':shop[1]+shop_wenju[1]+shop_xuefu[1]
+        }
+        guojiao=[]
+        guojiao.append("国教餐厅")
+        guojiao.append(guojiao_2[1]+guojiao_5[1]+guojiao_jici[1])
+        guojiao.append(guojiao_2[2]+guojiao_5[2]+guojiao_jici[2])
+        res.append(guojiao)
+        res.sort(key=lambda money: res[2])
+        base_money=res[0][2]*1.2
+        for i in range(len(res)):
+            tmp=list(res[i])
+            tmp.append(tmp[2]/base_money*100)
+            res[i]=tmp
         return {
-            'dining_hall':sorted(res,key=lambda money: res[2])[:5]
+            'dining_hall':res[:3],
+            'shop':shop_all,
+            'dian':dian,
+            'yushi':yushi,
+            'tiyuguan':tiyuguan,
+            'hailutian':hailutian
         }
 
     def __school_net_sum(self):
