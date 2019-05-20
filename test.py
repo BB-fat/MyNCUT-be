@@ -5,7 +5,7 @@ os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 import cx_Oracle
 
 # print (cx_Oracle.clientversion())
-conn = cx_Oracle.connect("C##MYNUCT", "c8SYjM05x7U", "10.100.1.248/orcl")
+conn = cx_Oracle.connect("C##MYNUCT", "c8SYjM05x7U", "10.100.1.248/epps")
 # print (conn.version)
 
 sql = """
