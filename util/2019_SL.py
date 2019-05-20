@@ -89,7 +89,7 @@ class SchoolLife():
         # guojiao.append("国教餐厅")
         # guojiao.append(guojiao_2[1]+guojiao_5[1]+guojiao_jici[1])
         # guojiao.append(guojiao_2[2]+guojiao_5[2]+guojiao_jici[2])
-        res.append(guojiao)
+        # res.append(guojiao)
         res.sort(key=lambda money: res[2])
         base_money=res[0][2]*1.2
         for i in range(len(res)):
