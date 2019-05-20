@@ -61,7 +61,7 @@ class SchoolLife():
         group by substr(x.SMT_ORG_ID,0,10),s.NAME
         ORDER BY sum(x.SMT_TRANSMONEY) desc
         '''.format(self.userid)
-        res = self.c11.execute(sql).fetchall()
+        res = list(self.c11.execute(sql).fetchall())
         res.sort(key=takeIndex(res,2))
         return {
             'dining_hall':res[:5]
