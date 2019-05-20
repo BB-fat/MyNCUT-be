@@ -60,27 +60,27 @@ class SchoolLife():
         ORDER BY sum(x.SMT_TRANSMONEY) desc
         '''.format(self.userid)
         res = self.c11.execute(sql).fetchall()
-        for item in res:
-            if "后勤集团校园超市" in item:
-                shop=res.pop(res.index(item))
-            elif "后勤集团缴纳电费" in item:
-                dian=res.pop(res.index(item))
-            elif "动力修缮淋浴转账机" in item:
-                yushi=res.pop(res.index(item))
-            elif "后勤集团超市文具店" in item:
-                shop_wenju=res.pop(res.index(item))
-            elif "饮食服务部学三小卖部" in item:
-                shop_xuefu=res.pop(res.index(item))
-            elif "国教餐厅二区" in item:
-                guojiao_2=res.pop(res.index(item))
-            elif "理学院体育馆" in item:
-                tiyuguan=res.pop(res.index(item))
-            elif  "国教餐厅五区" in item:
-                guojiao_5=res.pop(res.index(item))
-            elif  "国教餐厅国教计次收费" in item:
-                guojiao_jici=res.pop(res.index(item))
-            elif "后勤集团海陆天" in item:
-                hailutian=res.pop(res.index(item))
+        for i in range(len(res)):
+            if "后勤集团校园超市" == res[i][0]:
+                shop=res.pop(i)
+            elif "后勤集团缴纳电费" == res[i][0]:
+                dian=res.pop(i)
+            elif "动力修缮淋浴转账机" == res[i][0]:
+                yushi=res.pop(i)
+            elif "后勤集团超市文具店" == res[i][0]:
+                shop_wenju=res.pop(i)
+            elif "饮食服务部学三小卖部" == res[i][0]:
+                shop_xuefu=res.pop(i)
+            elif "国教餐厅二区" == res[i][0]:
+                guojiao_2=res.pop(i)
+            elif "理学院体育馆" == res[i][0]:
+                tiyuguan=res.pop(i)
+            elif  "国教餐厅五区" == res[i][0]:
+                guojiao_5=res.pop(i)
+            elif  "国教餐厅国教计次收费" == res[i][0]:
+                guojiao_jici=res.pop(i)
+            elif "后勤集团海陆天" == res[i][0]:
+                hailutian=res.pop(i)
         shop_all={
             'consum':shop[2]+shop_wenju[2]+shop_xuefu[2],
             'times':shop[1]+shop_wenju[1]+shop_xuefu[1]
