@@ -9,7 +9,7 @@ conn = cx_Oracle.connect("C##MYNUCT", "c8SYjM05x7U", "10.100.1.248/orcl")
 print (conn.version)
 
 sql = """select DISTINCT KCMC,JSMC from C##NCUTDATA.DDXY_STU_FIRSTCOURSE   F1
-where XH='17152010921' AND SKXQ=(select MIN(SKXQ) from C##NCUTDATA.DDXY_STU_FIRSTCOURSE where XH=F1.XH) 
+where XH='17151010113' AND SKXQ=(select MIN(SKXQ) from C##NCUTDATA.DDXY_STU_FIRSTCOURSE where XH=F1.XH) 
 AND SKDY=(select MIN(SKDY) from C##NCUTDATA.DDXY_STU_FIRSTCOURSE where XH=F1.XH and (SKXQ=(select MIN(SKXQ) from C##NCUTDATA.DDXY_STU_FIRSTCOURSE where XH=F1.XH) ))
 """
 
