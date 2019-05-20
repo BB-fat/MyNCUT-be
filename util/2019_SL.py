@@ -61,7 +61,7 @@ class SchoolLife():
         '''.format(self.userid)
         res = self.c11.execute(sql).fetchall()
         return {
-            'dining_hall':res
+            'dining_hall':list(res)
         }
 
     def __school_net_sum(self):
@@ -86,7 +86,7 @@ class SchoolLife():
         '''.format(self.userid)
         res=self.c11.execute(sql).fetchall()
         return {
-            'school_net_day':res
+            'school_net_day':list(res)
         }
 
     def __birthday(self):
