@@ -60,8 +60,11 @@ class SchoolLife():
         ORDER BY sum(x.SMT_TRANSMONEY) desc
         '''.format(self.userid)
         res = self.c11.execute(sql).fetchall()
+        tmp=[]
+        for item in res:
+            tmp.append(list(item))
         return {
-            'dining_hall':list(res)
+            'dining_hall':tmp
         }
 
     def __school_net_sum(self):
@@ -85,8 +88,11 @@ class SchoolLife():
         ORDER BY to_char(ZXSJ,'HH24') ASC
         '''.format(self.userid)
         res=self.c11.execute(sql).fetchall()
+        tmp=[]
+        for item in res:
+            tmp.append(list(item))
         return {
-            'school_net_day':list(res)
+            'school_net_day':tmp
         }
 
     def __birthday(self):
