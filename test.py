@@ -9,7 +9,7 @@ conn = cx_Oracle.connect("C##MYNUCT", "c8SYjM05x7U", "10.100.1.248/orcl")
 # print (conn.version)
 
 sql = """
-SELECT * from C##MYNUCT.DDXY_STU_BASICINFO where XH='17152010921'
+SELECT * from C##NCUTDATA.DDXY_STU_BASICINFO where XH='17152010921'
 """
 
 #sql = "select * from C##NCUTDATA.DDXY_STU_FIRSTCOURSE where rownum <=5"
