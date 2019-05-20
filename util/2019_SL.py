@@ -103,3 +103,8 @@ class SchoolLife():
             "same_day_and_year":res[3]-1,
             "same_day_xueyuan":res[4]-1
         }
+
+
+if __name__=="__main__":
+    A=SchoolLife("17152010921")
+    print(A.getData())
