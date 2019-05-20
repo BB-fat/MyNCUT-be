@@ -2,13 +2,14 @@
     <link rel="stylesheet" href="static/2019SchoolLife/css/swiper.min.css">
     <link rel="stylesheet" href="static/2019SchoolLife/css/style.css">
     <link rel="stylesheet" href="static/2019SchoolLife/css/animate.css">
+    <link rel="stylesheet" href="static/2019SchoolLife/css/chart.css">
 </head>
 
 
 <body>
-    <div class="topDiv">
-        <img id="girl" class="girl" src="static/2019SchoolLife/img/girl.png">
-    </div>
+
+
+    <img id="girl" class="girl" src="static/2019SchoolLife/img/girl.png">
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide page0">
@@ -20,9 +21,61 @@
                 <img class="bgimg" src="static/2019SchoolLife/img/ground.png">
             </div>
             <div class="swiper-slide page2">
-                <p class="text">
+                <div class="text" style="opacity: 0;">
                     岁月荏苒，花开花灭，又是一年毕业季。如今即将各奔东西的大家，还记得四年前刚刚迈入大学校园的，青涩懵懂的你们吗？
-                </p>
+                </div>
+            </div>
+            <div class="swiper-slide page3">
+                <canvas id="myCanvas" width="200" height="100"></canvas>
+                <div id="audio_btn" class="rotate">
+                    <img id="audio_btn" class="rotate" src="static/2019SchoolLife/img/2.png" alt="">
+                    <audio loop src="static/2019SchoolLife/mp3/mp3.mp3" id="media" autoplay="" preload=""></audio>
+
+                </div>
+                <div class="swiper-slide page4">
+                    <div class="chartBack">
+                       <div class="skillbar clearfix " data-percent="{{data.dining_hall[0][3]}}%">
+                        <div class="skillbar-title" style="background: #d35400;"><span>{{data.dining_hall[0][0]}}</span></div> 
+                        <div class="skillbar-bar" style="background: #e67e22;"></div>
+                        <div class="skill-bar-percent">￥{{data.dining_hall[0][2]}}</div>
+                    </div> <!-- End Skill Bar -->
+
+                    <div class="skillbar clearfix " data-percent="{{data.dining_hall[1][3]}}%">
+                        <div class="skillbar-title" style="background: #2980b9;"><span>{{data.dining_hall[1][0]}}</span></div>
+                        <div class="skillbar-bar" style="background: #3498db;"></div>
+                        <div class="skill-bar-percent">￥{{data.dining_hall[1][2]}}</div>
+                    </div> <!-- End Skill Bar -->
+
+                    <div class="skillbar clearfix " data-percent="{{data.dining_hall[2][3]}}%">
+                        <div class="skillbar-title" style="background: #2c3e50;"><span>{{data.dining_hall[2][0]}}</span></div>
+                        <div class="skillbar-bar" style="background: #2c3e50;"></div>
+                        <div class="skill-bar-percent">￥{{data.dining_hall[2][2]}}</div>
+                    </div> <!-- End Skill Bar -->
+                </div>
+               <!--  <div class="skillbar clearfix " data-percent="{{data.dining_hall[3][2]}}">
+                    <div class="skillbar-title" style="background: #46465e;"><span>聚贤阁</span></div>
+                    <div class="skillbar-bar" style="background: #5a68a5;"></div>
+                    <div class="skill-bar-percent">40%</div>
+                </div> 
+
+                <div class="skillbar clearfix " data-percent="{{data.dining_hall[0][2]}}">
+                    <div class="skillbar-title" style="background: #333333;"><span>乐膳轩</span></div>
+                    <div class="skillbar-bar" style="background: #525252;"></div>
+                    <div class="skill-bar-percent">75%</div>
+                </div> 
+
+                <div class="skillbar clearfix " data-percent="{{data.dining_hall[10][2]}}">
+                    <div class="skillbar-title" style="background: #27ae60;"><span>欣荣居</span></div>
+                    <div class="skillbar-bar" style="background: #2ecc71;"></div>
+                    <div class="skill-bar-percent">100%</div>
+                </div> 
+
+                <div class="skillbar clearfix " data-percent="{{data.dining_hall[1][2]}}">
+                    <div class="skillbar-title" style="background: #124e8c;"><span>清真食堂</span></div>
+                    <div class="skillbar-bar" style="background: #4288d0;"></div>
+                    <div class="skill-bar-percent">70%</div>
+                </div>  -->
+
             </div>
         </div>
     </div>
@@ -33,30 +86,94 @@
     <script src="static/2019SchoolLife/js/jquery.fittext.js"></script>
     <script src="static/2019SchoolLife/js/jquery.lettering.js"></script>
     <script src="static/2019SchoolLife/js/jquery.textillate.js"></script>
-
+    <script src="static/2019SchoolLife/js/jweixin-1.2.0.js"></script>
     <script>
+        var body = document.body;
+        var tilted = false;
+        var toggleTilt = function () {
+            tilted = !tilted;
+            if (tilted)
+                body.classList.add('details');
+            else
+                body.classList.remove('details');
+        };
+        if (location.pathname.match(/fullcpgrid/i))
+            setTimeout(toggleTilt, 1000);
+
         var mySwiper = new Swiper('.swiper-container', {
-            direction: 'vertical', // 垂直切换选项
-            loop: false, // 循环模式选项
-            speed: 1200,
-            on: {
-                touchStart: function (e) {
-                    document.getElementById("girl").src = "static/2019SchoolLife/img/girljumpbig.gif"
-                },
-                transitionEnd: function () {
-                    document.getElementById("girl").src = "static/2019SchoolLife/img/girl.png"
-                },
-                slideChange: function () {
-                    if (this.activeIndex == 2) {
-                        $('.text')
-                            .fitText(3.2, { minFontSize: '40px', maxFontSize: '50px' })
+                direction: 'vertical', // 垂直切换选项
+                loop: false, // 循环模式选项
+                speed: 1200,
+                on: {
+                    touchStart: function (e) {
+                        var girl = document.getElementById("girl")
+                        girl.src = "static/2019SchoolLife/img/girljumpbig.gif"
+                    },
+                    transitionEnd: function () {
+                        var girl = document.getElementById("girl")
+                        girl.src = "static/2019SchoolLife/img/girl.png"
+                    },
+                    slideChange: function () {
+                        if (this.activeIndex == 2) {
+                            move('.text')
+                            .set('opacity', '1')
+                            .end();
+                            $('.text')
+                            .fitText(3.2, { minFontSize: '45px', maxFontSize: '50px' })
                             .textillate({
                                 loop: false,
                                 in: { effect: 'flipInX' }
                             });
+                        } else if (this.activeIndex == 3) {
+                            var c = document.getElementById("myCanvas");
+                            var ctx = c.getContext("2d");
+                            ctx.beginPath();
+                            ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+                            ctx.stroke();                           
+                            jQuery(document).ready(function(){
+                                jQuery('.skillbar').each(function(){
+                                    jQuery(this).find('.skillbar-bar').animate({
+                                        width:jQuery(this).attr('data-percent')
+                                    },6000);
+                                });
+                            });
+                            var girl = document.getElementById("girl")
+                            girl.hidden=true
+                        }
+                    },
+                }
+            })
+        </script>
+        <!-- music -->
+        <script>
+
+            var $audio = $('#media')[0];
+            wx.config({
+                debug: false, // 这里为false
+                appId: '', // 以下随意填写即可
+                timestamp: (new Date()).getTime(),
+                nonceStr: '',
+                signature: '',
+                jsApiList: ['checkJsApi']
+            });
+            wx.ready(function () {
+                $audio.play();
+            });
+            var x = document.getElementById("media");
+            $(function () {
+
+                $("#audio_btn").click(function () {
+                    $(this).toggleClass("rotate"); //控制音乐图标 自转或暂停
+
+                    //控制背景音乐 播放或暂停            
+                    if ($(this).hasClass("rotate")) {
+                        x.play();
+                    } else {
+                        x.pause();
                     }
-                },
-            }
-        })
-    </script>
-</body>
+                })
+            });
+        </script>
+
+
+    </body>

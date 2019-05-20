@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template,send_file,make_response,request
 from util.login import *
-
+from utils.SL_2019 import *
 
 @app.route('/kSyoZqkJwk.txt')
 def wxAuth():
@@ -39,9 +39,10 @@ def schoolLife():
     #
     # 请求数据并整理
     #
-    data={
-        'userid':userInfo['userid']
-    }
+    # data={
+    #     'userid':userInfo['userid']
+    # }
+    data=SchoolLife(userInfo['userid']).getData()
     return render_template("2019SchoolLife.html", data=data)
 
 @app.route("/schoollifeauth")

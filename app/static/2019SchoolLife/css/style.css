@@ -1,15 +1,8 @@
-.topDiv {
-    width: 100%;
-    height: 17%;
-    position: absolute;
-    bottom: 0;
-    z-index: 100;
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-body {
+    width: 100%;
     margin: 0;
     padding: 0;
 }
@@ -32,6 +25,7 @@ body {
     height: 100%;
 }
 
+
 .stone {
     position: absolute;
     z-index: 1;
@@ -44,22 +38,51 @@ body {
     position: absolute;
     z-index: 1;
     bottom: 10%;
-    height: 30%;
-    width: 60%;
+    height: 600px;
+    width: 1600px;
 }
 
 .girl {
+    bottom: 170px; 
     position: absolute;
-    bottom: 70px;
-    width: 11%;
-    height: 100%;
+    z-index: 100;
+    width: 240px;
+    height:480px;
 }
 
-.text{
-    text-align: center;
-    margin:80px auto;
-    font-size: 50px;
-    height: 100px;
-    width: 250px;
+.text {
+    position: absolute;
+    z-index: 3;
+    top: 10%;
+    height: 20%;
+    width: 600px;
 }
+#audio_btn {
+    width: 30px;
+    height: 30px;
+    background-image: url(normalmusic.svg);
+    background-size: contain;
+}
+
+.rotate {
+    -webkit-animation: rotating 1.2s linear infinite;
+    -moz-animation: rotating 1.2s linear infinite;
+    -o-animation: rotating 1.2s linear infinite;
+    animation: rotating 1.2s linear infinite
+}
+
+@-webkit-keyframes rotating {
+    from { -webkit-transform: rotate(0) }
+    to { -webkit-transform: rotate(360deg) }
+}
+
+@keyframes rotating {
+    from { transform: rotate(0) }
+    to { transform: rotate(360deg) }
+}
+@-moz-keyframes rotating {
+    from { -moz-transform: rotate(0) }
+    to { -moz-transform: rotate(360deg) }
+}
+  
 
