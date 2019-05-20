@@ -4,7 +4,7 @@ import json
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
 def takeIndex(items,index):
-    return items[index]
+    return list(items)[index]
 class SchoolLife():
     def __init__(self, userid):
         self.userid = userid
@@ -61,7 +61,7 @@ class SchoolLife():
         group by substr(x.SMT_ORG_ID,0,10),s.NAME
         ORDER BY sum(x.SMT_TRANSMONEY) desc
         '''.format(self.userid)
-        res = list(self.c11.execute(sql).fetchall())
+        res = self.c11.execute(sql).fetchall()
         res.sort(key=takeIndex(res,2))
         return {
             'dining_hall':res[:5]
