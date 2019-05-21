@@ -16,11 +16,23 @@ class SchoolLife():
         获得数据
         '''
         return {
+            **self.__first_class(),
             **self.__consum(),
             **self.__consum_every(),
             **self.__school_net_sum(),
             **self.__school_net_day(),
             **self.__birthday(),
+        }
+
+    def __first_class():
+        sql='''
+        select DISTINCT KCMC,JSMC from C##NCUTDATA.DDXY_STU_FIRSTCOURSE   F1
+        where XH='{}' AND SKXQ=(select MIN(SKXQ) from C##NCUTDATA.DDXY_STU_FIRSTCOURSE where XH=F1.XH) 
+        AND SKDY=(select MIN(SKDY) from C##NCUTDATA.DDXY_STU_FIRSTCOURSE where XH=F1.XH and (SKXQ=(select MIN(SKXQ) from C##NCUTDATA.DDXY_STU_FIRSTCOURSE where XH=F1.XH) ))
+        '''.format(self.userid)
+        res=self.c12.execute(sql).fetchone()
+        return {
+            'first_class':res
         }
 
     def __consum(self):
