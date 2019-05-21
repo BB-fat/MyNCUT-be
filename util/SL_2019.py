@@ -82,33 +82,27 @@ class SchoolLife():
         ORDER BY sum(x.SMT_TRANSMONEY) desc
         '''.format(self.userid)
         res = self.c11.execute(sql).fetchall()
-        outList=[
-            "后勤集团校园超市",
-            "后勤集团缴纳电费",
-            "动力修缮淋浴转账机",
-            "后勤集团超市文具店",
-            "饮食服务部学三小卖部",
-            "国教餐厅二区",
-            "理学院体育馆",
-            "国教餐厅五区",
-            "国教餐厅国教计次收费",
-            "后勤集团海陆天"
-        ]
         map={}
+        guojiao_list=[]
         dining_hall=[]
+        shops=[]
         for item in res:
-            if item[0] in outList:
-                map[item[0]]=item
-            else:
+            if "食堂" in item[0] or "欣荣居" in item[0]:
                 dining_hall.append(item)
-        shop_all={
-            'consum':map["后勤集团校园超市"][2]+map["后勤集团超市文具店"][2]+map["饮食服务部学三小卖部"][2],
-            'times':map["后勤集团校园超市"][1]+map["后勤集团超市文具店"][1]+map["饮食服务部学三小卖部"][1]
-        }
-        guojiao=[]
-        guojiao.append("国教餐厅")
-        guojiao.append(map["国教餐厅二区"][1]+map["国教餐厅五区"][1]+map["国教餐厅国教计次收费"][1])
-        guojiao.append(map["国教餐厅二区"][2]+map["国教餐厅五区"][2]+map["国教餐厅国教计次收费"][2])
+            elif "国教餐厅" in item[0]:
+                guojiao_list.append(item)
+            elif "超市" in item[0] or "小卖部" in item[0]:
+                shops.append(item)
+            else:
+                map[item[0]]=item
+        shop_all=["校园超市",0,0]
+        for item in shops:
+            shop_all[1]+=shop_all[1]+item[1]
+            shop_all[2]+=shop_all[2]+item[2]
+        guojiao=["国教餐厅",0,0]
+        for item in guojiao_list:
+            guojiao[1]+=guojiao[1]+item[1]
+            guojiao[2]+=guojiao[2]+item[2]
         dining_hall.append(guojiao)
         dining_hall.sort(key=lambda money: money[2],reverse=True)
         base_money=dining_hall[0][2]*1.2
@@ -117,13 +111,9 @@ class SchoolLife():
             tmp.append(tmp[2]/base_money*100)
             dining_hall[i]=tmp
         return {
-            'dining_hall':dining_hall,
             'dining_hall':dining_hall[:4],
             'shop':shop_all,
-            'dian':map["后勤集团缴纳电费"],
-            'yushi':map["动力修缮淋浴转账机"],
-            'tiyuguan':map["理学院体育馆"],
-            'hailutian':map["后勤集团海陆天"]
+            'other':map
         }
 
     def __school_net_sum(self):
