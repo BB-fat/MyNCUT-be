@@ -1,23 +1,26 @@
-body {
-  font-family: 'Ubuntu', sans-serif;
-  width:960px;
-}
-
-p{
-  color:#525252;
-  font-size:12px;
+.chartBack{
+	/*background-color: #ed5;*/
+	width:85%;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	flex-direction: column;	
+	padding-top:15px;
+	border-radius: 15px;
+	border: 4px solid;
+	border-color: #d3d7d4 #999d9c;
 }
 
 .skillbar {
 	position:relative;
 	display:block;
 	margin-bottom:15px;
-	width:100%;
+	width:85%;
 	background:#eee;
 	height:35px;
 	border-radius:3px;
 	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
+	-webkit-border-radius:10px;
 	-webkit-transition:0.4s linear;
 	-moz-transition:0.4s linear;
 	-ms-transition:0.4s linear;
@@ -34,8 +37,8 @@ p{
 	position:absolute;
 	top:0;
 	left:0;
-width:110px;
-	font-weight:bold;
+	width:550px;
+	/*font-weight:bold;*/
 	font-size:13px;
 	color:#ffffff;
 	background:#6adcfa;
@@ -49,15 +52,15 @@ width:110px;
 
 .skillbar-title span {
 	display:block;
-	background:rgba(0, 0, 0, 0.1);
+	background:rgba(0, 0, 0, 0.15);
 	padding:0 20px;
 	height:35px;
 	line-height:35px;
-	-webkit-border-top-left-radius:3px;
-	-webkit-border-bottom-left-radius:3px;
+	-webkit-border-top-left-radius:30px;
+	-webkit-border-bottom-left-radius:30px;
 	-moz-border-radius-topleft:3px;
 	-moz-border-radius-bottomleft:3px;
-	border-top-left-radius:3px;
+	border-top-left-radius:40px;
 	border-bottom-left-radius:3px;
 }
 
@@ -67,7 +70,7 @@ width:110px;
 	background:#6adcfa;
 	border-radius:3px;
 	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
+	-webkit-border-radius:30px;
 }
 
 .skill-bar-percent {

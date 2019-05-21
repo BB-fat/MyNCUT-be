@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="static/2019SchoolLife/css/swiper.min.css">
     <link rel="stylesheet" href="static/2019SchoolLife/css/style.css">
     <link rel="stylesheet" href="static/2019SchoolLife/css/animate.css">
-    <link rel="stylesheet" href="static/2019SchoolLife/css/chart.css">
+    <link rel="stylesheet" href="../static/2019SchoolLife/css/chart.css">
 </head>
 
 
@@ -16,7 +16,7 @@
                 <img class="stone" src="static/2019SchoolLife/img/stone.png">
                 <img class="bgimg" src="static/2019SchoolLife/img/ground.png">
             </div>
-            <div class="swiper-slide page0">
+            <div class="swiper-slide page1">
                 <img class="library" src="static/2019SchoolLife/img/library.png">
                 <img class="bgimg" src="static/2019SchoolLife/img/ground.png">
             </div>
@@ -30,11 +30,11 @@
                 <div id="audio_btn" class="rotate">
                     <img id="audio_btn" class="rotate" src="static/2019SchoolLife/img/2.png" alt="">
                     <audio loop src="static/2019SchoolLife/mp3/mp3.mp3" id="media" autoplay="" preload=""></audio>
-
                 </div>
-                <div class="swiper-slide page4">
-                    <div class="chartBack">
-                       <div class="skillbar clearfix " data-percent="{{data.dining_hall[0][3]}}%">
+            </div>  
+            <div class="swiper-slide page4">
+                <div class="chartBack">
+                    <div class="skillbar clearfix " data-percent="{{data.dining_hall[0][3]}}%">
                         <div class="skillbar-title" style="background: #d35400;"><span>{{data.dining_hall[0][0]}}</span></div> 
                         <div class="skillbar-bar" style="background: #e67e22;"></div>
                         <div class="skill-bar-percent">￥{{data.dining_hall[0][2]}}</div>
@@ -47,12 +47,11 @@
                     </div> <!-- End Skill Bar -->
 
                     <div class="skillbar clearfix " data-percent="{{data.dining_hall[2][3]}}%">
-                        <div class="skillbar-title" style="background: #2c3e50;"><span>{{data.dining_hall[2][0]}}</span></div>
-                        <div class="skillbar-bar" style="background: #2c3e50;"></div>
+                        <div class="skillbar-title" style="background: #27ae60;"><span>{{data.dining_hall[2][0]}}</span></div>
+                        <div class="skillbar-bar" style="background: #2ecc71;"></div>
                         <div class="skill-bar-percent">￥{{data.dining_hall[2][2]}}</div>
                     </div> <!-- End Skill Bar -->
                 </div>
-
             </div>
         </div>
     </div>
