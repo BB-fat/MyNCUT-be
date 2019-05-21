@@ -35,6 +35,15 @@ class SchoolLife():
             'first_class':res
         }
 
+    def __grades(self):
+        sql='''
+        select XH,KCS,ZXF,ZGFKC,ZGF,ZDFKC,ZDF from C##NCUTDATA.DDXY_STU_COURSE  where XH='{}'
+        '''.format(self.userid)
+        res=self.c12.execute(sql).fetchone()
+        return {
+            'grades':res
+        }
+
     def __consum(self):
         '''
         消费总次数、金额
