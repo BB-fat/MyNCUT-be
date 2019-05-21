@@ -24,7 +24,7 @@ class SchoolLife():
             **self.__birthday(),
         }
 
-    def __first_class():
+    def __first_class(self):
         sql='''
         select DISTINCT KCMC,JSMC from C##NCUTDATA.DDXY_STU_FIRSTCOURSE   F1
         where XH='{}' AND SKXQ=(select MIN(SKXQ) from C##NCUTDATA.DDXY_STU_FIRSTCOURSE where XH=F1.XH) 
