@@ -17,6 +17,7 @@ class SchoolLife():
         '''
         return {
             **self.__first_class(),
+            **self.__grades(),
             **self.__consum(),
             **self.__consum_every(),
             **self.__school_net_sum(),
