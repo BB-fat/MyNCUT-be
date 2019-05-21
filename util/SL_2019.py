@@ -97,12 +97,12 @@ class SchoolLife():
                 map[item[0]]=item
         shop_all=["校园超市",0,0]
         for item in shops:
-            shop_all[1]+=shop_all[1]+item[1]
-            shop_all[2]+=shop_all[2]+item[2]
+            shop_all[1]+=item[1]
+            shop_all[2]+=item[2]
         guojiao=["国教餐厅",0,0]
         for item in guojiao_list:
-            guojiao[1]+=guojiao[1]+item[1]
-            guojiao[2]+=guojiao[2]+item[2]
+            guojiao[1]+=item[1]
+            guojiao[2]+=item[2]
         dining_hall.append(guojiao)
         dining_hall.sort(key=lambda money: money[2],reverse=True)
         base_money=dining_hall[0][2]*1.2
