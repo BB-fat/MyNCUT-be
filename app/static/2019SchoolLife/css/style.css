@@ -9,7 +9,7 @@ body {
 
 em {
     /*突出显示的文字*/
-    font-style: normal;  /* 让斜体变的不倾斜 */
+    font-style: normal; /* 让斜体变的不倾斜 */
     color: red;
 }
 
@@ -35,22 +35,22 @@ em {
     position: absolute;
     z-index: 1;
     right: -80px;
-    bottom:80px;
+    bottom: 80px;
     width: 510px;
     height: 290px;
 }
 
-.page0-count-div{
+.page0-count-div {
     margin-top: 200px;
     width: 60%;
     height: 130px;
-    border:2px solid #000;
+    border: 2px solid #000;
     font-size: 40px;
     text-align: center;
     line-height: 130px;
 }
 
-.page0-text-div{
+.page0-text-div {
     opacity: 0;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@ em {
     position: absolute;
     z-index: 2;
     bottom: 50px;
-    height:400px;
+    height: 400px;
     right: 10px;
 }
 
@@ -74,12 +74,12 @@ em {
     opacity: 0;
 }
 
-.text{
+.text {
     margin-top: 30px;
     font-size: 40px;
 }
 
-.library{
+.library {
     position: absolute;
     z-index: 1;
     bottom: 10%;
@@ -92,7 +92,7 @@ em {
     position: absolute;
     z-index: 100;
     width: 140px;
-    height:280px;
+    height: 280px;
 }
 
 #audio_btn {
@@ -111,7 +111,7 @@ em {
     animation: rotating 1.2s linear infinite
 }
 
-.page3-text-div{
+.page3-text-div {
     opacity: 0;
     display: flex;
     flex-direction: column;
@@ -119,7 +119,7 @@ em {
     font-size: 40px;
 }
 
-.garden{
+.garden {
     position: absolute;
     z-index: 2;
     height: 350px;
@@ -131,7 +131,7 @@ em {
     position: absolute;
     z-index: 2;
     bottom: 71px;
-    height:350px;
+    height: 350px;
     width: 600px;
     right: -10px;
 }
@@ -145,7 +145,7 @@ em {
     opacity: 0;
 }
 
-.page5-text-div{
+.page5-text-div {
     font-size: 40px;
     margin-top: 200px;
     height: 20%;
@@ -155,7 +155,7 @@ em {
     line-height: 60px;
 }
 
-.page6-text-div{
+.page6-text-div {
     font-size: 40px;
     margin-top: 200px;
     height: 20%;
@@ -165,7 +165,17 @@ em {
     line-height: 60px;
 }
 
-.computer{
+.page8-text-div {
+    font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0;
+    line-height: 60px;
+}
+
+.computer {
     position: absolute;
     z-index: 2;
     bottom: 60px;
@@ -186,23 +196,44 @@ em {
     position: absolute;
     z-index: 1;
     right: -110px;
-    bottom:39px;
+    bottom: 39px;
     width: 800px;
     height: 600px;
 }
 
+.money {
+    position: absolute;
+    z-index: 2;
+    height: 300px;
+    bottom: 60px;
+    right: 0px;
+}
+
 @-webkit-keyframes rotating {
-    from { -webkit-transform: rotate(0) }
-    to { -webkit-transform: rotate(360deg) }
+    from {
+        -webkit-transform: rotate(0)
+    }
+    to {
+        -webkit-transform: rotate(360deg)
+    }
 }
 
 @keyframes rotating {
-    from { transform: rotate(0) }
-    to { transform: rotate(360deg) }
+    from {
+        transform: rotate(0)
+    }
+    to {
+        transform: rotate(360deg)
+    }
 }
+
 @-moz-keyframes rotating {
-    from { -moz-transform: rotate(0) }
-    to { -moz-transform: rotate(360deg) }
+    from {
+        -moz-transform: rotate(0)
+    }
+    to {
+        -moz-transform: rotate(360deg)
+    }
 }
 
 
