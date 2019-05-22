@@ -42,7 +42,7 @@ body {
     width: 1600px;
 }
 
-.girl {
+.person {
     bottom: 170px; 
     position: absolute;
     z-index: 100;

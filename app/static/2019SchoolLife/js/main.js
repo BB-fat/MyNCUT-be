@@ -4,12 +4,12 @@ var mySwiper = new Swiper('.swiper-container', {
         speed: 1200,
         on: {
             touchStart: function (e) {
-                var girl = document.getElementById("girl")
-                girl.src = "static/2019SchoolLife/img/girljumpbig.gif"
+                var person = document.getElementById("person")
+                person.src = "static/2019SchoolLife/img/girljumpbig.gif"
             },
             transitionEnd: function () {
-                var girl = document.getElementById("girl")
-                girl.src = "static/2019SchoolLife/img/girl.png"
+                var person = document.getElementById("person")
+                person.src = "static/2019SchoolLife/img/girl.png"
             },
             slideChange: function () {
                 if (this.activeIndex == 2) {
@@ -43,7 +43,7 @@ var mySwiper = new Swiper('.swiper-container', {
                         var img = document.getElementById("saveimg");
                         var tempSrc = canvas.toDataURL("image/png");
                         img.src=tempSrc;
-                        girl.hidden=true
+                        person.hidden=true
                     }
                     else if (this.activeIndex == 4) {
                         jQuery('.skillbar').each(function(){
