@@ -25,19 +25,11 @@ body {
     height: 100%;
 }
 
-.bgimg-dec{
-    position: absolute;
-    z-index: 2;
-    left: 0px;
-    top: 0px;
-}
-
 .stone {
     position: absolute;
     z-index: 1;
-    bottom: 10%;
-    height: 20%;
-    width: 60%;
+    right: 0;
+    bottom:80px;
 }
 
 .library{
@@ -49,11 +41,11 @@ body {
 }
 
 .person {
-    bottom: 170px;
+    bottom: 100px;
     position: absolute;
     z-index: 100;
-    width: 240px;
-    height:480px;
+    width: 140px;
+    height:280px;
 }
 
 .text {
