@@ -108,10 +108,10 @@ class SchoolLife():
         base_money=dining_hall[0][2]*1.2
         sum=0
         for i in range(len(dining_hall)):
-            sum+=dining_hall[i][2]
             tmp=list(dining_hall[i])
             tmp.append(tmp[2]/base_money*100)
             dining_hall[i]=tmp
+            sum += tmp[2]
         return {
             'consum_dining_hall':dining_hall[:4],
             'consum_shop':shop_all,
