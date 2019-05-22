@@ -212,7 +212,7 @@ class mongoClient ():
             '''
         num = self.client.SL2019.msg.count()
         msg = []
-        for i in range(n):
+        for i in range(n*3):
             random_num = random.randint(1 , num - 1)
             result = self.client.SL2019.msg.find().skip(random_num).limit(1)
             for i in result:
