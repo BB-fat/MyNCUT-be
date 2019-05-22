@@ -197,3 +197,16 @@ class mongoClient ():
             return count+1
         else:
             return res['count']
+
+    def SL_leaveMsg(self,msg):
+        self.client.SL2019.msg.insert_one({"msg":msg})
+
+    def SL_takeMsg(self,n):
+        '''
+        返回n*3条随机数据，存入列表
+        集合位于client.SL2019.msg
+        上面的这个函数是插入
+        :param n:
+        :return:
+        '''
+        pass
