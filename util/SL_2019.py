@@ -167,5 +167,5 @@ class SchoolLife():
 
 
 if __name__=="__main__":
-    A=SchoolLife("16151010241")
+    A=SchoolLife("17152010921")
     print(json.dumps(A.getData()))
