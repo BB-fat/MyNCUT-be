@@ -208,5 +208,7 @@ class mongoClient ():
         上面的这个函数是插入
         :param n:
         :return:
-        '''
+            '''
+        self.client.SL2019.msg.count()
+
         pass
