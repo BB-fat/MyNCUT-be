@@ -221,7 +221,7 @@ em {
 .dining{
     position: absolute;
     z-index: 2;
-    height: 700px;
+    height: 500px;
     bottom: 60px;
     right: 0;
 }
