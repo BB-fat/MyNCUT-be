@@ -144,6 +144,23 @@ em {
     opacity: 0;
 }
 
+.page4-text-div{
+    font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0;
+}
+
+.computer{
+    position: absolute;
+    z-index: 2;
+    bottom: 60px;
+    right: 0;
+    height: 300px;
+}
+
 @-webkit-keyframes rotating {
     from { -webkit-transform: rotate(0) }
     to { -webkit-transform: rotate(360deg) }
