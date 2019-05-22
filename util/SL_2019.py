@@ -137,8 +137,14 @@ class SchoolLife():
         ORDER BY to_char(ZXSJ,'HH24') ASC
         '''.format(self.userid)
         res=self.c11.execute(sql).fetchall()
+        res.sort(key=lambda hour: hour[1], reverse=True)
+        tmp=res[:4]
+        other=0
+        for i in range(4,len(res)):
+            other+=res[i][1]
+        tmp.append(["其他",other])
         return {
-            'school_net_day':res
+            'school_net_day':tmp
         }
 
     def __birthday(self):

@@ -65,7 +65,7 @@
                 <p>那天的你青涩却笃定，向往着不远的未来。</p>
             </div>
         </div>
-<!--第四页-->
+        <!--第四页-->
         <div class="swiper-slide">
             <div class="page3-text-div">
                 <div style="margin-top: 300px;"></div>
@@ -86,18 +86,51 @@
             <img class="garden" src="static/2019SchoolLife/img/garden.png">
             <img class="bgimg" src="static/2019SchoolLife/img/background.png">
         </div>
-<!--        第五页-->
+        <!--        第五页-->
         <div class="swiper-slide">
-            <div class="page4-text-div">
-                 <p>无数次连接 NCUT-AUTO，
-               <P><br>无数次与校园网作斗争。</p>
+        </div>
+        <!--        第六页-->
+        <div class="swiper-slide">
+            <div class="page5-text-div">
+                <p>无数次连接 NCUT-AUTO，
+                <P><br>无数次与校园网作斗争。</p>
                 <p><br>估计连你自己都惊讶，</p>
-                <br>你一共使用了<em>{{data.school_net_sum}}</em>G的校园流量。
+                <br>你一共使用了<em>{{data.school_net_sum}}G</em>的校园流量。
             </div>
             <img class="computer" src="static/2019SchoolLife/img/computer.png">
             <img class="bgimg" src="static/2019SchoolLife/img/background.png">
         </div>
+        <!--        第七页-->
+        <div class="swiper-slide">
+            <div class="page5-text-div">
+                每天的各个时段，<br> 你的校园网用量都不太相同，<br> 那天晚上，<br> 你好像睡得格外的晚 ...
+            </div>
+<!--            校园网图表-->
+            <div class="chartBack">
+                <div class="skillbar clearfix " data-percent="{{data.dining_hall[0][3]}}%">
+                    <div class="skillbar-title" style="background: #d35400;"><span>{{data.dining_hall[0][0]}}</span>
+                    </div>
+                    <div class="skillbar-bar" style="background: #e67e22;"></div>
+                    <div class="skill-bar-percent">￥{{data.dining_hall[0][2]}}</div>
+                </div> <!-- End Skill Bar -->
 
+                <div class="skillbar clearfix " data-percent="{{data.dining_hall[1][3]}}%">
+                    <div class="skillbar-title" style="background: #2980b9;"><span>{{data.dining_hall[1][0]}}</span>
+                    </div>
+                    <div class="skillbar-bar" style="background: #3498db;"></div>
+                    <div class="skill-bar-percent">￥{{data.dining_hall[1][2]}}</div>
+                </div> <!-- End Skill Bar -->
+
+                <div class="skillbar clearfix " data-percent="{{data.dining_hall[2][3]}}%">
+                    <div class="skillbar-title" style="background: #27ae60;"><span>{{data.dining_hall[2][0]}}</span>
+                    </div>
+                    <div class="skillbar-bar" style="background: #2ecc71;"></div>
+                    <div class="skill-bar-percent">￥{{data.dining_hall[2][2]}}</div>
+                </div> <!-- End Skill Bar -->
+            </div>
+            <img class="computer" src="static/2019SchoolLife/img/computer.png">
+            <img class="bgimg" src="static/2019SchoolLife/img/background.png">
+        </div>
     </div>
 </div>
 
