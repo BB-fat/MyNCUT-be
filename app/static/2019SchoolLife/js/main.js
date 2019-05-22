@@ -24,6 +24,9 @@ var mySwiper = new Swiper('.swiper-container', {
                 .set('opacity', '1')
                 .duration("5s")
                 .end()
+            if(this.activeIndex==6){
+                chart.start();
+            }
         },
     }
 })
