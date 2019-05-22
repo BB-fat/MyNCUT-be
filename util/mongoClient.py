@@ -182,3 +182,18 @@ class mongoClient ():
                 }
             }
         )
+
+    def SL_countPlus(self,userid):
+        '''
+        返回点滴校园计数信息
+        :param userid:
+        :return:
+        '''
+        count = self.client.SL2019.count.find_one({"tar": "count"})
+        res=self.client.SL2019.user.find_one({"userid": userid})
+        if res is None:
+            self.client.SL2019.user.insert_one({"userid":userid,"count":count+1})
+            self.client.SL2019.count.update_one({"tar":"count"},{"$set":{"count":count+1}})
+            return count+1
+        else:
+            return res['count']

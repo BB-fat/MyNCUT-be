@@ -36,13 +36,9 @@ def storeData():
 def schoolLife():
     openid = request.args.get('openid')
     userInfo = app.DB.getUserInfo(openid)
-    #
-    # 请求数据并整理
-    #
-    # data={
-    #     'userid':userInfo['userid']
-    # }
     data=SchoolLife(userInfo['userid']).getData()
+    data['count']=app.DB.SL_countPlus(userInfo['userid'])
+    print(data['count'])
     return render_template("2019SchoolLife.html", data=data)
 
 @app.route("/schoollifeauth")

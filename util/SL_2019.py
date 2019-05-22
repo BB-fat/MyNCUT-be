@@ -111,9 +111,9 @@ class SchoolLife():
             tmp.append(tmp[2]/base_money*100)
             dining_hall[i]=tmp
         return {
-            'dining_hall':dining_hall[:4],
-            'shop':shop_all,
-            'other':map
+            'consum_dining_hall':dining_hall[:4],
+            'consum_shop':shop_all,
+            'consum_others':map
         }
 
     def __school_net_sum(self):
