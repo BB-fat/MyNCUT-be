@@ -232,6 +232,7 @@ em {
 }
 
 .page10-text-div {
+    margin-top: 200px;
     font-size: 36px;
     margin-top: 100px;
     height: 20%;
@@ -244,7 +245,7 @@ em {
     position: absolute;
     z-index: 2;
     bottom: 60px;
-    right: 0;
+    left: 30px;
     height: 300px;
 }
 
@@ -252,8 +253,8 @@ em {
     position: absolute;
     z-index: 2;
     bottom: 60px;
-    left: 70px;
-    height: 400px;
+    right: -50px;
+    height: 300px;
 }
 
 @-webkit-keyframes rotating {
