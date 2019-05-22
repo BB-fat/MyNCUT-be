@@ -25,6 +25,11 @@ body {
     height: 100%;
 }
 
+.bgimg-dec{
+    position: 2;
+    left: 0px;
+    top: 0px;
+}
 
 .stone {
     position: absolute;
@@ -43,7 +48,7 @@ body {
 }
 
 .person {
-    bottom: 170px; 
+    bottom: 170px;
     position: absolute;
     z-index: 100;
     width: 240px;
@@ -86,5 +91,5 @@ body {
     from { -moz-transform: rotate(0) }
     to { -moz-transform: rotate(360deg) }
 }
-  
+
 

@@ -3,6 +3,7 @@ var mySwiper = new Swiper('.swiper-container', {
         loop: false, // 循环模式选项
         speed: 1200,
         on: {
+            // 处理小人跳跃逻辑
             touchStart: function (e) {
                 document.getElementById("person").hidden=true
                 document.getElementById("person-jump").hidden=false
