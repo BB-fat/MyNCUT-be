@@ -121,9 +121,8 @@ em {
 .garden{
     position: absolute;
     z-index: 2;
-    width: 600px;
-    height: 300px;
-    bottom: 80px;
+    height: 350px;
+    bottom: 40px;
     right: -30px;
 }
 
