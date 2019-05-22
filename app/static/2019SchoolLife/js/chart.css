@@ -22,10 +22,10 @@
 }
 
 .skillbar-title {
+	width: 10px;
 	position:absolute;
 	top:0;
 	left:0;
-width:20px;
 	font-weight:bold;
 	font-size:13px;
 	color:#ffffff;
