@@ -143,7 +143,7 @@ class SchoolLife():
             sum+=item[1]
         for i in range(5):
             res[i]=list(res[i])
-            res[i].append(res[1]/sum*100)
+            res[i].append(res[i][1]/sum*100)
         return {
             'school_net_day':res[:5]
         }
