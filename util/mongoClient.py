@@ -223,4 +223,4 @@ class mongoClient ():
         user=self.client.userData.baseData.find_one({"userid":userid})
         school=self.client.userData.baseData.find_all({"ctiy":user['city']}).count()
         college=self.client.userData.baseData.find_all({"city":user['city'],"college":user['college']}).count()
-        return (school,college)
+        return (school,college,user['city'])

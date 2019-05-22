@@ -41,7 +41,7 @@ def schoolLife():
     data['count']=app.DB.SL_countPlus(userInfo['userid'])
     data['sex']=userInfo['userInfo']['sex']
     data['msgs']=app.DB.SL_takeMsg(2)
-    data['same_name_school'],data['same_name_college']=app.DB.SL_same_city(userInfo['userid'])
+    data['same_name_school'],data['same_name_college'],data['city']=app.DB.SL_same_city(userInfo['userid'])
     return render_template("2019SchoolLife.html", data=data)
 
 @app.route("/schoollifeauth")

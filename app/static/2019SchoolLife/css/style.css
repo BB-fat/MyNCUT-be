@@ -126,6 +126,24 @@ em {
     right: -70px;
 }
 
+.dunpin {
+    position: absolute;
+    z-index: 2;
+    bottom: 71px;
+    height:350px;
+    width: 600px;
+    right: -10px;
+}
+
+.page2-text-div {
+    font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0;
+}
+
 @-webkit-keyframes rotating {
     from { -webkit-transform: rotate(0) }
     to { -webkit-transform: rotate(360deg) }

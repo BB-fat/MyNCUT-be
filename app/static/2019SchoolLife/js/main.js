@@ -26,7 +26,10 @@ var mySwiper = new Swiper('.swiper-container', {
                     .duration("5s")
                     .end()
             } else if (this.activeIndex == 2) {
-
+                move(".page2-text-div")
+                    .set('opacity', '1')
+                    .duration("5s")
+                    .end()
             } else if (this.activeIndex == 3) {
                 move(".page3-text-div")
                     .set('opacity', '1')
