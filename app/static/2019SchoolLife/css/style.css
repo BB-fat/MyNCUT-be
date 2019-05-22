@@ -76,7 +76,7 @@ em {
 
 .text{
     margin-top: 30px;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .library{
@@ -116,6 +116,7 @@ em {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 40px;
 }
 
 .garden{
