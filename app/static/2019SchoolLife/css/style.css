@@ -34,6 +34,22 @@ body {
     height: 290px;
 }
 
+.page0-count-div{
+    margin-top: 200px;
+    width: 60%;
+    height: 200px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page0-count-text{
+    font-size: 40px;
+
+}
+
 .library{
     position: absolute;
     z-index: 1;
