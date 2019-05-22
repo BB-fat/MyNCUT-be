@@ -3,8 +3,9 @@ var mySwiper = new Swiper('.swiper-container', {
         loop: false, // 循环模式选项
         speed: 1200,
         on: {
+            // 首页文字动画
             init:function(){
-                move(".page0-text")
+                move(".page0-text-div")
                     .set('opacity', '1')
                     .duration("2s")
                     .end()
