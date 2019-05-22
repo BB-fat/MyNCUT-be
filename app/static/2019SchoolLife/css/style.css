@@ -204,7 +204,7 @@ em {
 .money {
     position: absolute;
     z-index: 2;
-    height: 800px;
+    height: 730px;
     bottom: 60px;
     right: 0px;
 }
