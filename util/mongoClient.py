@@ -189,7 +189,7 @@ class mongoClient ():
         :param userid:
         :return:
         '''
-        count = self.client.SL2019.count.find_one({"tar": "count"})
+        count = self.client.SL2019.count.find_one({"tar": "count"})['count']
         res=self.client.SL2019.user.find_one({"userid": userid})
         if res is None:
             self.client.SL2019.user.insert_one({"userid":userid,"count":count+1})
