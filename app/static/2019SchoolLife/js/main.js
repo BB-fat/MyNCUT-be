@@ -20,47 +20,22 @@ var mySwiper = new Swiper('.swiper-container', {
                 document.getElementById("person-jump").hidden=true
             },
             slideChange: function () {
-                if (this.activeIndex == 2) {
-                    move('.text')
-                    .set('opacity', '1')
-                    .end();
-                    $('.text')
-                    .fitText(3.2, { minFontSize: '45px', maxFontSize: '50px' })
-                    .textillate({
-                        loop: false,
-                        in: { effect: 'flipInX' }
-                    });
-                } else if (this.activeIndex == 3) {
-                    var myImage = document.getElementById("canvas");
-                    var cxt = myImage.getContext("2d");
-                    var img = new Image();
-                    img.src = "static/2019SchoolLife/img/123.jpg";
-                    img.onload = function () {
-                        cxt.drawImage(img, 0,0);
-                        cxt.strokeText("要写的文字", 50, 50);
-                    };
-                    cxt.font = "30px bold 黑体";
-                        // 设置颜色
-                        cxt.fillStyle = "#111111";
-                        // 设置水平对齐方式
-                        cxt.textAlign = "center";
-                        // 设置垂直对齐方式
-                        cxt.textBaseline = "middle";
-                        // 绘制文字（参数：要写的字，x坐标，y坐标）
-                        // Converts canvas to an image
-                        var img = document.getElementById("saveimg");
-                        var tempSrc = canvas.toDataURL("image/png");
-                        img.src=tempSrc;
-                        person.hidden=true
-                    }
-                    else if (this.activeIndex == 4) {
-                        jQuery('.skillbar').each(function(){
-                            jQuery(this).find('.skillbar-bar').animate({
-                                width:jQuery(this).attr('data-percent')
-                            },6000);
-                        });
-                    }
-                },
+                if (this.activeIndex == 1) {
+
+                }
+                else if(this.activeIndex == 2){
+
+                }
+                else if (this.activeIndex == 3) {
+                    move(".page3-text-div")
+                        .set('opacity', '1')
+                        .duration("2s")
+                        .end()
+                }
+                else if (this.activeIndex == 4) {
+
+                }
+            },
             }
         })
 

@@ -30,14 +30,14 @@
 							</div>
 							<div style="height: 70px;"></div>
 							<div class="page0-text-div">
-								<text class="page0-text">工大不大 , 四年却很长</text>
-								<text class="page0-text">足够你用脚印丈量每一段距离 ;</text>
-								<text class="page0-text">工大很大 , 但四年不长</text>
-								<text class="page0-text">等待你将生活在这里的每一刻细细品尝</text>
-								<text class="page0-text">时光肆意流 , 工大点滴留</text>
-								<text class="page0-text">你和工大的故事还在记录着</text>
-								<text class="page0-text">...</text>
-								<text class="page0-text">点滴校园 , 时间看得见</text>
+								<text class="text">工大不大 , 四年却很长</text>
+								<text class="text">足够你用脚印丈量每一段距离 ;</text>
+								<text class="text">工大很大 , 但四年不长</text>
+								<text class="text">等待你将生活在这里的每一刻细细品尝</text>
+								<text class="text">时光肆意流 , 工大点滴留</text>
+								<text class="text">你和工大的故事还在记录着</text>
+								<text class="text">...</text>
+								<text class="text">点滴校园 , 时间看得见</text>
 							</div>
             			</div>
 
@@ -45,16 +45,33 @@
             				<img class="library" src="static/2019SchoolLife/img/library.png">
             				<img class="bgimg" src="static/2019SchoolLife/img/ground.png">
             			</div>
+
             			<div class="swiper-slide page2">
             				<div class="text" style="opacity: 0;">
             					岁月荏苒，花开花灭，又是一年毕业季。如今即将各奔东西的大家，还记得四年前刚刚迈入大学校园的，青涩懵懂的你们吗？
             				</div>
             			</div>
+
             			<div class="swiper-slide page3">
-            				<canvas width=640 height=1008 id="thecanvas" style="display: none;"></canvas>
-            				<button id="saveImageBtn">生成定制图片</button>
-            				<img id="save_img" src="" alt="">
+							<div class="page3-text-div">
+								<div style="margin-top: 300px;"></div>
+								<text class="text"> 一定是特别的缘分，</text>
+								<text class="text"> 你的名字是<em>{{data.name}}</em></text>
+								{%if data.same_name!=0%}
+								<text class="text">学校一共有<em>{{data.same_name}}</em>人与你同名同姓。</text>
+								{%else%}
+								<text class="text">你是全校唯一一个叫做<em>{{data.name}}</em>的人。</text>
+								{%endif%}
+								<div style="margin-top: 150px"></div>
+								<text class="text"> 学校一共有<em>{{data.same_day_school}}</em>人与你同一天出生。</text>
+								{%if data.same_day_and_year!=0%}
+								<text class="text"> 其中有<em>{{data.same_day_and_year}}</em>人与你同年同月同日。</text>
+								{%endif%}
+								<text class="text"> 期待在一个玉兰花开的日子里，与 ta 相识。</text>
+							</div>
+							<img class="garden" src="/static/2019SchoolLife/img/4-garden.png">
             			</div>
+
             		</div>
             	</div>
 

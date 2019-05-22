@@ -37,6 +37,7 @@ def schoolLife():
     openid = request.args.get('openid')
     userInfo = app.DB.getUserInfo(openid)
     data=SchoolLife(userInfo['userid']).getData()
+    data['name']=userInfo['userInfo']['name']
     data['count']=app.DB.SL_countPlus(userInfo['userid'])
     data['sex']=userInfo['userInfo']['sex']
     data['msgs']=app.DB.SL_takeMsg(2)
