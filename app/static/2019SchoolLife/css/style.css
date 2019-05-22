@@ -54,6 +54,13 @@ em {
     opacity: 0;
 }
 
+.page0-text-div{
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .trip {
     position: absolute;
     z-index: 1;
