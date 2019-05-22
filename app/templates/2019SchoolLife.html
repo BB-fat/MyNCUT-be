@@ -11,7 +11,14 @@
 				<img id="audio_btn" class="rotate"src="static/2019SchoolLife/img/play.png">
 				<audio loop src="static/2019SchoolLife/mp3/mp3.mp3" id="media" autoplay=""></audio>
 
+				{%if data.sex==0%}
             	<img id="person" class="person" src="static/2019SchoolLife/img/girl.png">
+				<img hidden="true" id="person-jump" class="person" src="static/2019SchoolLife/img/girljumpbig.gif">
+				{%else%}
+				<img id="person" class="person" src="static/2019SchoolLife/img/boy.png">
+				<img hidden="true" id="person-jump" class="person" src="static/2019SchoolLife/img/boyjumpbig.gif">
+				{% endif %}
+
             	<div class="swiper-container">
             		<div class="swiper-wrapper">
             			<div class="swiper-slide page0">

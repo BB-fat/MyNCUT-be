@@ -4,12 +4,12 @@ var mySwiper = new Swiper('.swiper-container', {
         speed: 1200,
         on: {
             touchStart: function (e) {
-                var person = document.getElementById("person")
-                person.src = "static/2019SchoolLife/img/girljumpbig.gif"
+                document.getElementById("person").hidden=true
+                document.getElementById("person-jump").hidden=false
             },
             transitionEnd: function () {
-                var person = document.getElementById("person")
-                person.src = "static/2019SchoolLife/img/girl.png"
+                document.getElementById("person").hidden=false
+                document.getElementById("person-jump").hidden=true
             },
             slideChange: function () {
                 if (this.activeIndex == 2) {
