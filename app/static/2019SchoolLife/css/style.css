@@ -59,9 +59,9 @@ em {
 
 .trip {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     bottom: 50px;
-    height:50%;
+    height:100px;
     right: 10px;
 }
 
