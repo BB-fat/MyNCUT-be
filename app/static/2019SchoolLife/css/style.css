@@ -227,6 +227,10 @@ em {
     right: 0;
 }
 
+#net-map {
+    border: 2px solid #000;
+}
+
 @-webkit-keyframes rotating {
     from {
         -webkit-transform: rotate(0)
