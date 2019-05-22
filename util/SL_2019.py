@@ -106,14 +106,17 @@ class SchoolLife():
         dining_hall.append(guojiao)
         dining_hall.sort(key=lambda money: money[2],reverse=True)
         base_money=dining_hall[0][2]*1.2
+        sum=0
         for i in range(len(dining_hall)):
+            sum+=dining_hall[i][2]
             tmp=list(dining_hall[i])
             tmp.append(tmp[2]/base_money*100)
             dining_hall[i]=tmp
         return {
             'consum_dining_hall':dining_hall[:4],
             'consum_shop':shop_all,
-            'consum_others':map
+            'consum_others':map,
+            'consum_dining_hall_sum':sum
         }
 
     def __school_net_sum(self):
