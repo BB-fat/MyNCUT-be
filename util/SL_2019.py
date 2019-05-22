@@ -109,7 +109,7 @@ class SchoolLife():
         sum=0
         for i in range(len(dining_hall)):
             tmp=list(dining_hall[i])
-            tmp.append("%.2f"%(tmp[2]/base_money*100))
+            tmp.append("%d"%(tmp[2]/base_money*100))
             dining_hall[i]=tmp
             sum += tmp[2]
         return {
