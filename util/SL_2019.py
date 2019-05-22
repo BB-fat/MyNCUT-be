@@ -138,9 +138,9 @@ class SchoolLife():
         '''.format(self.userid)
         res=self.c11.execute(sql).fetchall()
         res.sort(key=lambda hour: hour[1], reverse=True)
-        tmp=res[:4]
+        tmp=res[:5]
         other=0
-        for i in range(4,len(res)):
+        for i in range(5,len(res)):
             other+=res[i][1]
         tmp.append(["其他",other])
         return {
