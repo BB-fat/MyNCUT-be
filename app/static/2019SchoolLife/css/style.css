@@ -228,7 +228,7 @@ em {
 }
 
 #net-map {
-    border: 2px solid #000;
+    border: 2px solid #c1c1c1;
 }
 
 @-webkit-keyframes rotating {
