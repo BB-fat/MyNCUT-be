@@ -221,6 +221,6 @@ class mongoClient ():
 
     def SL_same_city(self,userid):
         user=self.client.userData.baseData.find_one({"userid":userid})
-        school=self.client.userData.baseData.find_all({"ctiy":user['city']}).count()
-        college=self.client.userData.baseData.find_all({"city":user['city'],"college":user['college']}).count()
+        school=self.client.userData.baseData.find({"ctiy":user['city']}).count()
+        college=self.client.userData.baseData.find({"city":user['city'],"college":user['college']}).count()
         return (school,college,user['city'])
