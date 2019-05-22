@@ -58,6 +58,10 @@ body {
     width: 600px;
 }
 #audio_btn {
+    position: absolute;
+    z-index: 100;
+    top: 30px;
+    right: 30px;
     width: 80px;
     height: 80px;
 }
