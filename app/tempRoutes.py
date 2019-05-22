@@ -55,6 +55,7 @@ def schoolLifeAuth():
     app.DB.newUser(openid)
     app.DB.setUserInfo(openid, userInfo)
     msgs=app.DB.SL_takeMsg(2)
+    print(msgs)
     data={
         'msgs':msgs,
         'userid':userInfo['userid']
