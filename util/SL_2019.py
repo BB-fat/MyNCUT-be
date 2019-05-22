@@ -137,7 +137,6 @@ class SchoolLife():
         ORDER BY to_char(ZXSJ,'HH24') ASC
         '''.format(self.userid)
         res=self.c11.execute(sql).fetchall()
-        res.sort(key=lambda hour: hour[1], reverse=True)
         sum=0
         for item in res:
             sum+=item[1]
