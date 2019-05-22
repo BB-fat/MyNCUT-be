@@ -1,6 +1,6 @@
 body {
   font-family: 'Ubuntu', sans-serif;
-  width:960px;
+  width:40px;
 }
 
 p{
@@ -12,7 +12,7 @@ p{
 	position:relative;
 	display:block;
 	margin-bottom:15px;
-	width:60%;
+	width:100%;
 	background:#eee;
 	height:35px;
 	border-radius:3px;
