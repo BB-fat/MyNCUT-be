@@ -38,7 +38,7 @@ def schoolLife():
     userInfo = app.DB.getUserInfo(openid)
     data=SchoolLife(userInfo['userid']).getData()
     data['count']=app.DB.SL_countPlus(userInfo['userid'])
-    data['sex']=userInfo['sex']
+    data['sex']=userInfo['userInfo']['sex']
     print(data['sex'])
     return render_template("2019SchoolLife.html", data=data)
 
