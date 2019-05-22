@@ -1,88 +1,99 @@
-            <head>
-            	<link rel="stylesheet" href="static/2019SchoolLife/css/swiper.min.css">
-            	<link rel="stylesheet" href="static/2019SchoolLife/css/style.css">
-            	<link rel="stylesheet" href="static/2019SchoolLife/css/animate.css">
-            	<link rel="stylesheet" href="static/2019SchoolLife/css/chart.css">
-            </head>
+<head>
+    <link rel="stylesheet" href="static/2019SchoolLife/css/swiper.min.css">
+    <link rel="stylesheet" href="static/2019SchoolLife/css/style.css">
+    <link rel="stylesheet" href="static/2019SchoolLife/css/animate.css">
+    <link rel="stylesheet" href="static/2019SchoolLife/css/chart.css">
+</head>
 
 
-            <body>
+<body>
 
-				<img id="audio_btn" class="rotate"src="static/2019SchoolLife/img/play.png">
-				<audio loop src="static/2019SchoolLife/mp3/mp3.mp3" id="media" autoplay=""></audio>
+<img id="audio_btn" class="rotate" src="static/2019SchoolLife/img/play.png">
+<audio loop src="static/2019SchoolLife/mp3/mp3.mp3" id="media" autoplay=""></audio>
 
-				{% if data.sex==0 %}
-            	<img id="person" class="person" src="static/2019SchoolLife/img/girl.png">
-				<img hidden="true" id="person-jump" class="person" src="static/2019SchoolLife/img/girljumpbig.gif">
-				{% else %}
-				<img id="person" class="person" src="static/2019SchoolLife/img/boy.png">
-				<img hidden="true" id="person-jump" class="person" src="static/2019SchoolLife/img/boyjumpbig.gif">
-				{% endif %}
+{% if data.sex==0 %}
+<img id="person" class="person" src="static/2019SchoolLife/img/girl.png">
+<img hidden="true" id="person-jump" class="person" src="static/2019SchoolLife/img/girljumpbig.gif">
+{% else %}
+<img id="person" class="person" src="static/2019SchoolLife/img/boy.png">
+<img hidden="true" id="person-jump" class="person" src="static/2019SchoolLife/img/boyjumpbig.gif">
+{% endif %}
 
-            	<div class="swiper-container">
-            		<div class="swiper-wrapper">
+<div class="swiper-container">
+    <div class="swiper-wrapper">
 
-            			<div class="swiper-slide page0">
-            				<img class="stone" src="static/2019SchoolLife/img/1-stone.png">
-            				<img class="bgimg" src="static/2019SchoolLife/img/background.png">
-							<div class="page0-count-div">
-								你是第<em>{{data.count}}</em>个打开这份记录的人
-							</div>
-							<div style="height: 70px;"></div>
-							<div class="page0-text-div">
-								<text class="text">工大不大 , 四年却很长</text>
-								<text class="text">足够你用脚印丈量每一段距离 ;</text>
-								<text class="text">工大很大 , 但四年不长</text>
-								<text class="text">等待你将生活在这里的每一刻细细品尝</text>
-								<text class="text">时光肆意流 , 工大点滴留</text>
-								<text class="text">你和工大的故事还在记录着</text>
-								<text class="text">...</text>
-								<text class="text">点滴校园 , 时间看得见</text>
-							</div>
-            			</div>
+        <div class="swiper-slide page0">
+            <img class="stone" src="static/2019SchoolLife/img/1-stone.png">
+            <img class="bgimg" src="static/2019SchoolLife/img/background.png">
+            <div class="page0-count-div">
+                你是第<em>{{data.count}}</em>个打开这份记录的人
+            </div>
+            <div style="height: 70px;"></div>
+            <div class="page0-text-div">
+                <text class="text">工大不大 , 四年却很长</text>
+                <text class="text">足够你用脚印丈量每一段距离 ;</text>
+                <text class="text">工大很大 , 但四年不长</text>
+                <text class="text">等待你将生活在这里的每一刻细细品尝</text>
+                <text class="text">时光肆意流 , 工大点滴留</text>
+                <text class="text">你和工大的故事还在记录着</text>
+                <text class="text">...</text>
+                <text class="text">点滴校园 , 时间看得见</text>
+            </div>
+        </div>
 
-            			<div class="swiper-slide page1">
-            				<img class="library" src="static/2019SchoolLife/img/library.png">
-            				<img class="bgimg" src="static/2019SchoolLife/img/ground.png">
-            			</div>
+        <div class="swiper-slide page1">
+            <div class="swiper-slide page1">
+                < img class="bgimg" src="static/2019SchoolLife/img/background.png">
+                < img class="trip" src="static/2019SchoolLife/img/trip.png">
+                <div class="page1-count-div">
+                    <em>2019年7月</em>,</br>
+                    一纸录取通知书从北方工业大学</br>
+                    来到你的身边</br>
 
-            			<div class="swiper-slide page2">
-            				<div class="text" style="opacity: 0;">
-            					岁月荏苒，花开花灭，又是一年毕业季。如今即将各奔东西的大家，还记得四年前刚刚迈入大学校园的，青涩懵懂的你们吗？
-            				</div>
-            			</div>
+                    <p>你来自<em>北京</em>，</p></br>
+                        学校有一共<em>26</em>人和你来自于同一个地方</br>
+                        其中和你一个学院的有<em>8</em>人
+                </div>
+            </div>
+        </div>
 
-            			<div class="swiper-slide page3">
-							<div class="page3-text-div">
-								<div style="margin-top: 300px;"></div>
-								<text class="text"> 一定是特别的缘分，</text>
-								<text class="text"> 你的名字是<em>{{data.name}}</em></text>
-								{%if data.same_name!=0%}
-								<text class="text">学校一共有<em>{{data.same_name}}</em>人与你同名同姓。</text>
-								{%else%}
-								<text class="text">你是全校唯一一个叫做<em>{{data.name}}</em>的人。</text>
-								{%endif%}
-								<div style="margin-top: 150px"></div>
-								<text class="text"> 学校一共有<em>{{data.same_day_school}}</em>人与你同一天出生。</text>
-								{%if data.same_day_and_year!=0%}
-								<text class="text"> 其中有<em>{{data.same_day_and_year}}</em>人与你同年同月同日。</text>
-								{%endif%}
-								<text class="text"> 期待在一个玉兰花开的日子里，与 ta 相识。</text>
-							</div>
-							<img class="garden" src="/static/2019SchoolLife/img/4-garden.png">
-            			</div>
+        <div class="swiper-slide page2">
+            <div class="text" style="opacity: 0;">
+                岁月荏苒，花开花灭，又是一年毕业季。如今即将各奔东西的大家，还记得四年前刚刚迈入大学校园的，青涩懵懂的你们吗？
+            </div>
+        </div>
 
-            		</div>
-            	</div>
+        <div class="swiper-slide page3">
+            <div class="page3-text-div">
+                <div style="margin-top: 300px;"></div>
+                <text class="text"> 一定是特别的缘分，</text>
+                <text class="text"> 你的名字是<em>{{data.name}}</em></text>
+                {%if data.same_name!=0%}
+                <text class="text">学校一共有<em>{{data.same_name}}</em>人与你同名同姓。</text>
+                {%else%}
+                <text class="text">你是全校唯一一个叫做<em>{{data.name}}</em>的人。</text>
+                {%endif%}
+                <div style="margin-top: 150px"></div>
+                <text class="text"> 学校一共有<em>{{data.same_day_school}}</em>人与你同一天出生。</text>
+                {%if data.same_day_and_year!=0%}
+                <text class="text"> 其中有<em>{{data.same_day_and_year}}</em>人与你同年同月同日。</text>
+                {%endif%}
+                <text class="text"> 期待在一个玉兰花开的日子里，与 ta 相识。</text>
+            </div>
+            <img class="garden" src="static/2019SchoolLife/img/4-garden.png">
+        </div>
 
-            	<script src="static/2019SchoolLife/js/swiper.min.js"></script>
-            	<script src="static/2019SchoolLife/js/move.min.js"></script>
-            	<script src="static/2019SchoolLife/js/jQuery.js"></script>
-            	<script src="static/2019SchoolLife/js/jquery.fittext.js"></script>
-            	<script src="static/2019SchoolLife/js/jquery.lettering.js"></script>
-            	<script src="static/2019SchoolLife/js/jquery.textillate.js"></script>
-            	<script src="static/2019SchoolLife/js/jweixin-1.2.0.js"></script>
-				<script src="static/2019SchoolLife/js/main.js"></script>
+    </div>
+</div>
 
-                </body>
+<script src="static/2019SchoolLife/js/swiper.min.js"></script>
+<script src="static/2019SchoolLife/js/move.min.js"></script>
+<script src="static/2019SchoolLife/js/jQuery.js"></script>
+<script src="static/2019SchoolLife/js/jquery.fittext.js"></script>
+<script src="static/2019SchoolLife/js/jquery.lettering.js"></script>
+<script src="static/2019SchoolLife/js/jquery.textillate.js"></script>
+<script src="static/2019SchoolLife/js/jweixin-1.2.0.js"></script>
+<script src="static/2019SchoolLife/js/main.js"></script>
+
+</body>
 
