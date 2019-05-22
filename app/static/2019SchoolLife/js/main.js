@@ -3,7 +3,7 @@ var mySwiper = new Swiper('.swiper-container', {
         loop: false, // 循环模式选项
         speed: 1200,
         on: {
-            init(){
+            init:function(){
                 move("page0-text")
                     .set('opacity', '1')
                     .duration("2s")
