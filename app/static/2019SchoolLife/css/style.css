@@ -58,10 +58,8 @@ body {
     width: 600px;
 }
 #audio_btn {
-    width: 30px;
-    height: 30px;
-    background-image: url(normalmusic.svg);
-    background-size: contain;
+    width: 80px;
+    height: 80px;
 }
 
 .rotate {
