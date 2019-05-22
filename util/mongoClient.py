@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from setting import *
+import random
 import time
 class mongoClient ():
     def __init__(self,debug):
@@ -207,8 +208,13 @@ class mongoClient ():
         集合位于client.SL2019.msg
         上面的这个函数是插入
         :param n:
-        :return:
+        :return:msg
             '''
-        self.client.SL2019.msg.count()
-
-        pass
+        num = self.client.SL2019.msg.count()
+        msg = []
+        for i in range(n):
+            random_num = random.randint(1 , num - 1)
+            result = self.client.SL2019.msg.find().skip(random_num).limit(1)
+            for i in result:
+                msg.append(i["msg"])
+        return msg
