@@ -26,7 +26,8 @@ body {
 }
 
 .bgimg-dec{
-    position: 2;
+    position: absolute;
+    z-index: 2;
     left: 0px;
     top: 0px;
 }
