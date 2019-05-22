@@ -113,7 +113,7 @@ class SchoolLife():
             dining_hall[i]=tmp
             sum += tmp[2]
         return {
-            'consum_dining_hall':dining_hall[:4],
+            'consum_dining_hall':dining_hall,
             'consum_shop':shop_all,
             'consum_others':map,
             'consum_dining_hall_sum':sum
