@@ -30,6 +30,8 @@ body {
     z-index: 1;
     right: 0;
     bottom:80px;
+    width: 400px;
+    height: 280px;
 }
 
 .library{
