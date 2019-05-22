@@ -25,7 +25,7 @@ var mySwiper = new Swiper('.swiper-container', {
                 .duration("5s")
                 .end()
             if(this.activeIndex==6){
-                chart.start();
+                chart.restart();
             }
         },
     }
