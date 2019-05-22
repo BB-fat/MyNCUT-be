@@ -48,10 +48,9 @@ width:110px;
 }
 
 .skillbar-title span {
-	width: 300px;
 	display:block;
 	background:rgba(0, 0, 0, 0.1);
-	padding:0 20px;
+	padding:0 100px;
 	height:35px;
 	line-height:35px;
 	-webkit-border-top-left-radius:3px;
