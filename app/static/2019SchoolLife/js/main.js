@@ -7,7 +7,7 @@ var mySwiper = new Swiper('.swiper-container', {
         init: function () {
             move(".page0-text-div")
                 .set('opacity', '1')
-                .duration("2s")
+                .duration("5s")
                 .end()
         },
         // 处理小人跳跃逻辑
@@ -23,14 +23,14 @@ var mySwiper = new Swiper('.swiper-container', {
             if (this.activeIndex == 1) {
                 move(".page1-text-div")
                     .set('opacity', '1')
-                    .duration("2s")
+                    .duration("5s")
                     .end()
             } else if (this.activeIndex == 2) {
 
             } else if (this.activeIndex == 3) {
                 move(".page3-text-div")
                     .set('opacity', '1')
-                    .duration("2s")
+                    .duration("5s")
                     .end()
             } else if (this.activeIndex == 4) {
 
