@@ -141,11 +141,11 @@ class SchoolLife():
         sum=0
         for item in res:
             sum+=item[1]
-        for i in range(5):
+        for i in range(len(res)):
             res[i]=list(res[i])
-            res[i].append(res[i][1]/sum*100)
+            res[i].append(res[i][1]/sum*1000)
         return {
-            'school_net_day':res[:5]
+            'school_net_day':res
         }
 
     def __birthday(self):
