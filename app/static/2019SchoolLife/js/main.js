@@ -20,24 +20,10 @@ var mySwiper = new Swiper('.swiper-container', {
             document.getElementById("person-jump").hidden = true
         },
         slideChange: function () {
-            if (this.activeIndex == 1) {
-                move(".page1-text-div")
-                    .set('opacity', '1')
-                    .duration("5s")
-                    .end()
-            } else if (this.activeIndex == 2) {
-                move(".page2-text-div")
-                    .set('opacity', '1')
-                    .duration("5s")
-                    .end()
-            } else if (this.activeIndex == 3) {
-                move(".page3-text-div")
-                    .set('opacity', '1')
-                    .duration("5s")
-                    .end()
-            } else if (this.activeIndex == 4) {
-
-            }
+            move(".page" + this.activeIndex + "-text-div")
+                .set('opacity', '1')
+                .duration("5s")
+                .end()
         },
     }
 })
