@@ -53,6 +53,7 @@ em {
 .page0-text{
     margin-top: 30px;
     font-size: 30px;
+    opacity: 0;
 }
 
 .library{

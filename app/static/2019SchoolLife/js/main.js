@@ -13,7 +13,13 @@ var mySwiper = new Swiper('.swiper-container', {
                 document.getElementById("person-jump").hidden=true
             },
             slideChange: function () {
-                if (this.activeIndex == 2) {
+                if(this.activeIndex==0){
+                    move("page0-text")
+                        .set('opacity', '1')
+                        .duration("2s")
+                        .end()
+                }
+                else if (this.activeIndex == 2) {
                     move('.text')
                     .set('opacity', '1')
                     .end();
