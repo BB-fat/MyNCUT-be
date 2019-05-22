@@ -138,13 +138,13 @@ class SchoolLife():
         '''.format(self.userid)
         res=self.c11.execute(sql).fetchall()
         res.sort(key=lambda hour: hour[1], reverse=True)
-        tmp=res[:5]
-        other=0
-        for i in range(5,len(res)):
-            other+=res[i][1]
-        tmp.append(["其他",other])
+        sum=0
+        for item in res:
+            sum+=item[1]
+        for i in range(5):
+            res[i].append(res[1]/sum*100)
         return {
-            'school_net_day':tmp
+            'school_net_day':res[:5]
         }
 
     def __birthday(self):
