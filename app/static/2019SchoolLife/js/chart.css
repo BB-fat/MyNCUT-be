@@ -34,7 +34,7 @@ p{
 	position:absolute;
 	top:0;
 	left:0;
-width:50px;
+width:110px;
 	font-weight:bold;
 	font-size:13px;
 	color:#ffffff;
@@ -48,6 +48,7 @@ width:50px;
 }
 
 .skillbar-title span {
+	width: 300px;
 	display:block;
 	background:rgba(0, 0, 0, 0.1);
 	padding:0 20px;
