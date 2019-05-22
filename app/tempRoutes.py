@@ -54,7 +54,9 @@ def schoolLifeAuth():
     userInfo = getUserInfo(code, access_token)
     app.DB.newUser(openid)
     app.DB.setUserInfo(openid, userInfo)
+    msgs=app.DB.SL_takeMsg(2)
     data={
+        'msgs':msgs,
         'userid':userInfo['userid']
     }
     return render_template("2019SchoolLife.html", data=data)
