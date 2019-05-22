@@ -26,6 +26,12 @@ var mySwiper = new Swiper('.swiper-container', {
                 .end()
             if(this.activeIndex==6){
                 chart.restart();
+            } else if (this.activeIndex == 9) {
+                jQuery('.skillbar').each(function () {
+                    jQuery(this).find('.skillbar-bar').animate({
+                        width: jQuery(this).attr('data-percent')
+                    }, 6000);
+                });
             }
         },
     }
