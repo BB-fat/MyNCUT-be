@@ -4,7 +4,7 @@ var mySwiper = new Swiper('.swiper-container', {
         speed: 1200,
         on: {
             init:function(){
-                move("page0-text")
+                move(".page0-text")
                     .set('opacity', '1')
                     .duration("2s")
                     .end()
