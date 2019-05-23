@@ -5,7 +5,7 @@
     width:760px;height:780px;
     background:#c0dcf0;
     border-radius: 40px;
-    background-image:url('static/2019SchoolLife/img/map.png');
+    background-image:url('../../../templates/map.png');
     background-repeat: no-repeat;
     background-size: cover;  
     padding-top: 170px;
