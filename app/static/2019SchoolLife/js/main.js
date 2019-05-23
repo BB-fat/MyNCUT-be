@@ -35,6 +35,7 @@ var mySwiper = new Swiper('.swiper-container', {
     }
 })
 
+// 控制声音播放部分
 var $audio = $('#media')[0];
 wx.config({
     debug: false, // 这里为false
@@ -61,55 +62,10 @@ $(function () {
         }
     })
 });
-window.onload = function () {
-    draw();
-    var saveButton = document.getElementById("saveImageBtn");
-    bindButtonEvent(saveButton, "click", saveImageInfo);
-    var dlButton = document.getElementById("downloadImageBtn");
-    bindButtonEvent(dlButton, "click", saveAsLocalImage);
-};
 
-function draw() {
-    var myImage = document.getElementById("thecanvas");
-    var cxt = myImage.getContext("2d");
-    var img = new Image();
-    img.src = "static/2019SchoolLife/img/123.jpg";
-    img.onload = function () {
-        cxt.drawImage(img, 0, 0);
-        cxt.strokeText("要写的文字", 50, 50);
-    };
-    cxt.font = "15px bold 黑体";
-    // 设置颜色
-    cxt.fillStyle = "#111111";
-    // 设置水平对齐方式
-    cxt.textAlign = "center";
-    // 设置垂直对齐方式
-    cxt.textBaseline = "middle";
-    // 绘制文字（参数：要写的字，x坐标，y坐标）
-    // Converts canvas to an image
-};
-
-function bindButtonEvent(element, type, handler) {
-    if (element.addEventListener) {
-        element.addEventListener(type, handler, false);
-    } else {
-        element.attachEvent('on' + type, handler);
-    }
-}
-
-function saveImageInfo() {
-    var img = document.getElementById("save_img");
-    var mycanvas = document.getElementById("thecanvas");
-    var image = mycanvas.toDataURL("image/png");
-    img.src = 'image';
-    var w = window.open('about:blank', 'image from canvas');
-    w.document.write("<center><img src='" + image + "' alt='from canvas'/></center>");
-}
-
-function saveAsLocalImage() {
-    var myCanvas = document.getElementById("thecanvas");
-    // here is the most important part because if you dont replace you will get a DOM 18 exception.
-    // var image = myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png");
-    var image = myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-    window.location.href = image; // it will save locally
+// 控制提交评论
+var input=document.getElementById("input")
+var btn_submit=document.getElementById("btn_submit")
+btn_submit.onclick=function () {
+    input.hidden=true
 }
