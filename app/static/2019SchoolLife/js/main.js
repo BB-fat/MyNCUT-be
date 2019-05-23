@@ -101,7 +101,7 @@ function makePic(img_url, text) {
         myCanvas.height = img.height;
         var ctx = myCanvas.getContext("2d")
         ctx.drawImage(img, 0, 0);
-        ctx.font = "40px Arial";
+        ctx.font = "35px Arial";
         var y = 150
         for (var i = 0; i < text.length; i++) {
             ctx.fillText(text[i], 100, y);
