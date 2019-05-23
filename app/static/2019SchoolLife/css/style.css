@@ -331,36 +331,20 @@ em {
 #share-img{
     width: 643px;
     height: 1094px;
+    margin-top: 100px;
+    border:10px solid #a8aaab;
 }
 
 .page14-div{
     position: absolute;
-    width: 100%;
-    height: 100%;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-}
-
-.page14-bottom{
-    display: flex;
-    flex-direction: row;
-    margin-top: 150px;
-    width: 100%;
-}
-
-.page14-bottom-left{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.cat{
-    width: 300px;
+    bottom: 150px;
+    left: 70px;
 }
 
 .change{
-    width: 200px;
+    width: 150px;
 }
