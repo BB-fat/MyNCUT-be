@@ -348,3 +348,10 @@ em {
 .change{
     width: 350px;
 }
+
+.cat{
+    position: absolute;
+    z-index: 1;
+    right: 50px;
+    bottom: 30px;
+}
