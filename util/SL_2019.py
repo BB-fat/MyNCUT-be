@@ -17,6 +17,7 @@ class SchoolLife():
         '''
         return {
             **self.__first_class(),
+            **self.__iclass(),
             **self.__grades(),
             **self.__consum(),
             **self.__consum_every(),
@@ -37,10 +38,16 @@ class SchoolLife():
 
     def __iclass(self):
         sql='''
-        select XH,XM,XB,XY,ZY,BJ,"ACCESS" as FWCS from C##NCUTDATA.DDXY_STU_ICLASS where XH='{}'
+        select XH,XM,XY,ZY,BJ,FWCS,ZPM,XYPM,ZYPM,BJPM from C##NCUTDATA.DDXY_STU_ICLASS_STATISTICS where XH='{}'
         '''.format(self.userid)
         res=self.c12.execute(sql).fetchone()
-        
+        return {
+            'iclass_sum':res[5],
+            'iclass_school_rank':res[6]
+        }
+
+    def __library(self):
+        pass
 
     def __grades(self):
         sql='''
