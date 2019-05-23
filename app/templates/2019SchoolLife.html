@@ -45,10 +45,9 @@
             <img class="bgimg" src="static/2019SchoolLife/img/background.png">
             <img class="trip" src="static/2019SchoolLife/img/trip.png">
             <div class="page1-text-div">
-                <!--                <em>2019年7月</em>,</br>-->
-                <!--                一纸录取通知书从北方工业大学</br>-->
-                <!--                来到你的身边</br>-->
-
+                <em>20{{data.userid[:2]}}年7月</em>,</br>
+                一纸录取通知书从北方工业大学</br>
+                来到你的身边</br>
                 <p>你来自<em>{{data.city}}</em>，</p>
                 学校有一共<em>{{data.same_name_school}}</em>人和你来自于同一个地方</br>
                 其中和你一个学院的有<em>{{data.same_name_college}}</em>人
@@ -61,7 +60,7 @@
             <div class="page2-text-div">
                 记得刚刚踏进校门的那个夏天，<br/>
                 <p>阳光正好。<br/></p>
-                你上的第一门课程是在<em>敦品楼</em>的<em>体育课</em><br/>
+                你上的第一门课程是在<em>{{data.first_class_room}}</em>的<em>{{data.first_class}}</em><br/>
                 <p>那天的你青涩却笃定，向往着不远的未来。</p>
             </div>
         </div>
