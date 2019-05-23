@@ -64,7 +64,7 @@ def schoolLifeAuth():
     data['name'] = userInfo['userInfo']['name']
     data['count'] = app.DB.SL_countPlus(userInfo['userid'])
     data['sex'] = userInfo['userInfo']['sex']
-    data['msgs'] = app.DB.SL_takeMsg(2)
+    data['msgs'] = app.DB.SL_takeMsg(30)
     data['same_name_school'], data['same_name_college'], data['city'] = app.DB.SL_same_city(userInfo['userid'])
     data['book'] = library(userInfo['userid'])
     data['userid'] = userInfo['userid']
