@@ -88,3 +88,31 @@ btn_biwan.onclick=function () {
         window.open("/schoollife")
     },500)
 }
+
+// 控制渲染分享海报
+function makePic(img_url,text) {
+    var img = new Image()
+    img.src = img_url;
+    img.onload = function () {
+        var myCanvas = document.createElement("canvas")
+        myCanvas.width = 643
+        myCanvas.height = 1094
+        var ctx = myCanvas.getContext("2d")
+        ctx.drawImage(img, 0, 0);
+        ctx.font = "30px Arial";
+        ctx.fillText(text, 200, 150);
+        var url = myCanvas.toDataURL("image/png", 1)
+        document.getElementById("share-img").src = url
+    }
+}
+
+window.onloadend = function () {
+    index += 1
+    makePic(shareList[index % 2].url, shareList[index % 2].text)
+}
+
+var btn_share=document.getElementById("btn_change")
+btn_share.onclick=function(){
+    index+=1
+    makePic(shareList[index%2].url,shareList[index%2].text)
+}
