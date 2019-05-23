@@ -1,0 +1,29 @@
+
+#tagbox{
+    position:relative;
+    margin:20px auto 0px;
+    width:760px;height:780px;
+    background:#c0dcf0;
+    border-radius: 40px;
+    background-image:url('../../../templates/map.png');
+    background-repeat: no-repeat;
+    background-size: cover;  
+    padding-top: 170px;
+    padding-left: 10px;
+}
+#tagbox a{
+    position:absolute;padding:3px 6px;font-family:Microsoft YaHei;color:rgb(12, 11, 11);TOP:0px;
+    text-decoration:none;left:0px}
+
+#tagbox .blue{color:rgb(26, 26, 27)}
+#tagbox .red{color:rgb(20, 20, 20)}
+#tagbox .yellow{color:rgb(7, 7, 7)}
+/* #tagbox .group{
+
+} */
+#tagbox .img{
+    height: 20px;
+    width: 20px;
+}
+
+
