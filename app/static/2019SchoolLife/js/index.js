@@ -1,22 +1,22 @@
-$(document).ready(function(){
-  $('.bar').each(function(i, elem){
-    drawBar(elem);
-  });
+// $(document).ready(function(){
+//   $('.bar').each(function(i, elem){
+//     drawBar(elem);
+//   });
   
-  $('.measure').each(function(i, elem){
-    drawMeasure(elem);
-  });
+//   $('.measure').each(function(i, elem){
+//     drawMeasure(elem);
+//   });
   
-  $('a.redraw').click(function(e){
-    e.preventDefault();
-    $('.bar').each(function(i, elem){
-      randomiseBar(elem);
-    });
-    $('.measure').each(function(i, elem){
-      randomiseMeasure(elem);
-    });
+//   $('a.redraw').click(function(e){
+//     e.preventDefault();
+//     $('.bar').each(function(i, elem){
+//       randomiseBar(elem);
+//     });
+//     $('.measure').each(function(i, elem){
+//       randomiseMeasure(elem);
+//     });
   
-  });
+//   });
   
   function drawBar(bar) {
     var percentage = $(bar).data('percentage');
@@ -47,4 +47,4 @@ $(document).ready(function(){
   }
   
   
-});
+// });
