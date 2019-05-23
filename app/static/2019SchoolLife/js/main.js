@@ -101,11 +101,11 @@ function makePic(img_url, text) {
         canvas.height = img.height;
         var ctx = myCanvas.getContext("2d")
         ctx.drawImage(img, 0, 0);
-        ctx.font = "30px Arial";
+        ctx.font = "45px Arial";
         var y = 150
         for (var i = 0; i < text.length; i++) {
             ctx.fillText(text[i], 100, y);
-            y += 50
+            y += 100
         }
         var url = myCanvas.toDataURL("image/png", 1)
         document.getElementById("share-img").src = url
