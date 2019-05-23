@@ -76,3 +76,15 @@ btn_submit.onclick = function () {
             btn_submit.hidden=true
         })
 }
+
+// 毕晚按钮
+var btn_biwan=document.getElementById("btn-biwan")
+btn_biwan.onclick=function () {
+    move("#btn-biwan")
+        .set("margin-left","100px")
+        .duration("1s")
+        .end()
+    setTimeout(function () {
+        alert("跳转")
+    },1000)
+}
