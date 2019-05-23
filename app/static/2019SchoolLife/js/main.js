@@ -104,8 +104,8 @@ function makePic(img_url, text) {
         ctx.font = "35px Arial";
         var y = 150
         for (var i = 0; i < text.length; i++) {
-            ctx.fillText(text[i], 100, y);
-            y += 100
+            ctx.fillText(text[i], 90, y);
+            y += 80
         }
         var url = myCanvas.toDataURL("image/png", 1)
         document.getElementById("share-img").src = url
