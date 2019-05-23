@@ -82,9 +82,9 @@ var btn_biwan=document.getElementById("btn-biwan")
 btn_biwan.onclick=function () {
     move("#btn-biwan")
         .set("margin-left","100px")
-        .duration("1s")
+        .duration("0.5s")
         .end()
     setTimeout(function () {
         window.open("/schoollife")
-    },1000)
+    },500)
 }
