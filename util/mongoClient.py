@@ -36,13 +36,16 @@ class mongoClient ():
             }
         )
 
-    def getUserInfo(self,openid):
+    def getUserInfo(self,openid='',userid=''):
         """
         获取用户全部信息
         :param openid:
         :return: userInfo
         """
-        getUserInfoResult=self.client.userData["user"].find_one({"openid":openid})
+        if openid!='':
+            getUserInfoResult=self.client.userData["user"].find_one({"openid":openid})
+        else:
+            getUserInfoResult=self.client.userData["user"].find_one({"userid":userid})
         if getUserInfoResult is not None:
             getUserInfoResult.pop('_id')
         return getUserInfoResult
@@ -199,12 +202,12 @@ class mongoClient ():
         else:
             return res['count']
 
-    def SL_leaveMsg(self,msg):
-        self.client.SL2019.msg.insert_one({"msg":msg})
+    def SL_leaveMsg(self,data):
+        self.client.SL2019.msg.insert_one(data)
 
     def SL_takeMsg(self,n):
         '''
-        返回n*3条随机数据，存入列表
+        返回n条随机数据，存入列表
         集合位于client.SL2019.msg
         上面的这个函数是插入
         :param n:
@@ -212,11 +215,14 @@ class mongoClient ():
             '''
         num = self.client.SL2019.msg.count()
         msg = []
-        for i in range(n*3):
+        for i in range(n):
             random_num = random.randint(1 , num - 1)
             result = self.client.SL2019.msg.find().skip(random_num).limit(1)
             for i in result:
-                msg.append(i["msg"])
+                msg.append({
+                    "msg":i['msg'],
+                    "img":i['img']
+                })
         return msg
 
     def SL_same_city(self,userid):

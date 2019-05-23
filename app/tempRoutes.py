@@ -73,5 +73,11 @@ def schoolLifeAuth():
 @app.route("/schoollifemsg")
 def schoolLifeMsg():
     msg=request.args.get("msg")
-    app.DB.SL_leaveMsg(msg)
+    userid=request.args.get("userid")
+    userInfo=app.DB.getUserInfo(userid=userid)
+    app.DB.SL_leaveMsg({
+        "msg":msg,
+        "userid":userid,
+        "img":userInfo['userInfo']['avatar']
+    })
     return "success"
