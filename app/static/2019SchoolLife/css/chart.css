@@ -35,6 +35,9 @@ section.data {
   overflow: hidden;
   padding: 0 0 30px 0;
   margin: 0 0 40px 0;
+  border: 10px solid #c1c1c1;
+  border-radius: 8px;
+  /*border-color:#;*/
 }
 section.data div.measure {
   position: absolute;
@@ -53,9 +56,9 @@ section.data div.measure:after {
 }
 
 div.bar-wrap {
-  width: 100%;
+  width: 88%;
   display: block;
-  margin: 0 0 20px 0;
+  margin: 0 auto;
   overflow: hidden;
 }
 div.bar-wrap label {
@@ -66,18 +69,20 @@ div.bar-wrap label {
   display: block;
 }
 div.bar-wrap div.bar {
-  height: 40px;
+  height: 27px;
   width: 0;
   position: relative;
 }
 div.bar-wrap div.bar:after {
-  content: attr(data-percentage) "%";
+  content: "￥" attr(data-money);
   display: block;
   position: absolute;
-  top: 0;
+  /*top: 0;*/
   right: 0;
-  height: 40px;
-  padding: 10px;
+  height: 27px;
+  /*left: 0;*/
+  padding-top: 5px;
+  padding-right: 10px;
 }
 div.bar-wrap div.bar.blue {
   background-color: #61a7c4;
