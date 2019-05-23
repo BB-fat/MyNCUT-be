@@ -97,8 +97,8 @@ function makePic(img_url, text) {
     img.src = img_url;
     img.onload = function () {
         var myCanvas = document.createElement("canvas")
-        canvas.width = img.width;
-        canvas.height = img.height;
+        myCanvas.width = img.width;
+        myCanvas.height = img.height;
         var ctx = myCanvas.getContext("2d")
         ctx.drawImage(img, 0, 0);
         ctx.font = "45px Arial";
