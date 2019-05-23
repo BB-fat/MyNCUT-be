@@ -89,15 +89,7 @@
         <!--        第五页-->
         <div class="swiper-slide">
             <div class="page4-text-div">
-                <div style="margin-top: 150px;"></div>
-                <text class="text"> 你为一次考试翻遍图书馆，</text>
-                <text class="text"> 为一篇论文与群书鏖战。</em></text>               
-                <text class="text">你在图书馆里借过<em>{{data.same_name}}</em>次书。</text>               
-                <text class="text">与书为友，以书为伴，你丝毫不觉得孤单。</text>                
-                <div style="margin-top: 150px"></div>
-                <text class="text"> 无数次登陆多模式，</text>
-                <text class="text"> 可能你自己也没有注意过，</text>               
-                <text class="text"> 你一共下载了<em>{{data.same_day_and_year}}G</em>的课件资料。</text>               
+                               
             </div>
             <img class="garden" src="static/2019SchoolLife/img/5-library.png">
             <img class="bgimg" src="static/2019SchoolLife/img/background.png">
@@ -159,34 +151,25 @@
                 <p>相信来日阔别工大，<br></p>
                 怀念更多的是舌尖上的那抹味道。
             </div>
-            <div style="margin-top: 150px;background-color: #000000;border: 10px solid #000">
-                <div class="skillbar clearfix " data-percent="{{data.consum_dining_hall[0][3]}}%">
-                    <div class="skillbar-title" style="background: #d35400"><span>{{data.consum_dining_hall[0][0]}}</span>
-                    </div>
-                    <div class="skillbar-bar" style="background: #e67e22"></div>
-                    <div class="skill-bar-percent">￥{{data.consum_dining_hall[0][2]}}</div>
-                </div> <!-- End Skill Bar -->
-
-                <div class="skillbar clearfix " data-percent="{{data.consum_dining_hall[1][3]}}%">
-                    <div class="skillbar-title" style="background: #2980b9"><span>{{data.consum_dining_hall[1][0]}}</span>
-                    </div>
-                    <div class="skillbar-bar" style="background: #3498db"></div>
-                    <div class="skill-bar-percent">￥{{data.consum_dining_hall[1][2]}}</div>
-                </div> <!-- End Skill Bar -->
-
-                <div class="skillbar clearfix " data-percent="{{data.consum_dining_hall[2][3]}}%">
-                    <div class="skillbar-title" style="background: #27ae60"><span>{{data.consum_dining_hall[2][0]}}</span>
-                    </div>
-                    <div class="skillbar-bar" style="background: #2ecc71"></div>
-                    <div class="skill-bar-percent">￥{{data.consum_dining_hall[2][2]}}</div>
-                </div> <!-- End Skill Bar -->
-                <div class="skillbar clearfix " data-percent="{{data.consum_dining_hall[3][3]}}%">
-                    <div class="skillbar-title" style="background: #27ae60"><span>{{data.consum_dining_hall[3][0]}}</span>
-                    </div>
-                    <div class="skillbar-bar" style="background: #2ecc71"></div>
-                    <div class="skill-bar-percent">￥{{data.consum_dining_hall[3][2]}}</div>
-                </div> <!-- End Skill Bar -->
+            <div style="margin-top: 150px" class="data">
+            	<div class="bar-wrap">
+            		<label>Data 1</label>
+            		<div class="bar blue" data-percentage="94.7"></div>
+            	</div>
+            	<div class="bar-wrap">
+            		<label>Data 2</label>
+            		<div class="bar green" data-percentage="21"></div>
+            	</div>
+            	<div class="bar-wrap">
+            		<label>Data 3</label>
+            		<div class="bar red" data-percentage="40.95"></div>
+            	</div>
+            	<div class="bar-wrap">
+            		<label>Data 4</label>
+            		<div class="bar purple" data-percentage="43"></div>
+            	</div>
             </div>
+
         </div>
 <!--        十一页-->
         <div class="swiper-slide">
@@ -227,7 +210,7 @@
     </div>
 </div>
 <!-- </div> -->
-
+<script src="static/2019SchoolLife/js/index.js"></script>
 <script src="static/2019SchoolLife/js/swiper.min.js"></script>
 <script src="static/2019SchoolLife/js/move.min.js"></script>
 <script src="static/2019SchoolLife/js/jQuery.js"></script>
