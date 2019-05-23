@@ -108,9 +108,6 @@ var mySwiper = new Swiper('.swiper-container', {
                 $('.bar').each(function (i, elem) {
                     drawBar(elem);
                 });
-            } else if (this.activeIndex == 13) {
-                index += 1
-                makePic(shareList[index % 2].img, shareList[index % 2].text)
             }
         },
     }
