@@ -1,6 +1,10 @@
 import cx_Oracle
 import os
 import json
+import time
+import hashlib
+import requests
+from lxml import etree
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
 class SchoolLife():
@@ -45,9 +49,6 @@ class SchoolLife():
             'iclass_sum':res[5],
             'iclass_school_rank':res[6]
         }
-
-    def __library(self):
-        pass
 
     def __grades(self):
         sql='''
@@ -178,7 +179,29 @@ class SchoolLife():
             "same_day_xueyuan":res[4]-1
         }
 
+def library(userid):
+    '''
+    图书馆借阅总数
+    :param userid:
+    :return:
+    '''
+    appid="JLTSG"
+    t=time.strftime("%Y%m%d%H%M", time.localtime())
+    md5=hashlib.md5()
+    md5.update((t+appid+userid).encode("utf-8"))
+    sn=md5.hexdigest()[7:13].upper()
+    base_url="http://202.204.27.227:8080/reader/hw_redrinfo.php"
+    data={
+        'accid':userid,
+        'time':t,
+        'sn':sn
+    }
+    res=requests.get(base_url,params=data).text
+    tree=etree.HTML(res)
+    book=tree.xpath("//*[@name='最大借阅册数']/text()")[0]
+    return book
 
 if __name__=="__main__":
-    A=SchoolLife("17152010921")
-    print(json.dumps(A.getData()))
+    # A=SchoolLife("17152010921")
+    # print(json.dumps(A.getData()))
+    print(library("17152010921"))
