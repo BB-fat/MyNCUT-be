@@ -45,7 +45,7 @@ def schoolLife():
     data['book']=library(userInfo['userid'])
     data['userid']=userInfo['userid']
     # return render_template("2019SchoolLife.html", data=data)
-    return render_template("test.html",data=data)
+    return render_template("test.html",data=json.dumps(data))
 
 @app.route("/schoollifeauth")
 def schoolLifeAuth():
