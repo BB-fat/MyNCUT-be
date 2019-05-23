@@ -71,6 +71,7 @@ btn_submit.onclick = function () {
         msg: input.value
     })
         .then(function () {
+            alert("留言成功")
             input.hidden = true
         })
 }
