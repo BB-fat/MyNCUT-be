@@ -307,20 +307,12 @@ em {
     z-index: 2;
 }
 
-.btn-out-div{
-    top: 550px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100px;
-    align-items: center;
-    position: absolute;
-    z-index: 3;
-}
-
 .btn-biwan-div{
+    top: 550px;
     height: 100px;
     width: 200px;
+    position: absolute;
+    z-index: 3;
     background-color: #e08181;
     border-radius: 80px;
     display: flex;
