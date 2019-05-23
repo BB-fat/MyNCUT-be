@@ -295,3 +295,8 @@ em {
 }
 
 
+.msg-div{
+    position: absolute;
+    z-index: 2;
+}
+
