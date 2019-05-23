@@ -307,9 +307,17 @@ em {
     z-index: 2;
 }
 
-.btn_biwan_div{
+.btn-out-div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
     position: absolute;
     z-index: 3;
+}
+
+.btn-biwan-div{
+    height: 100px;
     background-color: #e08181;
     border-radius: 40px;
     display: flex;
@@ -317,7 +325,7 @@ em {
     justify-content: center;
 }
 
-.btn_biwan{
+.btn-biwan{
     background-color: #e6b4b4;
     border-radius: 50%;
 }
