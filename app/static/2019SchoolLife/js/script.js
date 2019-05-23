@@ -40,15 +40,12 @@ window.onload=function ()
 	sineCosine( 0,0,0 );
 	
 	positionAll();
-	
+
+	active=true
+
 	oDiv.onmouseover=function ()
 	{
 		active=true;
-	};
-	
-	oDiv.onmouseout=function ()
-	{
-		active=false;
 	};
 	
 	oDiv.onmousemove=function (ev)
@@ -62,7 +59,7 @@ window.onload=function ()
 		mouseY/=5;
 	};
 	
-	setInterval(update, 30);
+	setInterval(update, 300);
 };
 
 function update()
