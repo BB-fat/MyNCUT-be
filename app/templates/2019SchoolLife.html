@@ -471,18 +471,23 @@
         {
             img:"static/2019SchoolLife/img/share1.png",
             text: [
-                "我在食堂一共消费了{{data.consum_dining_hall_sum}}元，果然胖也不是一蹴而就的。",
+                "我在食堂一共消费了{{data.consum_dining_hall_sum}}元，",
+                "果然胖也不是一蹴而就的。",
                 {%if data.same_name!=0%}
-                "北方工大有{{data.same_name}}人和我同名同姓，我们会有故事发生么？",
+                "北方工大有{{data.same_name}}人和我同名同姓，",
+                "我们会有故事发生么？",
                 {%endif%}
-                "我成绩最好的一门课程是{{data.grades[3]}}，学霸也会骄傲的。"
+                "我成绩最好的一门课程是{{data.grades[3]}}，",
+                    "学霸也会骄傲的。"
             ]
         },
         {
             img: "static/2019SchoolLife/img/share2.png",
             text: [
-                "原来我最爱的食堂是{{data.consum_dining_hall[0][0]}}，到底是什么留住了我的胃？",
-                "我单单洗澡就消费了{{data.consum_others['动力修缮淋浴转账机'][2]}}，做一个精致{%if sex==0%}女{%else%}男{%endif%}孩不容易。",
+                "原来我最爱的食堂是{{data.consum_dining_hall[0][0]}}，",
+                "到底是什么留住了我的胃？",
+                "我单单洗澡就消费了{{data.consum_others['动力修缮淋浴转账机'][2]}}，",
+                "做一个精致{%if sex==0%}女{%else%}男{%endif%}孩不容易。",
                 {%if data.same_name!=0%}
                 "北方工大有{{data.same_name}}人和我同名同姓，我们会有故事发生么？",
                 {%endif%}
