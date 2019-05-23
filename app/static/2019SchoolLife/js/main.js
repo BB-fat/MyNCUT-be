@@ -66,9 +66,11 @@ $(function () {
 // 控制提交评论
 var input=document.getElementById("input")
 var btn_submit=document.getElementById("btn_submit")
-btn_submit.onclick=function () {
-    fly.get("/msg?msg=123")
+btn_submit.onclick = function () {
+    fly.get("/schoollifemsg", {
+        msg: input.value
+    })
         .then(function () {
-            input.hidden=true
+            input.hidden = true
         })
 }
