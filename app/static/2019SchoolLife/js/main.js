@@ -67,5 +67,8 @@ $(function () {
 var input=document.getElementById("input")
 var btn_submit=document.getElementById("btn_submit")
 btn_submit.onclick=function () {
-    input.hidden=true
+    fly.get("/msg?msg=123")
+        .then(function () {
+            input.hidden=true
+        })
 }
