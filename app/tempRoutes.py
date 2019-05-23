@@ -44,7 +44,8 @@ def schoolLife():
     data['same_name_school'],data['same_name_college'],data['city']=app.DB.SL_same_city(userInfo['userid'])
     data['book']=library(userInfo['userid'])
     data['userid']=userInfo['userid']
-    return render_template("2019SchoolLife.html", data=data)
+    # return render_template("2019SchoolLife.html", data=data)
+    return render_template("test.html",data=data)
 
 @app.route("/schoollifeauth")
 def schoolLifeAuth():
