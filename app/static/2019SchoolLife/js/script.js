@@ -41,8 +41,6 @@ window.onload=function ()
 	
 	positionAll();
 
-	active=true
-
 	oDiv.onmouseover=function ()
 	{
 		active=true;
@@ -64,7 +62,7 @@ window.onload=function ()
 		mouseY/=5;
 	};
 	
-	setInterval(update, 5);
+	setInterval(update, 40);
 };
 
 function update()
