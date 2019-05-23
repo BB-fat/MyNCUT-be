@@ -1,40 +1,3 @@
-var mySwiper = new Swiper('.swiper-container', {
-    direction: 'vertical', // 垂直切换选项
-    loop: false, // 循环模式选项
-    speed: 1200,
-    on: {
-        // 首页文字动画
-        init: function () {
-            move(".page0-text-div")
-                .set('opacity', '1')
-                .duration("5s")
-                .end()
-        },
-        // 处理小人跳跃逻辑
-        touchStart: function (e) {
-            document.getElementById("person").hidden = true
-            document.getElementById("person-jump").hidden = false
-        },
-        transitionEnd: function () {
-            document.getElementById("person").hidden = false
-            document.getElementById("person-jump").hidden = true
-        },
-        slideChange: function () {
-            move(".page" + this.activeIndex + "-text-div")
-                .set('opacity', '1')
-                .duration("5s")
-                .end()
-            if (this.activeIndex == 6) {
-                chart.restart();
-            } else if (this.activeIndex == 9) {
-                $('.bar').each(function (i, elem) {
-                    drawBar(elem);
-                });
-            }
-        },
-    }
-})
-
 // 控制声音播放部分
 var $audio = $('#media')[0];
 wx.config({
@@ -106,13 +69,49 @@ function makePic(img_url,text) {
     }
 }
 
-window.onloadend = function () {
-    index += 1
-    makePic(shareList[index % 2].url, shareList[index % 2].text)
-}
-
 var btn_share=document.getElementById("btn_change")
 btn_share.onclick=function(){
     index+=1
-    makePic(shareList[index%2].url,shareList[index%2].text)
+    makePic(shareList[index%2].img,shareList[index%2].text)
 }
+
+// 翻页控制逻辑
+var mySwiper = new Swiper('.swiper-container', {
+    direction: 'vertical', // 垂直切换选项
+    loop: false, // 循环模式选项
+    speed: 1200,
+    on: {
+        // 首页文字动画
+        init: function () {
+            move(".page0-text-div")
+                .set('opacity', '1')
+                .duration("5s")
+                .end()
+        },
+        // 处理小人跳跃逻辑
+        touchStart: function (e) {
+            document.getElementById("person").hidden = true
+            document.getElementById("person-jump").hidden = false
+        },
+        transitionEnd: function () {
+            document.getElementById("person").hidden = false
+            document.getElementById("person-jump").hidden = true
+        },
+        slideChange: function () {
+            move(".page" + this.activeIndex + "-text-div")
+                .set('opacity', '1')
+                .duration("5s")
+                .end()
+            if (this.activeIndex == 6) {
+                chart.restart();
+            } else if (this.activeIndex == 9) {
+                $('.bar').each(function (i, elem) {
+                    drawBar(elem);
+                });
+            } else if (this.activeIndex == 14) {
+                index += 1
+                makePic(shareList[index % 2].img, shareList[index % 2].text)
+            }
+        },
+    }
+})
