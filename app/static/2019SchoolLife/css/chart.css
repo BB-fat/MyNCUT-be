@@ -82,6 +82,7 @@ div.bar-wrap div.bar:after {
 div.bar-wrap div.bar.blue {
   background-color: #61a7c4;
   border-bottom: 3px solid #4290b0;
+  border-radius: 10px 30px 30px 10px;
 }
 div.bar-wrap div.bar.blue:after {
   color: #FFF;
@@ -89,6 +90,7 @@ div.bar-wrap div.bar.blue:after {
 div.bar-wrap div.bar.green {
   background-color: #61c471;
   border-bottom: 3px solid #42b054;
+  border-radius: 10px 30px 30px 10px;
 }
 div.bar-wrap div.bar.green:after {
   color: #FFF;
@@ -96,6 +98,7 @@ div.bar-wrap div.bar.green:after {
 div.bar-wrap div.bar.red {
   background-color: #c46161;
   border-bottom: 3px solid #b04242;
+  border-radius: 10px 30px 30px 10px;
 }
 div.bar-wrap div.bar.red:after {
   color: #FFF;
@@ -103,6 +106,7 @@ div.bar-wrap div.bar.red:after {
 div.bar-wrap div.bar.purple {
   background-color: #a461c4;
   border-bottom: 3px solid #8d42b0;
+  border-radius: 10px 30px 30px 10px;
 }
 div.bar-wrap div.bar.purple:after {
   color: #FFF;
