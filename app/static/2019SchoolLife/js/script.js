@@ -47,6 +47,11 @@ window.onload=function ()
 	{
 		active=true;
 	};
+
+	oDiv.onmouseout=function ()
+	{
+		active=false;
+	};
 	
 	oDiv.onmousemove=function (ev)
 	{
@@ -59,7 +64,7 @@ window.onload=function ()
 		mouseY/=5;
 	};
 	
-	setInterval(update, 300);
+	setInterval(update, 5);
 };
 
 function update()
