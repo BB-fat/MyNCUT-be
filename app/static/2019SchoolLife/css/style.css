@@ -311,6 +311,7 @@ em {
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100px;
     align-items: center;
     position: absolute;
     z-index: 3;
@@ -326,6 +327,8 @@ em {
 }
 
 .btn-biwan{
+    width: 80px;
+    height: 80px;
     background-color: #e6b4b4;
     border-radius: 50%;
 }
