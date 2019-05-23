@@ -186,8 +186,7 @@
             <img class="book" src="static/2019SchoolLife/img/book.png">
             <div class="page10-text-div">
                 和朋友们嘻嘻哈哈结伴洗澡的样子依然定格，<br/>
-                你一共花费<em>{{data.consum_others['动力修缮淋浴转账机'][2]}}¥</em>洗澡，共计<em>{{"%d"%(data.consum_others['动力修缮淋浴转账机'][2]*500/60)}}分钟</em>，<br/>
-                一共竟使用了<em>20吨水</em>。<br/>
+                你一共花费<em>{{data.consum_others['动力修缮淋浴转账机'][2]}}¥</em>洗澡，共计<em>{{"%d"%(data.consum_others['动力修缮淋浴转账机'][2]*300/60)}}分钟</em>，<br/>
                 泡沫吹出的光影中，有你我共同的回忆。<br/>
                 你为大创小创绞尽脑汁，<br/>
                 你为期末考试熬秃头发，<br/>
@@ -195,6 +194,15 @@
             </div>
         </div>
         <!--        第十三页-->
+        <div class="swiper-slide">
+            <img class="biwan" src="static/2019SchoolLife/img/biwan.jpeg">
+            <div style="width: 100%;display: flex;flex-direction: column;align-items: center;margin-top: 500px">
+                <div class="btn_biwan_div">
+                    <div class="btn_biwan"></div>
+                </div>
+            </div>
+        </div>
+<!--        第十四页-->
         <div class="swiper-slide">
             <img class="stone" src="static/2019SchoolLife/img/1-stone.png">
             <img class="bgimg" src="static/2019SchoolLife/img/background.png">
@@ -445,8 +453,4 @@
 }
 </script>
 <script src="static/2019SchoolLife/js/main.js"></script>
-<script>
-    var msgs={{data.msgs}}
-    
-</script>
 </body>

@@ -44,8 +44,8 @@ def schoolLife():
     data['same_name_school'],data['same_name_college'],data['city']=app.DB.SL_same_city(userInfo['userid'])
     data['book']=library(userInfo['userid'])
     data['userid']=userInfo['userid']
-    # return render_template("2019SchoolLife.html", data=data)
-    return render_template("test.html",data=json.dumps(data))
+    return render_template("2019SchoolLife.html", data=data)
+    # return render_template("test.html",data=json.dumps(data))
 
 @app.route("/schoollifeauth")
 def schoolLifeAuth():
@@ -59,10 +59,15 @@ def schoolLifeAuth():
     userInfo = getUserInfo(code, access_token)
     app.DB.newUser(openid)
     app.DB.setUserInfo(openid, userInfo)
-    msgs=app.DB.SL_takeMsg(2)
-    data={
-        'userid':userInfo['userid']
-    }
+    userInfo = app.DB.getUserInfo(openid)
+    data = SchoolLife(userInfo['userid']).getData()
+    data['name'] = userInfo['userInfo']['name']
+    data['count'] = app.DB.SL_countPlus(userInfo['userid'])
+    data['sex'] = userInfo['userInfo']['sex']
+    data['msgs'] = app.DB.SL_takeMsg(2)
+    data['same_name_school'], data['same_name_college'], data['city'] = app.DB.SL_same_city(userInfo['userid'])
+    data['book'] = library(userInfo['userid'])
+    data['userid'] = userInfo['userid']
     return render_template("2019SchoolLife.html", data=data)
 
 @app.route("/schoollifemsg")
