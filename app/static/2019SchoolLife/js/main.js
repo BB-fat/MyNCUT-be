@@ -85,6 +85,6 @@ btn_biwan.onclick=function () {
         .duration("1s")
         .end()
     setTimeout(function () {
-        alert("跳转")
+        window.open("/schoollife")
     },1000)
 }
