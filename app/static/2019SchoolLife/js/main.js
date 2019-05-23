@@ -97,14 +97,14 @@ function makePic(img_url,text) {
     img.src = img_url;
     img.onload = function () {
         var myCanvas = document.createElement("canvas")
-        myCanvas.width = 643
-        myCanvas.height = 1094
+        myCanvas.width = 750
+        myCanvas.height = 1334
         var ctx = myCanvas.getContext("2d")
         ctx.drawImage(img, 0, 0);
         ctx.font = "30px Arial";
         var y=150
         for(var i=0;i<text.length;i++){
-            ctx.fillText(text[i], 200, y);
+            ctx.fillText(text[i], 100, y);
             y+=50
         }
         var url = myCanvas.toDataURL("image/png", 1)
