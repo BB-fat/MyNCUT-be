@@ -341,10 +341,10 @@ em {
     display: flex;
     flex-direction: column;
     align-items: center;
-    bottom: 150px;
+    bottom: 30px;
     left: 70px;
 }
 
 .change{
-    width: 150px;
+    width: 350px;
 }
