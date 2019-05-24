@@ -75,7 +75,7 @@ btn_submit.onclick = function () {
     })
         .then(function () {
             alert("留言成功")
-            document.getElementById('input-div').hidden = true
+            input.disable()
             btn_submit.hidden=true
         })
 }
