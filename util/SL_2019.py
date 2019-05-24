@@ -157,11 +157,13 @@ class SchoolLife():
         sum=0
         for item in res:
             sum+=item[1]
-        for i in range(len(res)):
-            res[i]=list(res[i])
-            res[i].append(res[i][1]/sum*10000)
+        tmp=[]
+        i=0
+        while i<range(len(res)):
+            tmp.append((res[i][1]+res[i+1][1])/sum*10000)
+            i+=2
         return {
-            'school_net_day':res
+            'school_net_day':tmp
         }
 
     def __birthday(self):
@@ -202,6 +204,6 @@ def library(userid):
     return book
 
 if __name__=="__main__":
-    # A=SchoolLife("17152010921")
-    # print(json.dumps(A.getData()))
-    print(library("17152010921"))
+    A=SchoolLife("17152010921")
+    print(json.dumps(A.getData()))
+    # print(library("17152010921"))
