@@ -359,7 +359,7 @@ em {
 }
 
 #btn_submit{
-    margin-top: 40px;
+    position: absolute;
     width: 300px;
     z-index: 200;
 }
