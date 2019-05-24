@@ -159,7 +159,7 @@ class SchoolLife():
             sum+=item[1]
         tmp=[]
         i=0
-        while i<range(len(res)):
+        while i<len(res):
             tmp.append((res[i][1]+res[i+1][1])/sum*10000)
             i+=2
         return {
