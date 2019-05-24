@@ -18,6 +18,7 @@ h1 {
   display: inline-block;
   margin: 10px;
   width: 550px;
+  height: 200px;
 }
 .input-wrapper {
   border-width: 2px;
