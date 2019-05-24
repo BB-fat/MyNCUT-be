@@ -10,8 +10,8 @@ var distr = true;
 var tspeed=5;
 var size=250;
 
-var mouseX=0;
-var mouseY=0;
+var mouseX=4;
+var mouseY=7;
 
 var howElliptical=1;
 
@@ -40,7 +40,7 @@ window.onload=function ()
 	sineCosine( 0,0,0 );
 	
 	positionAll();
-
+	active=true;
 	oDiv.onmouseover=function ()
 	{
 		active=true;
@@ -54,7 +54,6 @@ window.onload=function ()
 	oDiv.onmousemove=function (ev)
 	{
 		var oEvent=window.event || ev;
-		active=true
 		mouseX=oEvent.clientX-(oDiv.offsetLeft+oDiv.offsetWidth/2);
 		mouseY=oEvent.clientY-(oDiv.offsetTop+oDiv.offsetHeight/2);
 		
