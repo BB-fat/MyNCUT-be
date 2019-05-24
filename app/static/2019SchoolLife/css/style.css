@@ -353,7 +353,7 @@ em {
 .cat{
     position: absolute;
     z-index: 1;
-    right: 80px;
+    right: 100px;
     bottom: 20px;
     width: 370px;
 }
