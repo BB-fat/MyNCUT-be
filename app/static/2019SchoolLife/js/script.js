@@ -10,8 +10,8 @@ var distr = true;
 var tspeed=5;
 var size=250;
 
-var mouseX=4;
-var mouseY=7;
+var mouseX=14;
+var mouseY=17;
 
 var howElliptical=1;
 
