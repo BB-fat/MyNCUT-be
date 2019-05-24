@@ -494,8 +494,9 @@
         {
             img: "static/2019SchoolLife/img/share2.png",
             text: [
-                 "从{{data.userid[:2]}}年9月，",
-                "我竟然消费了{{data.sum_consum_money}}元",
+                 "从{{data.userid[:2]}}年9月，我第一次使用校园卡，",
+                "我一共使用了{{data.sum_consum_times}}次，",
+                "共计消费了{{data.sum_consum_money}}元",
                 "光洗澡我就花了{{data.consum_others['动力修缮淋浴转账机'][2]}}元",
                 "我果然是一个精致的{%if data.sex==1%}男{%else%}女{%endif%}生"
             ]
@@ -513,10 +514,11 @@
         {
             img: "static/2019SchoolLife/img/share4.png",
             text: [
-                "我总共登陆多模式{{data.iclass_sum}}次",
-                "是全校第{{data.iclass_school_rank}}名",
-                "我在校园超市总共花了{{data.consum_shop[2]}}元",
-                "我在图书馆借过{{data.book}}本书。"
+                "没至月底总会发现我的校网不够用，",
+                "至今为止，我总共用了{{data.school_net_sum}}G流量。",
+                "考试前我一次又一次地登陆多模式查阅课件，",
+                "我一共登陆了{{data.iclass_sum}}次",
+                "全校排名{{data.iclass_school_rank}}。",
             ]
         },
     ]
