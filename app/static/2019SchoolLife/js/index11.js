@@ -78,7 +78,7 @@ var TextLoader = function (_Component) {
         React.createElement(
           'div',
           { className: 'input-wrapper' },
-          inputType !== 'textarea' ? React.createElement('input', { id:"input",type: inputType, onChange: this.handleType, value: inputValue, placeholder: '说点什么吧' }) : React.createElement('textarea', { type: inputType, onChange: this.handleType, value: inputValue, placeholder: 'write some thing here..' }),
+          inputType !== 'textarea' ? React.createElement('input', { id:"input_msg",type: inputType, onChange: this.handleType, value: inputValue, placeholder: '说点什么吧' }) : React.createElement('textarea', { type: inputType, onChange: this.handleType, value: inputValue, placeholder: 'write some thing here..' }),
           React.createElement('span', { className: 'loader', style: loaderStyles })
         ),
         React.createElement(
