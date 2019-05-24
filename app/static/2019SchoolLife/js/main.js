@@ -114,7 +114,7 @@ function makePic(img_url, text) {
         var ctx = myCanvas.getContext("2d")
         ctx.drawImage(img, 0, 0);
         ctx.font = "38px Arial";
-        ctx.fillText("我是第"+count+"个打开这份记录的人", 170, 195);
+        ctx.fillText("我是第"+count+"个打开这份记录的人", 160, 185);
         ctx.font = "35px Arial";
         var y = 350
         for (var i = 0; i < text.length; i++) {
