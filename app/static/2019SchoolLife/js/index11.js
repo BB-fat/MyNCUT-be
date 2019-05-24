@@ -110,5 +110,5 @@ render(
 // inputType coulde be 'number','email','text' & 'textarea'
 React.createElement(TextLoader, {
   loaderColor: 'orange',
-  limit: '15',
+  limit: '25',
   inputType: 'email' }), document.querySelector('#root'));

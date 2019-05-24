@@ -66,11 +66,12 @@ $(function () {
 });
 
 // 控制提交评论
-var input=document.getElementById("input")
+var input=document.getElementById("root")
 var btn_submit=document.getElementById("btn_submit")
 btn_submit.onclick = function () {
     fly.get("/schoollifemsg", {
-        msg: input.value
+        msg: input.value,
+        userid:userid
     })
         .then(function () {
             alert("留言成功")
