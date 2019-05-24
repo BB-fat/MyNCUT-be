@@ -360,6 +360,5 @@ em {
 
 #btn_submit{
     margin-top: 250px;
-    position: absolute;
-    z-index: 3;
+    z-index: 999;
 }
