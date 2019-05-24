@@ -63,21 +63,22 @@ div.bar-wrap {
   overflow: hidden;
 }
 div.bar-wrap label {
-  font-size: 30px;
+  font-size: 27px;
   color: #8a8a8a;
   text-transform: uppercase;
   margin: 0 0 2px 0;
   display: block;
 }
 div.bar-wrap div.bar {
-  height: 40px;
+  height: 60px;
   width: 0;
   position: relative;
+  margin-bottom: 20px;
 }
 div.bar-wrap div.bar:after {
   content: "￥" attr(data-money);
   display: block;
-  font-size: 22px;
+  font-size: 30px;
   position: absolute;
   /*top: 0;*/
   right: 0;
