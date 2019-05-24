@@ -18,9 +18,9 @@ h1 {
   display: inline-block;
   margin: 10px;
   width: 550px;
-  height: 200px;
 }
 .input-wrapper {
+  height: 200px;
   border-width: 2px;
   border-style: solid;
   border-color: #ced2d3;
