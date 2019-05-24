@@ -66,7 +66,9 @@ window.onload=function ()
 };
 
 window.onloadend=function () {
+
 	active=true
+	console.log(active)
 }
 
 function update()
