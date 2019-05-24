@@ -46,15 +46,15 @@ window.onload=function ()
 		active=true;
 	};
 
-	oDiv.onmouseout=function ()
-	{
-		active=false;
-	};
+	// oDiv.onmouseout=function ()
+	// {
+	// 	active=false;
+	// };
 	
 	oDiv.onmousemove=function (ev)
 	{
 		var oEvent=window.event || ev;
-		
+		active=true
 		mouseX=oEvent.clientX-(oDiv.offsetLeft+oDiv.offsetWidth/2);
 		mouseY=oEvent.clientY-(oDiv.offsetTop+oDiv.offsetHeight/2);
 		
@@ -64,12 +64,6 @@ window.onload=function ()
 	
 	setInterval(update, 40);
 };
-
-window.onloadend=function () {
-
-	active=true
-	console.log(active)
-}
 
 function update()
 {
