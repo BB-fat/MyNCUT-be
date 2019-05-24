@@ -127,10 +127,10 @@ function makePic(img_url, text) {
 }
 
 var btn_share = document.getElementById("btn_change")
-index += 1
 var shareListLength=shareList.length
 makePic(shareList[index % shareListLength].img, shareList[index % shareListLength].text)
+index += 1
 btn_share.onclick = function () {
-    index += 1
     makePic(shareList[index % shareListLength].img, shareList[index % shareListLength].text)
+    index += 1
 }
