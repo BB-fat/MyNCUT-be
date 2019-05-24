@@ -33,10 +33,10 @@ h1 {
 section.data {
   position: relative;
   overflow: hidden;
-  padding: 40 0 10px 0;
+  padding: 40px 0 20px 0;
   margin: 0 0 40px 0;
-  border: 10px solid #c1c1c1;
-  border-radius: 8px;
+  border: 5px solid #c1c1c1;
+  /*border-radius: 2px;*/
 
   /*border-color:#;*/
 }
@@ -63,14 +63,14 @@ div.bar-wrap {
   overflow: hidden;
 }
 div.bar-wrap label {
-  font-size: 35px
+  font-size: 35px;
   color: #8a8a8a;
   text-transform: uppercase;
   margin: 0 0 2px 0;
   display: block;
 }
 div.bar-wrap div.bar {
-  height: 27px;
+  height: 40px;
   width: 0;
   position: relative;
 }
@@ -82,7 +82,7 @@ div.bar-wrap div.bar:after {
   right: 0;
   height: 27px;
   /*left: 0;*/
-  padding-top: 5px;
+  padding-top: 15px;
   padding-right: 10px;
 }
 div.bar-wrap div.bar.blue {
