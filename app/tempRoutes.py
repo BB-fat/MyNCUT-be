@@ -81,3 +81,7 @@ def schoolLifeMsg():
         "img":userInfo['userInfo']['avatar']
     })
     return "success"
+
+@app.route("/wenyi")
+def wenyi():
+    app.DB.SL_count_wenyi()

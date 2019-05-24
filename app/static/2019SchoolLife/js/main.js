@@ -13,12 +13,22 @@ var mySwiper = new Swiper('.swiper-container', {
         },
         // 处理小人跳跃逻辑
         touchStart: function (e) {
-            document.getElementById("person").hidden = true
-            document.getElementById("person-jump").hidden = false
+            if(this.activeIndex<12) {
+                document.getElementById("person").hidden = true
+                document.getElementById("person-jump").hidden = false
+            }else{
+                document.getElementById("person").hidden = true
+                document.getElementById("person-jump").hidden = true
+            }
         },
         transitionEnd: function () {
-            document.getElementById("person").hidden = false
-            document.getElementById("person-jump").hidden = true
+            if(this.activeIndex<12) {
+                document.getElementById("person").hidden = false
+                document.getElementById("person-jump").hidden = true
+            }else{
+                document.getElementById("person").hidden = true
+                document.getElementById("person-jump").hidden = true
+            }
         },
         slideChange: function () {
             move(".page" + this.activeIndex + "-text-div")
@@ -89,6 +99,7 @@ btn_biwan.onclick=function () {
         .end()
     setTimeout(function () {
         window.open("/schoollife")
+        fly.get("/wenyi")
     },500)
 }
 

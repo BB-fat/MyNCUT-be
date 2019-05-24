@@ -230,3 +230,7 @@ class mongoClient ():
         school=self.client.userData.baseData.find({"city":user['city']}).count()
         college=self.client.userData.baseData.find({"city":user['city'],"college":user['college']}).count()
         return (school,college,user['city'])
+
+    def SL_count_wenyi(self):
+        count=self.client.SL2019.count.find_one({"tar":"wenyi"})['count']
+        self.client.SL2019.update_one({"tar":"wenyi"},{"$set":{"count":count+1}})
