@@ -65,6 +65,10 @@ window.onload=function ()
 	setInterval(update, 40);
 };
 
+window.onloadend=function () {
+	active=true
+}
+
 function update()
 {
 	var a;
