@@ -61,7 +61,7 @@ window.onload=function ()
 		mouseY/=5;
 	};
 	
-	setInterval(update, 40);
+	setInterval(update, 30);
 };
 
 function update()
