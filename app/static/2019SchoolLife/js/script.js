@@ -79,7 +79,9 @@ function update()
 	if(active)
 	{
 		a = (-Math.min( Math.max( -mouseY, -size ), size ) / radius ) * tspeed;
+		console.log(a)
 		b = (Math.min( Math.max( -mouseX, -size ), size ) / radius ) * tspeed;
+		console.log(b)
 	}
 	else
 	{
