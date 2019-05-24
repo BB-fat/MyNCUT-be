@@ -66,7 +66,7 @@ $(function () {
 });
 
 // 控制提交评论
-var input=document.getElementById("root")
+var input=document.getElementById("input")
 var btn_submit=document.getElementById("btn_submit")
 btn_submit.onclick = function () {
     fly.get("/schoollifemsg", {
