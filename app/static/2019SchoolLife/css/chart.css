@@ -33,9 +33,9 @@ h1 {
 section.data {
   position: relative;
   overflow: hidden;
-  padding: 40px 0 20px 0;
+  padding: 30px 0 20px 0;
   margin: 0 0 40px 0;
-  border: 5px solid #c1c1c1;
+  border: 10px solid #c1c1c1;
   /*border-radius: 2px;*/
 
   /*border-color:#;*/
@@ -63,7 +63,7 @@ div.bar-wrap {
   overflow: hidden;
 }
 div.bar-wrap label {
-  font-size: 35px;
+  font-size: 30px;
   color: #8a8a8a;
   text-transform: uppercase;
   margin: 0 0 2px 0;
@@ -77,6 +77,7 @@ div.bar-wrap div.bar {
 div.bar-wrap div.bar:after {
   content: "￥" attr(data-money);
   display: block;
+  font-size: 22px;
   position: absolute;
   /*top: 0;*/
   right: 0;
