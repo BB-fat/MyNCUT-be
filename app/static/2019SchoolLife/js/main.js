@@ -13,7 +13,7 @@ var mySwiper = new Swiper('.swiper-container', {
         },
         // 处理小人跳跃逻辑
         touchStart: function (e) {
-            if(this.activeIndex<12) {
+            if(this.activeIndex<11) {
                 document.getElementById("person").hidden = true
                 document.getElementById("person-jump").hidden = false
             }else{
@@ -22,7 +22,7 @@ var mySwiper = new Swiper('.swiper-container', {
             }
         },
         transitionEnd: function () {
-            if(this.activeIndex<12) {
+            if(this.activeIndex<11) {
                 document.getElementById("person").hidden = false
                 document.getElementById("person-jump").hidden = true
             }else{
