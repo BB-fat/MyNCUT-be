@@ -113,11 +113,12 @@ function makePic(img_url, text) {
         myCanvas.height = img.height;
         var ctx = myCanvas.getContext("2d")
         ctx.drawImage(img, 0, 0);
+        ctx.font = "50px Arial";
+        ctx.fillText("我是第"+count+"个打开这份记录的人", 320, 150);
         ctx.font = "35px Arial";
-        ctx.textAlign="center"
-        var y = 150
+        var y = 250
         for (var i = 0; i < text.length; i++) {
-            ctx.fillText(text[i], 320, y);
+            ctx.fillText(text[i], 40, y);
             y += 80
         }
         var url = myCanvas.toDataURL("image/png", 1)
