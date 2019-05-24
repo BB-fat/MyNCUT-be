@@ -308,7 +308,7 @@ em {
 }
 
 .btn-biwan-div{
-    top: 550px;
+    top: 43%;
     height: 100px;
     width: 200px;
     position: absolute;
@@ -359,6 +359,7 @@ em {
 }
 
 #btn_submit{
+    margin-top: 40px;
     width: 300px;
     z-index: 200;
 }
