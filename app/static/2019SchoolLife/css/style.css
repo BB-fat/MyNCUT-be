@@ -1,1 +1,375 @@
-body{display:flex;flex-direction:column;align-items:center;width:100%;margin:0;padding:0}em{font-style:normal;color:red}.swiper-container{width:100%;height:100%}.swiper-slide{display:flex;flex-direction:column;align-items:center}.bgimg{position:absolute;z-index:0;width:100%;height:100%}.stone{position:absolute;z-index:1;right:-80px;bottom:60px;width:510px;height:290px}.page0-count-div{width:60%;height:130px;border:2px solid #000;font-size:40px;text-align:center;line-height:130px}.page0-text-div{opacity:0;display:flex;flex-direction:column;align-items:center}.trip{position:absolute;z-index:2;bottom:50px;height:400px;right:10px}.page0-text-div{font-size:40px;margin-top:200px;height:20%;width:600px;text-align:center;opacity:0}.page1-text-div{font-size:40px;margin-top:200px;height:20%;width:600px;text-align:center;opacity:0}.library{position:absolute;z-index:1;bottom:10%;height:600px;width:1600px}.person{bottom:80px;position:absolute;z-index:100;width:140px;height:280px}#audio_btn{position:absolute;z-index:100;top:30px;right:30px;width:100px;height:100px}.rotate{-webkit-animation:rotating 1.2s linear infinite;-moz-animation:rotating 1.2s linear infinite;-o-animation:rotating 1.2s linear infinite;animation:rotating 1.2s linear infinite}.page3-text-div{font-size:40px;margin-top:200px;height:20%;width:600px;text-align:center;opacity:0}.garden{position:absolute;z-index:2;height:350px;bottom:35px;right:-70px}.dunpin{position:absolute;z-index:2;bottom:71px;height:350px;width:600px;right:-10px}.page2-text-div{font-size:40px;margin-top:200px;height:20%;width:600px;text-align:center;opacity:0}.page4-text-div{font-size:40px;margin-top:200px;height:20%;width:600px;text-align:center;opacity:0;line-height:60px}.page5-text-div{font-size:40px;margin-top:200px;height:20%;width:600px;text-align:center;opacity:0;line-height:60px}.page6-text-div{font-size:40px;margin-top:200px;height:20%;width:600px;text-align:center;opacity:0;line-height:60px}.page8-text-div{font-size:40px;margin-top:200px;height:20%;width:600px;text-align:center;opacity:0;line-height:60px}.computer{position:absolute;z-index:2;bottom:60px;right:0;height:300px}.page7-text-div{font-size:36px;margin-top:200px;height:20%;width:600px;text-align:center;opacity:0}.hanxue{position:absolute;z-index:1;right:-110px;bottom:39px;width:800px;height:600px}.money{position:absolute;z-index:2;height:730px;bottom:60px;right:0}.page9-text-div{margin-top:200px;font-size:36px;margin-top:100px;height:20%;width:600px;text-align:center;opacity:0}.dining{position:absolute;z-index:2;height:300px;bottom:60px;right:0}#net-map{border:13px solid #c1c1c1}.page10-text-div{margin-top:200px;font-size:36px;margin-top:300px;height:20%;width:600px;text-align:center;opacity:0}.water{position:absolute;z-index:2;bottom:20px;left:30px;height:300px}.book{position:absolute;z-index:2;bottom:20px;right:-50px;height:300px}@-webkit-keyframes rotating{from{-webkit-transform:rotate(0)}to{-webkit-transform:rotate(360deg)}}@keyframes rotating{from{transform:rotate(0)}to{transform:rotate(360deg)}}@-moz-keyframes rotating{from{-moz-transform:rotate(0)}to{-moz-transform:rotate(360deg)}}.msg-div{position:absolute;z-index:2}.biwan{width:100%;height:100%;position:absolute;z-index:2}.btn-biwan-div{top:43%;position:absolute;z-index:3}.btn-biwan-div-in{background-color:#e08181;border-radius:80px;display:flex;flex-direction:column;justify-content:center;height:100px;width:200px}.finger{height:150px}.btn-biwan{margin-left:20px;width:80px;height:80px;background-color:#e6b4b4;border-radius:50%}#share-img{z-index:1;width:750px;height:1124px;margin-top:60px;border:10px solid #a8aaab}.page13-div{position:absolute;z-index:1;display:flex;flex-direction:column;align-items:center;bottom:30px;left:70px}.change{width:350px}.cat{position:absolute;z-index:1;right:100px;bottom:20px;width:370px}#btn_submit{position:absolute;width:300px;bottom:200px;z-index:999999}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0
+}
+
+em {
+    font-style: normal;
+    color: red
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.bgimg {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%
+}
+
+.stone {
+    position: absolute;
+    z-index: 1;
+    right: -80px;
+    bottom: 60px;
+    width: 510px;
+    height: 290px
+}
+
+.page0-count-div {
+    width: 60%;
+    height: 130px;
+    border: 2px solid #000;
+    font-size: 40px;
+    text-align: center;
+    line-height: 130px
+}
+
+.page0-text-div {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.trip {
+    position: absolute;
+    z-index: 2;
+    bottom: 50px;
+    height: 400px;
+    right: 10px
+}
+
+.page0-text-div {
+    font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0
+}
+
+.page1-text-div {
+    font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0
+}
+
+.library {
+    position: absolute;
+    z-index: 1;
+    bottom: 10%;
+    height: 600px;
+    width: 1600px
+}
+
+.person {
+    bottom: 80px;
+    position: absolute;
+    z-index: 100;
+    width: 140px;
+    height: 280px
+}
+
+#audio_btn {
+    position: absolute;
+    z-index: 100;
+    top: 30px;
+    right: 30px;
+    width: 100px;
+    height: 100px
+}
+
+.rotate {
+    -webkit-animation: rotating 1.2s linear infinite;
+    -moz-animation: rotating 1.2s linear infinite;
+    -o-animation: rotating 1.2s linear infinite;
+    animation: rotating 1.2s linear infinite
+}
+
+.page3-text-div {
+    font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0
+}
+
+.garden {
+    position: absolute;
+    z-index: 2;
+    height: 350px;
+    bottom: 35px;
+    right: -70px
+}
+
+.dunpin {
+    position: absolute;
+    z-index: 2;
+    bottom: 71px;
+    height: 350px;
+    width: 600px;
+    right: -10px
+}
+
+.page2-text-div {
+    font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0
+}
+
+.page4-text-div {
+    font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0;
+    line-height: 60px
+}
+
+.page5-text-div {
+    font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0;
+    line-height: 60px
+}
+
+.page6-text-div {
+    font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0;
+    line-height: 60px
+}
+
+.page8-text-div {
+    font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0;
+    line-height: 60px
+}
+
+.computer {
+    position: absolute;
+    z-index: 2;
+    bottom: 60px;
+    right: 0;
+    height: 300px
+}
+
+.page7-text-div {
+    font-size: 36px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0
+}
+
+.hanxue {
+    position: absolute;
+    z-index: 1;
+    right: -110px;
+    bottom: 39px;
+    width: 800px;
+    height: 600px
+}
+
+.money {
+    position: absolute;
+    z-index: 2;
+    height: 730px;
+    bottom: 60px;
+    right: 0
+}
+
+.page9-text-div {
+    margin-top: 200px;
+    font-size: 36px;
+    margin-top: 100px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0
+}
+
+.dining {
+    position: absolute;
+    z-index: 2;
+    height: 300px;
+    bottom: 60px;
+    right: 0
+}
+
+#net-map {
+    border: 13px solid #c1c1c1
+}
+
+.page10-text-div {
+    margin-top: 200px;
+    font-size: 36px;
+    margin-top: 300px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0
+}
+
+.water {
+    position: absolute;
+    z-index: 2;
+    bottom: 20px;
+    left: 30px;
+    height: 300px
+}
+
+.book {
+    position: absolute;
+    z-index: 2;
+    bottom: 20px;
+    right: -50px;
+    height: 300px
+}
+
+@-webkit-keyframes rotating {
+    from {
+        -webkit-transform: rotate(0)
+    }
+    to {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@-moz-keyframes rotating {
+    from {
+        -moz-transform: rotate(0)
+    }
+    to {
+        -moz-transform: rotate(360deg)
+    }
+}
+
+.msg-div {
+    position: absolute;
+    z-index: 2
+}
+
+.biwan {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2
+}
+
+.btn-biwan-div {
+    top: 43%;
+    position: absolute;
+    z-index: 3
+}
+
+.btn-biwan-div-in {
+    background-color: #fff;
+    border-radius: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100px;
+    width: 200px
+}
+
+.finger {
+    height: 100px
+}
+
+.btn-biwan {
+    margin-left: 20px;
+    width: 80px;
+    height: 80px;
+    background-color: #e6b4b4;
+    border-radius: 50%
+}
+
+#share-img {
+    z-index: 1;
+    width: 750px;
+    height: 1124px;
+    margin-top: 60px;
+    border: 10px solid #a8aaab
+}
+
+.page13-div {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: 30px;
+    left: 70px
+}
+
+.change {
+    width: 350px
+}
+
+.cat {
+    position: absolute;
+    z-index: 1;
+    right: 100px;
+    bottom: 20px;
+    width: 370px
+}
+
+#btn_submit {
+    position: absolute;
+    width: 300px;
+    bottom: 200px;
+    z-index: 999999
+}
