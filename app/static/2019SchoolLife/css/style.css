@@ -311,6 +311,7 @@ em {
 
 .btn-biwan-div {
     top: 43%;
+    left: 40%;
     position: absolute;
     z-index: 3;
     display: flex;
