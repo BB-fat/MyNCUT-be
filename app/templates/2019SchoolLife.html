@@ -75,11 +75,11 @@
             <div class="page3-text-div">
                  一定是特别的缘分，<br>
                 {%if data.same_name!=0%}
-                <br>学校一共有<em>{{data.same_name}}</em>人与你同名同姓。<br>
+                学校一共有<em>{{data.same_name}}</em>人与你同名同姓。<br>
                 {%else%}
-                <br>你是全校唯一一个叫做<em>{{data.name}}</em>的人。<br>
+                你是全校唯一一个叫做<em>{{data.name}}</em>的人。<br>
                 {%endif%}
-                学校一共有<em>{{data.same_day_school}}</em>人与你同一天出生。<br>
+                <br>学校一共有<em>{{data.same_day_school}}</em>人与你同一天出生。<br>
                 {%if data.same_day_and_year!=0%}
                 其中有<em>{{data.same_day_and_year}}</em>人与你同年同月同日。<br>
                 {%endif%}
