@@ -254,7 +254,9 @@
 <script src="static/2019SchoolLife/js/index11.js"></script>
 
 <script>
-    document.getElementById("")
+    document.getElementById("input_msg").attachEvent("onporpertychange",function (e) {
+        e.preventDefault();
+    })
     document.addEventListener('gesturestart', function (e) {
         e.preventDefault();
     });
