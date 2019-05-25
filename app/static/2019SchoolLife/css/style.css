@@ -312,7 +312,10 @@ em {
 .btn-biwan-div {
     top: 43%;
     position: absolute;
-    z-index: 3
+    z-index: 3;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .btn-biwan-div-in {
