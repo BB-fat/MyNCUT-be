@@ -115,11 +115,12 @@ em {
 }
 
 .page3-text-div {
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0;
 }
 
 .garden {
