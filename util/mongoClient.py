@@ -234,3 +234,6 @@ class mongoClient ():
     def SL_count_wenyi(self):
         count=self.client.SL2019.count.find_one({"tar":"wenyi"})['count']
         self.client.SL2019.update_one({"tar":"wenyi"},{"$set":{"count":count+1}})
+
+    def SL_wenyi_url(self):
+        return self.client.SL2019.count.find_one({"tar":"url"})['url']
