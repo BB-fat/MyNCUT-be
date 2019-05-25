@@ -96,8 +96,14 @@
             <div class="page4-text-div">
                 你为一次考试翻遍图书馆，<br>
                 为一篇论文与群书鏖战。<br>
+                {%if data.book!=0%}
                 <br>你在图书馆里借过<em>{{data.book}}</em>次书，<br>
                 <p>与书为友，以书为伴，你丝毫不觉得孤单。</p>
+                {%else%}
+                但你未曾在图书馆借阅过。<br>
+                为何不找一个宁静的午后走进图书馆<br>
+                借一本心仪的书感受指尖在纸上拂过的愉悦。<br><br>
+                {%endif%}
                 你一共登陆了<em>{{data.iclass_sum}}次</em>多模式教学网<br>
                 全校排名<em>{{data.iclass_school_rank}}</em>
             </div>
