@@ -201,34 +201,22 @@
         </div>
         <!--        第十二页-->
         <div class="swiper-slide">
-            <img class="biwan" src="static/2019SchoolLife/img/biwan.jpeg">
-            <div class="btn-biwan-div">
-                <img class="finger" src="static/2019SchoolLife/img/finger.gif">
-                <div class="btn-biwan-div-in">
-                    <div id="btn-biwan" class="btn-biwan"></div>
-                </div>
+            <img class="bgimg" src="static/2019SchoolLife/img/background.png">
+            <div id="tagbox">
+                {% for i in data.msgs %}
+                <a class="group">
+                    <img src="{{i.img}}" class="img"></img>
+                    {{i.msg}}
+                </a>
+                {% endfor %}
             </div>
-        </div>
-        <!--        第十三页-->
-        <div class="swiper-slide">
-            <div class="swiper-slide">
-                <img class="bgimg" src="static/2019SchoolLife/img/background.png">
-                <div id="tagbox">
-                    {% for i in data.msgs %}
-                    <a class="group">
-                        <img src="{{i.img}}" class="img"></img>
-                        {{i.msg}}
-                    </a>
-                    {% endfor %}
-                </div>
-                <div class="container" style="margin-top: 250px;">
-                    <div id="root"></div>
-                    <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
-                </div>
-                <img id="btn_submit" src="static/2019SchoolLife/img/send.png"/>
+            <div class="container" style="margin-top: 250px;">
+                <div id="root"></div>
+                <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
             </div>
+            <img id="btn_submit" src="static/2019SchoolLife/img/send.png"/>
         </div>
-<!--        第十四页-->
+                <!--        第十三页-->
         <div class="swiper-slide">
             <img class="bgimg" src="static/2019SchoolLife/img/bgShare.png">
             <img id="share-img">
@@ -238,7 +226,16 @@
             </div>
             <img class="cat" src="static/2019SchoolLife/img/cat.png">
         </div>
-
+        <!--        第十四页-->
+        <div class="swiper-slide">
+            <img class="biwan" src="static/2019SchoolLife/img/biwan.jpeg">
+            <div class="btn-biwan-div">
+                <img class="finger" src="static/2019SchoolLife/img/finger.gif">
+                <div class="btn-biwan-div-in">
+                    <div id="btn-biwan" class="btn-biwan"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
