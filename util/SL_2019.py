@@ -213,10 +213,10 @@ def library(userid):
     }
     res=requests.get(base_url,params=data).text
     tree=etree.HTML(res)
-    book=tree.xpath("//*[@name='最大借阅册数']/text()")[0]
+    book=tree.xpath("//*[@name='累计借阅册数']/text()")[0]
     return book
 
 if __name__=="__main__":
-    A=SchoolLife("17152010921")
-    print(json.dumps(A.getData()))
-    # print(library("17152010921"))
+    # A=SchoolLife("17152010921")
+    # print(json.dumps(A.getData()))
+    print(library("18152010602"))
