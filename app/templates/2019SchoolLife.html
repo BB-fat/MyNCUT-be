@@ -15,13 +15,13 @@
 <img id="audio_btn" class="rotate" src="static/2019SchoolLife/img/play.png">
 
 <audio loop src="static/2019SchoolLife/mp3/mp3.mp3" id="media" autoplay=""></audio>
-{% if data.userid[:2]=="15" and data.sex==0 %}
+{% if data.userid[:2]=="15" and data.sex==2 %}
 <img id="person" class="person" src="static/2019SchoolLife/img/girl_b_w.png">
 <img hidden="true" id="person-jump" class="person" src="static/2019SchoolLife/img/girljump_b_w.gif">
 {% elif data.userid[:2]=="15" and data.sex==1 %}
 <img id="person" class="person" src="static/2019SchoolLife/img/boy_b_g.png">
 <img hidden="true" id="person-jump" class="person" src="static/2019SchoolLife/img/boyjump_b_l.gif">
-{% elif data.sex==0 %}
+{% elif data.sex==2 %}
 <img id="person" class="person" src="static/2019SchoolLife/img/girl.png">
 <img hidden="true" id="person-jump" class="person" src="static/2019SchoolLife/img/girljumpbig.gif">
 {% else %}
