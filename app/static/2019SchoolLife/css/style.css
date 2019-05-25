@@ -65,7 +65,7 @@ em {
     right: 10px;
 }
 
-.page1-text-div {
+.page0-text-div{
     font-size: 40px;
     margin-top: 200px;
     height: 20%;
@@ -74,9 +74,13 @@ em {
     opacity: 0;
 }
 
-.text {
-    margin-top: 30px;
+.page1-text-div {
     font-size: 40px;
+    margin-top: 200px;
+    height: 20%;
+    width: 600px;
+    text-align: center;
+    opacity: 0;
 }
 
 .library {
