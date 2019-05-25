@@ -85,3 +85,4 @@ def schoolLifeMsg():
 @app.route("/wenyi")
 def wenyi():
     app.DB.SL_count_wenyi()
+    return 'success'
