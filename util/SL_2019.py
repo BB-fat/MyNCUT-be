@@ -159,8 +159,21 @@ class SchoolLife():
             sum+=item[1]
         tmp=[]
         i=0
-        while i<len(res):
-            tmp.append((res[i][1]+res[i+1][1])/sum*10000)
+        while i<24:
+            h_tmp=False
+            h_tmpp=False
+            for item in res:
+                if "%02d"%i==item[0]:
+                    tmp_item=item
+                    h_tmp=True
+                if "%02d"%(i+1)==item[0]:
+                    tmp_itemp=item
+                    h_tmpp=True
+            if not h_tmp:
+                tmp_item=["%02d"%i,0]
+            if not h_tmpp:
+                tmp_itemp=["%02d"%(i+1),0]
+            tmp.append((tmp_item[1]+tmp_itemp[1])/sum*10000)
             i+=2
         return {
             'school_net_day':tmp
