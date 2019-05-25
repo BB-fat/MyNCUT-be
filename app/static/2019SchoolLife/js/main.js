@@ -1,1 +1,136 @@
-var mySwiper=new Swiper(".swiper-container",{direction:"vertical",loop:false,speed:1200,on:{init:function(){move(".page0-text-div").set("opacity","1").duration("5s").end()},touchStart:function(a){if(this.activeIndex<11){document.getElementById("person").hidden=true;document.getElementById("person-jump").hidden=false}else{document.getElementById("person").hidden=true;document.getElementById("person-jump").hidden=true}},transitionEnd:function(){if(this.activeIndex<11){document.getElementById("person").hidden=false;document.getElementById("person-jump").hidden=true}else{document.getElementById("person").hidden=true;document.getElementById("person-jump").hidden=true}},slideChange:function(){move(".page"+this.activeIndex+"-text-div").set("opacity","1").duration("5s").end();if(this.activeIndex==6){chart.restart()}else{if(this.activeIndex==9){$(".bar").each(function(a,b){drawBar(b)})}}},}});var $audio=$("#media")[0];wx.config({debug:false,appId:"",timestamp:(new Date()).getTime(),nonceStr:"",signature:"",jsApiList:["checkJsApi"]});wx.ready(function(){$audio.play()});var x=document.getElementById("media");$(function(){$("#audio_btn").click(function(){$(this).toggleClass("rotate");if($(this).hasClass("rotate")){x.play()}else{x.pause()}})});var input=document.getElementById("input_msg");var btn_submit=document.getElementById("btn_submit");btn_submit.onclick=function(){fly.get("/schoollifemsg",{msg:input.value,userid:userid}).then(function(){alert("留言成功");input.disabled=true;btn_submit.hidden=true})};var btn_biwan=document.getElementById("btn-biwan");btn_biwan.onclick=function(){move("#btn-biwan").set("margin-left","100px").duration("0.5s").end();setTimeout(function(){window.open("/schoollife");fly.get("/wenyi")},500)};function makePic(b,c){var a=new Image();a.src=b;a.onload=function(){var g=document.createElement("canvas");g.width=a.width;g.height=a.height;var d=g.getContext("2d");d.drawImage(a,0,0);d.font="38px Arial";d.fillText("我是第"+count+"个打开这份记录的人",155,185);d.font="35px Arial";var h=350;for(var f=0;f<c.length;f++){d.fillText(c[f],60,h);h+=80}var e=g.toDataURL("image/png",1);document.getElementById("share-img").src=e}}var btn_share=document.getElementById("btn_change");var shareListLength=shareList.length;makePic(shareList[index%shareListLength].img,shareList[index%shareListLength].text);index+=1;btn_share.onclick=function(){makePic(shareList[index%shareListLength].img,shareList[index%shareListLength].text);index+=1};
+// 翻页控制逻辑
+var mySwiper = new Swiper('.swiper-container', {
+    direction: 'vertical', // 垂直切换选项
+    loop: false, // 循环模式选项
+    speed: 1200,
+    on: {
+        // 首页文字动画
+        init: function () {
+            move(".page0-text-div")
+                .set('opacity', '1')
+                .duration("5s")
+                .end()
+        },
+        // 处理小人跳跃逻辑
+        touchStart: function (e) {
+            if(this.activeIndex<11) {
+                document.getElementById("person").hidden = true
+                document.getElementById("person-jump").hidden = false
+            }else{
+                document.getElementById("person").hidden = true
+                document.getElementById("person-jump").hidden = true
+            }
+        },
+        transitionEnd: function () {
+            if(this.activeIndex<11) {
+                document.getElementById("person").hidden = false
+                document.getElementById("person-jump").hidden = true
+            }else{
+                document.getElementById("person").hidden = true
+                document.getElementById("person-jump").hidden = true
+            }
+        },
+        slideChange: function () {
+            move(".page" + this.activeIndex + "-text-div")
+                .set('opacity', '1')
+                .duration("5s")
+                .end()
+            if (this.activeIndex == 6) {
+                chart.restart();
+            } else if (this.activeIndex == 9) {
+                $('.bar').each(function (i, elem) {
+                    drawBar(elem);
+                });
+            }
+        },
+    }
+})
+
+
+// 控制声音播放部分
+var $audio = $('#media')[0];
+wx.config({
+    debug: false, // 这里为false
+    appId: '', // 以下随意填写即可
+    timestamp: (new Date()).getTime(),
+    nonceStr: '',
+    signature: '',
+    jsApiList: ['checkJsApi']
+});
+wx.ready(function () {
+    $audio.play();
+});
+var x = document.getElementById("media");
+$(function () {
+
+    $("#audio_btn").click(function () {
+        $(this).toggleClass("rotate"); //控制音乐图标 自转或暂停
+
+        //控制背景音乐 播放或暂停
+        if ($(this).hasClass("rotate")) {
+            x.play();
+        } else {
+            x.pause();
+        }
+    })
+});
+
+// 控制提交评论
+var input=document.getElementById("input_msg")
+var btn_submit=document.getElementById("btn_submit")
+btn_submit.onclick = function () {
+    fly.get("/schoollifemsg", {
+        msg: input.value,
+        userid:userid
+    })
+        .then(function () {
+            alert("留言成功")
+            input.disabled=true
+            btn_submit.hidden=true
+        })
+}
+
+// 毕晚按钮
+var btn_biwan=document.getElementById("btn-biwan")
+btn_biwan.onclick=function () {
+    move("#btn-biwan")
+        .set("margin-left","100px")
+        .duration("0.5s")
+        .end()
+    setTimeout(function () {
+        window.open("/schoollife")
+        fly.get("/wenyi")
+    },500)
+}
+
+// 控制渲染分享海报
+function makePic(img_url, text) {
+    var img = new Image()
+    img.src = img_url;
+    img.onload = function () {
+        var myCanvas = document.createElement("canvas")
+        myCanvas.width = img.width;
+        myCanvas.height = img.height;
+        var ctx = myCanvas.getContext("2d")
+        ctx.drawImage(img, 0, 0);
+        ctx.font = "38px Arial";
+        ctx.fillText("我是第"+count+"个打开这份记录的人", 155, 185);
+        ctx.font = "35px Arial";
+        var y = 350
+        for (var i = 0; i < text.length; i++) {
+            ctx.fillText(text[i], 60, y);
+            y += 80
+        }
+        var url = myCanvas.toDataURL("image/png", 1)
+        document.getElementById("share-img").src = url
+    }
+}
+
+var btn_share = document.getElementById("btn_change")
+var shareListLength=shareList.length
+makePic(shareList[index % shareListLength].img, shareList[index % shareListLength].text)
+index += 1
+btn_share.onclick = function () {
+    makePic(shareList[index % shareListLength].img, shareList[index % shareListLength].text)
+    index += 1
+}
