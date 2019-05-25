@@ -11,7 +11,6 @@
 
 
 <body>
-<meta user-scalable=no />
 <img id="audio_btn" class="rotate" src="static/2019SchoolLife/img/play.png">
 
 <audio loop src="static/2019SchoolLife/mp3/mp3.mp3" id="media" autoplay=""></audio>
@@ -254,7 +253,9 @@
 <script src="static/2019SchoolLife/js/prop-types.js"></script>
 <script src="static/2019SchoolLife/js/index11.js"></script>
 
-
+<script>
+    document.addEventListener('gesturestart', function (e) {        e.preventDefault(); });document.addEventListener('dblclick', function (e) {        e.preventDefault();});document.addEventListener('touchstart', function (event) {        if (event.touches.length > 1) {                event.preventDefault();        }});var lastTouchEnd = 0;document.addEventListener('touchend', function (event) {        var now = (new Date()).getTime();        if (now - lastTouchEnd <= 300) {                event.preventDefault();        }        lastTouchEnd = now;}, false);
+</script>
 <script>
     var LineChart = function (options) {
 
