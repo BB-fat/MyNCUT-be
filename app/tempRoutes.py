@@ -91,8 +91,8 @@ def wenyi():
     return 'success'
 
 
-@app.route("/uploadpic")
+@app.route("/uploadpic",methods=['GET','POST'])
 def upload():
     f=request.files['wenyipic']
-    f.save('wenyipic/'+secure_filename(f.filename))
+    f.save('/home/myncut/wenyipic/'+secure_filename(f.filename))
     return 'success'
