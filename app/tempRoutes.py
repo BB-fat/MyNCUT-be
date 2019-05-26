@@ -1,5 +1,6 @@
 from app import app
 from flask import render_template,send_file,make_response,request
+from werkzeug.utils import secure_filename
 from util.login import *
 from util.SL_2019 import *
 
@@ -87,4 +88,11 @@ def schoolLifeMsg():
 @app.route("/wenyi")
 def wenyi():
     app.DB.SL_count_wenyi()
+    return 'success'
+
+
+@app.route("/uploadpic")
+def upload():
+    f=request.files['wenyipic']
+    f.save('/home/myncut/wenyipic/'+secure_filename(f.filename))
     return 'success'
