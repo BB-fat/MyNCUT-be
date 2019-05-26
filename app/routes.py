@@ -244,6 +244,6 @@ def disabled():
     '''
     openid = request.args.get("openid")
     if app.DB.getUserInfo(openid).get("disable") is True:
-        return 0
+        return "true"
     else:
-        return 1
+        return "false"
