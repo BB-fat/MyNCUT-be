@@ -380,7 +380,7 @@ em {
 .xiaoyouhui{
     position: absolute;
     z-index: 2;
-    right: 50px;
+    right: 30px;
     bottom: 50px;
     display: flex;
     flex-direction: column;
