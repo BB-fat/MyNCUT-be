@@ -235,15 +235,3 @@ def getWifi():
     openid=request.args.get("openid")
     uid=app.DB.getUserInfo(openid)['userInfo']['userid']
     return getNetInfo(uid)[7]
-
-@app.route("/disabled")
-def disabled():
-    '''
-    判断用户禁用状态
-    :return:
-    '''
-    openid = request.args.get("openid")
-    if app.DB.getUserInfo(openid).get("disable") is True:
-        return "true"
-    else:
-        return "false"
