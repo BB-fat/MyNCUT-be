@@ -373,8 +373,6 @@ em {
 
 #btn_submit {
     position: absolute;
-    width: 300px;
-    bottom: 200px;
     z-index: 999999
 }
 
