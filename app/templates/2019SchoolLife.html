@@ -198,7 +198,11 @@
             <img class="book" src="static/2019SchoolLife/img/book.png">
             <div class="page10-text-div">
                 和朋友们嘻嘻哈哈结伴洗澡的样子依然定格，<br/>
-                <br>你一共花费<em>{{data.consum_others['动力修缮淋浴转账机'][2]}}¥</em>洗澡，<br/>
+                {%if data.consum_bath[2]!=0%}
+                <br>你一共花费<em>{{data.consum_bath[2]}}¥</em>洗澡，<br/>
+                {%else%}
+                <br>但是你没有在学校洗过澡。
+                {%endif%}
                 泡沫吹出的光影中，有你我共同的回忆。<br/>
                 <br>你为大创小创绞尽脑汁，<br/>
                 你为期末考试熬秃头发，<br/>

@@ -100,6 +100,7 @@ class SchoolLife():
         guojiao_list=[]
         dining_hall=[]
         shops=[]
+        bath=[0,0,0]
         for item in res:
             if "食堂" in item[0] or "欣荣居" in item[0]:
                 dining_hall.append(item)
@@ -107,6 +108,8 @@ class SchoolLife():
                 guojiao_list.append(item)
             elif "超市" in item[0] or "小卖部" in item[0]:
                 shops.append(item)
+            elif "动力修缮淋浴转账机" in item[0]:
+                bath=item
             else:
                 map[item[0]]=item
         shop_all=["校园超市",0,0]
@@ -130,7 +133,8 @@ class SchoolLife():
             'consum_dining_hall':dining_hall[:4],
             'consum_shop':shop_all,
             'consum_others':map,
-            'consum_dining_hall_sum':"%.2f"%sum
+            'consum_dining_hall_sum':"%.2f"%sum,
+            'consum_bath':bath
         }
 
     def __school_net_sum(self):
