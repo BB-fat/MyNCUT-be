@@ -509,8 +509,12 @@
                  "从{{data.userid[:2]}}年9月，我第一次使用校园卡，",
                 "我一共使用了{{data.sum_consum_times}}次，",
                 "共计消费了{{data.sum_consum_money}}元",
-                "光洗澡我就花了{{data.consum_others['动力修缮淋浴转账机'][2]}}元",
-                "我果然是一个精致的{%if data.sex==1%}男{%else%}女{%endif%}生"
+                {%if data.consum_bath[2]!=0%}
+                "光洗澡我就花了{{data.data.consum_bath[2]}}元",
+                "我果然是一个精致的{%if data.sex==1%}男{%else%}女{%endif%}生",
+                {%else%}
+                "我没有在学校洗过澡",
+                {%endif%}
             ]
         },
         {
