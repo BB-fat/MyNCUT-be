@@ -127,15 +127,7 @@ class mongoClient ():
         :param feedback:
         :return:
         """
-        state=feedback["type"]
-        feedback.pop("type")
-        feedback["read"]=False
-        if state=='0':
-            self.client.feedback["bug"].insert_one(feedback)
-        elif state == '1':
-            self.client.feedback["update"].insert_one(feedback)
-        elif state == '2':
-            self.client.feedback["other"].insert_one(feedback)
+        self.client.feedback["msg"].insert_one(feedback)
 
     def newFile(self,id,courseware):
         """

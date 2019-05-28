@@ -1,14 +1,17 @@
+from setting import *
 from app import app
 from flask import render_template,send_file,make_response,request
+
 from util.login import *
 from util.mongoClient import *
-import json
-import uuid
-
 from util.download import *
 from util.parseurl import parseUrl
-from setting import *
 from util.schoolNet import *
+from util.sendFeedback import *
+
+
+import json
+import uuid
 
 from app.tempRoutes import *
 
@@ -187,12 +190,13 @@ def submitFeedback():
     提交反馈
     """
     data = {
-        'type' : request.args.get('type'),
         'openid' :request.args.get('openid'),
         'time' :request.args.get('time'),
         'text':request.args.get('text')
     }
     app.DB.saveFeedback(data)
+    userid=app.DB.getUserInfo(openid=data['openid'])['userid']
+    sendFeedback(data,userid)
     return "success"
 
 @app.route('/reqdownload')

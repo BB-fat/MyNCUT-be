@@ -20,6 +20,12 @@ wxAPPSECRET="dbd5ecc6424d1ce668c93e7f98120c53"
 
 VALIDTIME=300
 
+EMAIL_SERVER='smtp.qq.com'
+EMAIL_PORT=587
+EMAIL_USERNAME='1056871944@qq.com'
+EMAIL_PASSWD='snjpnnztwsnxbbbf'
+EMAIL_SEND_ADDRESS='1056871944@qq.com'
+
 FILE_TYPES = {
     'pdf': 'application/pdf',
     'ppt': 'application/x-ppt',
