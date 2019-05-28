@@ -179,6 +179,11 @@ class mongoClient ():
             }
         )
 
+    def ST_open_document(self):
+        count=self.client.statistics.amount.find_one({"item":"open_document"})['count']
+        self.client.statistics.amount.update_one({"item":"open_document"},{"$set":{"count":count+1}})
+
+    # 以下是点滴校园用函数
     def SL_countPlus(self,userid):
         '''
         返回点滴校园计数信息
