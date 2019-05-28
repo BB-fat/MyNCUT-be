@@ -24,7 +24,7 @@ EMAIL_SERVER='smtp.qq.com'
 EMAIL_PORT='465'
 EMAIL_USERNAME='1056871944@qq.com'
 EMAIL_PASSWD='snjpnnztwsnxbbbf'
-EMAIL_SEND_ADDRESS='1056871944@qq.com'
+EMAIL_TO_ADDRESS='1056871944@qq.com'
 
 FILE_TYPES = {
     'pdf': 'application/pdf',
