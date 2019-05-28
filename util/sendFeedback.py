@@ -16,7 +16,6 @@ def sendFeedback(feedback,userid):
     text_plain = MIMEText(text,'plain', 'utf-8')
     msg=MIMEMultipart("mixed")
     msg.attach(text_plain)
-    smtp = smtplib.SMTP()
-    smtp.connect(EMAIL_SERVER,EMAIL_PORT)
+    smtp = smtplib.SMTP_SSL(EMAIL_SERVER,EMAIL_PORT)
     smtp.login(EMAIL_USERNAME,EMAIL_PASSWD)
     smtp.send_message(EMAIL_USERNAME,EMAIL_SEND_ADDRESS,msg.as_string())
