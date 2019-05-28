@@ -18,5 +18,5 @@ def sendFeedback(feedback,userid):
     msg['Subject']="我的北方反馈"
     smtp = smtplib.SMTP_SSL(EMAIL_SERVER,EMAIL_PORT)
     smtp.login(EMAIL_USERNAME,EMAIL_PASSWD)
-    smtp.sendmail(EMAIL_USERNAME,[EMAIL_TO_ADDRESS],msg.as_string())
+    smtp.sendmail(EMAIL_USERNAME,EMAIL_TO_ADDRESS,msg.as_string())
     smtp.quit()
