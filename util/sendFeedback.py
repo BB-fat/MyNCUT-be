@@ -15,7 +15,6 @@ def sendFeedback(feedback,userid):
     '''%(userid,feedback['time'],feedback['text'])
     text_plain = MIMEText(text,'plain', 'utf-8')
     msg=MIMEText(text,'plain','utf-8')
-    msg["From"] = "我的北方"
     msg['Subject']="我的北方反馈"
     smtp = smtplib.SMTP_SSL(EMAIL_SERVER,EMAIL_PORT)
     smtp.login(EMAIL_USERNAME,EMAIL_PASSWD)
