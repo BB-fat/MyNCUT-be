@@ -6,7 +6,7 @@ from setting import *
 def sendFeedback(feedback,userid):
     text = '''
     Subject:我的北方反馈
-    新的反馈!
+    
     学号：
     %s
     时间：
