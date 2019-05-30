@@ -119,6 +119,7 @@ def answerFeedback():
     o= data['openid']
     rd=data['reqData']
     res=answerFeedback(f, o, t, rd)
+    app.DB.answerFeedback(data['formId'])
     if res:
         return "success"
     else:

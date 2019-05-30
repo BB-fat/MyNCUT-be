@@ -137,6 +137,9 @@ class mongoClient ():
             res.append(item)
         return res
 
+    def answerFeedback(self,formId):
+        self.client.feedback["msg"].update_one({"formId":formId},{"$set":{"answered":True}})
+
     def newFile(self,id,courseware):
         """
         :param id:
