@@ -129,6 +129,14 @@ class mongoClient ():
         """
         self.client.feedback["msg"].insert_one(feedback)
 
+    def getFeedback(self):
+        fb=self.client.feedback["msg"].find({'answered':False})
+        res=[]
+        for item in fb:
+            item.pop("_id")
+            res.append(item)
+        return item
+
     def newFile(self,id,courseware):
         """
         :param id:

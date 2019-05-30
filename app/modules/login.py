@@ -4,6 +4,17 @@ import json
 from setting import *
 
 
+def getWxAccess_token():
+    url='https://api.weixin.qq.com/cgi-bin/token'
+    data={
+        'grant_type':'client_credential',
+        'appid':wxAPPID,
+        'secret':wxAPPSECRET
+    }
+    res=requests.get(url,params=data).text
+    return json.loads(res)['access_token']
+
+
 def getOpenid(code):
     '''
     传入小程序临时登陆凭证code.
@@ -22,7 +33,11 @@ def getOpenid(code):
 
 
 
-def getAccess_token():
+def getYxAccess_token():
+    '''
+    获取云校access_token
+    :return:
+    '''
     data={
         'appid':yxAPPID,
         'appsecret':yxAPPSECRET
@@ -50,7 +65,6 @@ def getUserInfo(code,access_token):
     userInfo['avatar'] = tempInfo['d']['avatar']
     userInfo['userid'] = tempInfo['d']['userid']
     userInfo['name']=tempInfo['d']['name']
-    # userInfo['degree']= tempInfo['d']['department']['identity']
     try:
         for value in tempInfo['d']['department']['rolename'].values():
             userInfo['class']=value

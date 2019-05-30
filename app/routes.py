@@ -1,7 +1,7 @@
 from app.modules.download import *
 from app.modules.parseurl import parseUrl
 from app.modules.schoolNet import *
-from app.modules.sendFeedback import *
+from app.modules.feedback import *
 
 from flask import make_response
 
@@ -14,7 +14,7 @@ def auth():
     '''
     身份认证函数
     '''
-    access_token=getAccess_token()
+    access_token=getYxAccess_token()
     openid=request.args.get('state')
     code=request.args.get('code')
     userInfo=getUserInfo(code,access_token)
@@ -188,12 +188,23 @@ def submitFeedback():
     data = {
         'openid' :request.args.get('openid'),
         'time' :request.args.get('time'),
-        'text':request.args.get('text')
+        'text':request.args.get('text'),
+        "answered":False
     }
-    app.DB.saveFeedback(data)
     userid=app.DB.getUserInfo(openid=data['openid'])['userid']
+    data['userid']=userid
+    app.DB.saveFeedback(data)
     sendFeedback(data,userid)
     return "success"
+
+@app.route("/getfeedback")
+def getFeedback():
+    '''
+    后台临时接口
+    :return:
+    '''
+    return json.dumps(app.DB.getFeedback())
+
 
 @app.route('/reqdownload')
 def reqDownload():
