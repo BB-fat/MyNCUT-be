@@ -21,7 +21,7 @@ def sendFeedback(feedback,userid):
     smtp.sendmail(EMAIL_USERNAME,EMAIL_TO_ADDRESS,msg.as_string())
     smtp.quit()
 
-def answerFeedback(formId,openid,templateId,resData,page="index"):
+def answerFeedback(formId,openid,templateId,resData,page="/pages/index/index"):
     '''
     给用户发送反馈信息
     '''
@@ -42,7 +42,7 @@ def answerFeedback(formId,openid,templateId,resData,page="index"):
 
 if __name__=="__main__":
     t='RJWstvx1LBRKumv-CgwK6Y9WGAoR-pOTjDB1BACRuCk'
-    f='85c5dffe8d7b4222bdd8bb8b99ce217d'
+    f='838b47d7491c4e3cb145e5441aed5202'
     o='o1Glo5BZgdDoVqkuXgKzSw_r4T_M'
     rd={
         'keyword1':{

@@ -96,3 +96,30 @@ def upload():
     f=request.files['wenyipic']
     f.save('/home/myncut/wenyipic/'+secure_filename(f.filename))
     return 'success'
+
+@app.route("/getfeedback")
+def getFeedback():
+    '''
+    后台临时接口
+    获取未回复的反馈列表
+    :return:
+    '''
+    return json.dumps(app.DB.getFeedback())
+
+@app.route("/answerfeedback",methods=['POST'])
+def answerFeedback():
+    '''
+    后台临时接口
+    回复反馈内容
+    :return:
+    '''
+    data=request.form
+    t='RJWstvx1LBRKumv-CgwK6Y9WGAoR-pOTjDB1BACRuCk'
+    f= data['formId']
+    o= data['openid']
+    rd=data['reqData']
+    res=answerFeedback(f, o, t, rd)
+    if res:
+        return "success"
+    else:
+        return "fail"

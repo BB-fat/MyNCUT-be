@@ -198,15 +198,6 @@ def submitFeedback():
     sendFeedback(data,userid)
     return "success"
 
-@app.route("/getfeedback")
-def getFeedback():
-    '''
-    后台临时接口
-    :return:
-    '''
-    return json.dumps(app.DB.getFeedback())
-
-
 @app.route('/reqdownload')
 def reqDownload():
     """
