@@ -1,8 +1,8 @@
 from app import app
-from flask import render_template,send_file,make_response,request
+from flask import render_template,send_file, request
 from werkzeug.utils import secure_filename
-from util.login import *
-from util.SL_2019 import *
+from app.modules.login import *
+from app.modules.SL_2019 import *
 
 @app.route('/kSyoZqkJwk.txt')
 def wxAuth():

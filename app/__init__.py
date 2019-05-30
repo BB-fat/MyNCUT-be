@@ -1,5 +1,5 @@
 from flask import Flask
-from util.mongoClient import *
+from app.modules.mongoClient import *
 
 class myApp(Flask):
     def __init__(self,name,debug):

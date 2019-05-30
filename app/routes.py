@@ -1,16 +1,8 @@
-from setting import *
-from app import app
-from flask import render_template,send_file,make_response,request
+from app.modules.download import *
+from app.modules.parseurl import parseUrl
+from app.modules.schoolNet import *
+from app.modules.sendFeedback import *
 
-from util.login import *
-from util.mongoClient import *
-from util.download import *
-from util.parseurl import parseUrl
-from util.schoolNet import *
-from util.sendFeedback import *
-
-
-import json
 import uuid
 
 from app.tempRoutes import *
