@@ -135,7 +135,7 @@ class mongoClient ():
         for item in fb:
             item.pop("_id")
             res.append(item)
-        return item
+        return res
 
     def newFile(self,id,courseware):
         """

@@ -189,6 +189,7 @@ def submitFeedback():
         'openid' :request.args.get('openid'),
         'time' :request.args.get('time'),
         'text':request.args.get('text'),
+        'formId':request.args.get('formid'),
         "answered":False
     }
     userid=app.DB.getUserInfo(openid=data['openid'])['userid']
