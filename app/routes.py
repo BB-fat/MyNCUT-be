@@ -3,6 +3,8 @@ from app.modules.parseurl import parseUrl
 from app.modules.schoolNet import *
 from app.modules.sendFeedback import *
 
+from flask import make_response
+
 import uuid
 
 from app.tempRoutes import *
