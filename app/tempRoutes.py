@@ -3,6 +3,7 @@ from flask import render_template,send_file, request
 from werkzeug.utils import secure_filename
 from app.modules.login import *
 from app.modules.SL_2019 import *
+import app.modules.feedback as fb
 
 @app.route('/kSyoZqkJwk.txt')
 def wxAuth():
@@ -118,7 +119,7 @@ def answerFeedback():
     f= data['formId']
     o= data['openid']
     rd=data['reqData']
-    res=answerFeedback(f, o, t, rd)
+    res=fb.answerFeedback(f, o, t, rd)
     app.DB.answerFeedback(data['formId'])
     if res:
         return "success"
