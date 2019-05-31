@@ -33,6 +33,7 @@ def answerFeedback(formId:str,openid:str,templateId:str,resData:dict,page="/page
         'data':resData,
         'page':page
     }
+    print(data)
     res=requests.post(url+getWxAccess_token(),data=json.dumps(data)).text
     if json.loads(res)['errcode']==0:
         return True
