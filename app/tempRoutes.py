@@ -118,7 +118,7 @@ def answerFeedback():
     t='RJWstvx1LBRKumv-CgwK6Y9WGAoR-pOTjDB1BACRuCk'
     f= data['formId']
     o= data['openid']
-    rd=data['reqData']
+    rd=json.loads(data['reqData'])
     res=fb.answerFeedback(f, o, t, rd)
     app.DB.answerFeedback(data['formId'])
     if res:
