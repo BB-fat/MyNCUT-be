@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>北方工业大学学生会</title>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="/static/css/swiper.min.css">
+
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            background-size: 100% 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .page-div {
+            height: 100%;
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            opacity: 0;
+        }
+
+        .yishuzi {
+            height: 90%;
+        }
+
+        .wenzi {
+            height: 90%
+        }
+
+        .page0 {
+            background-image: url("/static/img/学生会介绍/1学生会/背景.png");
+        }
+
+        .page1 {
+            background-image: url("/static/img/学生会介绍/2主席团/背景.png");
+        }
+
+        .page2 {
+            background-image: url("/static/img/学生会介绍/3综合协调部/背景.png");
+        }
+
+        .page3 {
+            background-image: url("/static/img/学生会介绍/4融媒体中心/背景.png");
+        }
+
+        .page4 {
+            background-image: url("/static/img/学生会介绍/5权益生活中心/背景.png");
+        }
+
+        .page5 {
+            background-image: url("/static/img/学生会介绍/6文体活动中心/背景.png");
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide page0">
+                <div class="page-div div0">
+                    <img class="yishuzi" src="/static/img/学生会介绍/1学生会/艺术字.png" alt="">
+                    <img class="wenzi" src="/static/img/学生会介绍/1学生会/文字+分支图.png" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide page1">
+                <div class="page-div div1">
+                    <img class="wenzi" src="/static/img/学生会介绍/2主席团/文字.png" alt="">
+                    <img class="yishuzi" src="/static/img/学生会介绍/2主席团/艺术字.png" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide page2">
+                <div class="page-div div2">
+                    <img class="yishuzi" src="/static/img/学生会介绍/3综合协调部/艺术字.png" alt="">
+                    <img class="wenzi" src="/static/img/学生会介绍/3综合协调部/文字.png" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide page3">
+                <div class="page-div div3">
+                    <img class="wenzi" src="/static/img/学生会介绍/4融媒体中心/文字.png" alt="">
+                    <img class="yishuzi" src="/static/img/学生会介绍/4融媒体中心/艺术字.png" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide page4">
+                <div class="page-div div4">
+                    <img class="yishuzi" src="/static/img/学生会介绍/5权益生活中心/艺术字.png" alt="">
+                    <img class="wenzi" src="/static/img/学生会介绍/5权益生活中心/文字.png" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide page5">
+                <div class="page-div div5">
+                    <img class="wenzi" src="/static/img/学生会介绍/6文体活动中心/文字.png" alt="">
+                    <img class="yishuzi" src="/static/img/学生会介绍/6文体活动中心/艺术字.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div <!-- Swiper JS -->
+    <script src="/static/js/swiper.min.js"></script>
+    <script src="/static/js/move.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            direction: "vertical",
+            speed: 600,
+            on:{
+                init:function(){
+                    move(".div0")
+                    .set("opacity",1)
+                    .duration('2.5s')
+                    .end()
+                },
+                slideChange:function(){
+                    move(".div"+this.activeIndex)
+                    .set("opacity",1)
+                    .duration('2.5s')
+                    .end()
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
