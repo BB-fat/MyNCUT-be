@@ -1,8 +1,8 @@
 
-DEBUG=False
+DEBUG=True
 
 if DEBUG:
-    DATABASEIP = '10.100.1.222'
+    DATABASEIP = '10.211.55.5'
 else:
     DATABASEIP = '10.102.1.35'
     DB_USER = "myncut"
