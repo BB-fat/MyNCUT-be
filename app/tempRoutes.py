@@ -11,28 +11,6 @@ def wxAuth():
     '''
     return send_file('kSyoZqkJwk.txt')
 
-@app.route("/getauth")
-def getAuth():
-    '''
-    用于给临时后台提供登陆凭证
-    :return:
-    '''
-    return app.DB.getPasswd()
-
-@app.route("/storedata",methods=['POST'])
-def storeData():
-    tempInfo =request.form
-    if tempInfo['type']== 'banner':
-        app.DB.setIndexBanner(tempInfo)
-    else:
-        app.DB.setIndexNotice(tempInfo)
-    return "success"
-
-@app.route("/wenyi")
-def wenyi():
-    app.DB.SL_count_wenyi()
-    return 'success'
-
 @app.route("/getfeedback")
 def getFeedback():
     '''
