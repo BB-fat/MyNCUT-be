@@ -152,8 +152,6 @@ def readCourseware():
     openid = request.args.get('openid')
     courseware = json.loads(request.args.get('courseware'))
     res=downloadCourseware(courseware)
-    # 增加计数
-    app.DB.ST_open_document()
     return make_response(res)
 
 
