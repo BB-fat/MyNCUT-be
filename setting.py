@@ -1,5 +1,5 @@
 
-DEBUG=True
+DEBUG=False
 
 if DEBUG:
     # DATABASEIP = '10.211.55.5'
