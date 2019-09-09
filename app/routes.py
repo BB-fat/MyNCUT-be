@@ -62,7 +62,7 @@ def getCourseList():
         tmpList=course['course_name'].split('：')
         course['course_name']='：'.join(tmpList[:-1])
         course['course_class'] =tmpList[-1]
-    return json.dumps(reversed(courselist))
+    return json.dumps(courselist[::-1])
 
 
 @app.route('/homework')
