@@ -58,7 +58,7 @@ def getCourseList():
          'sno':app.DB.getUserInfo(openid)['userInfo']['userid']
     }
     courselist = json.loads(requests.get('http://v.ncut.edu.cn/course',params=data).text)['data']
-    for course in courselist:
+    for course in reversed(courselist):
         tmpList=course['course_name'].split('：')
         course['course_name']='：'.join(tmpList[:-1])
         course['course_class'] =tmpList[-1]
