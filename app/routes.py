@@ -1,13 +1,11 @@
+from app import app
 from app.modules.download import *
 from app.modules.parseurl import parseUrl
 from app.modules.schoolNet import *
-from app.modules.feedback import *
-
-from flask import make_response
+from app.modules.login import *
+from flask import make_response,request,render_template,send_file
 import time
 import uuid
-
-from app.tempRoutes import *
 
 @app.route('/login/oauth')
 def auth():
@@ -55,7 +53,7 @@ def getCourseList():
     """
     openid=request.args.get('openid')
     data = {
-         'sno':app.DB.getUserInfo(openid)['userInfo']['userid']
+         'sno':app.DB.getUserInfo(openid)['userid']
     }
     courselist = json.loads(requests.get('http://v.ncut.edu.cn/course',params=data).text)['data']
     for course in courselist:
@@ -73,7 +71,7 @@ def getDocument():
     #请求所有的课程信息
     openid = request.args.get('openid')
     data = {
-        'sno':(app.DB.getUserInfo(openid))['userInfo']['userid']
+        'sno':(app.DB.getUserInfo(openid))['userid']
     }
     res = requests.get('http://v.ncut.edu.cn/course', params=data).text
     classlist=json.loads(res)
@@ -114,7 +112,7 @@ def getWareList():
     if res['data']==[]:
         return json.dumps(None)
     wareList=[]
-    favourite=app.DB.getFavorite(openid)['courseware']
+    favourite=app.DB.getFavorite(openid)
     favList=[]
     for item in favourite:
         favList.append(item['url'])
@@ -176,25 +174,7 @@ def getFavorite():
     获取收藏夹
     """
     openid = request.args.get('openid')
-    return json.dumps(app.DB.getCourseware(openid))
-
-@app.route('/feedback')
-def submitFeedback():
-    """
-    提交反馈
-    """
-    data = {
-        'openid' :request.args.get('openid'),
-        'time' :request.args.get('time'),
-        'text':request.args.get('text'),
-        'formId':request.args.get('formId'),
-        "answered":False
-    }
-    userid=app.DB.getUserInfo(openid=data['openid'])['userid']
-    data['userid']=userid
-    app.DB.saveFeedback(data)
-    sendFeedback(data,userid)
-    return "success"
+    return json.dumps(app.DB.getFavorite(openid))
 
 @app.route('/reqdownload')
 def reqDownload():
@@ -234,5 +214,5 @@ def downloadFile():
 @app.route("/wifi")
 def getWifi():
     openid=request.args.get("openid")
-    uid=app.DB.getUserInfo(openid)['userInfo']['userid']
+    uid=app.DB.getUserInfo(openid)['userid']
     return getNetInfo(uid)[7]

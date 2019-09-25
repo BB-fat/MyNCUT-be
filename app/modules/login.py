@@ -58,16 +58,7 @@ def getUserInfo(code,access_token):
     res=requests.get('https://ucpay.ncut.edu.cn/open/user/user/user-by-code',params=data)
     tempInfo=json.loads(res.text)
     userInfo = {}
-    userInfo['uid']=tempInfo['d']['uid']
-    userInfo['email'] = tempInfo['d']['email']
-    userInfo['mobile'] = tempInfo['d']['mobile']
     userInfo['sex'] = tempInfo['d']['sex']
-    userInfo['avatar'] = tempInfo['d']['avatar']
     userInfo['userid'] = tempInfo['d']['userid']
     userInfo['name']=tempInfo['d']['name']
-    try:
-        for value in tempInfo['d']['department']['rolename'].values():
-            userInfo['class']=value
-    except:
-        pass
     return userInfo
