@@ -137,3 +137,27 @@ class mongoClient ():
         """
         f = self.client.myNCUT.File.find_one({"id":id})
         return f
+
+    def createTrade(self,openid,pay_money,order,url):
+        '''
+        在数据库中生成交易订单
+        '''
+        self.client.myNCUT.Trade.insert_one({
+            "openid":openid,
+            "type":order[:2],
+            "time":time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
+            "pay_money":pay_money,
+            "state":1,
+            "order":order,
+            "url":url
+        })
+
+    def getTradeHistory(self,openid,type):
+        '''
+        返回某用户特定类型交易的全部历史数据
+        '''
+        data=[]
+        for i in self.client.myNCUT.Trade.find({"type":type,"openid":openid}):
+            i.pop("_id")
+            data.append(i)
+        return data

@@ -4,3 +4,4 @@ venv
 __pycache__
 .vscode
 Thumbs.db
+nohup.out
