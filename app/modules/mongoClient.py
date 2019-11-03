@@ -28,9 +28,7 @@ class mongoClient ():
             "sex":None,
             "courseware":[]
         }
-        if self.client.myNCUT.User.find_one({"openid":openid})==None:
-            #正常使用情况下不会出现重复
-            self.client.myNCUT.User.insert_one(userdata)
+        self.client.myNCUT.User.insert_one(userdata)
 
     def setUserInfo(self,openid,userInfo):
         self.client.myNCUT.User.update_one(
@@ -47,11 +45,9 @@ class mongoClient ():
         :return: userInfo
         """
         if openid!='':
-            getUserInfoResult=self.client.myNCUT.User.find_one({"openid":openid})
+            getUserInfoResult=self.client.myNCUT.User.find_one({"openid":openid},{"_id":0})
         else:
-            getUserInfoResult=self.client.myNCUT.User.find_one({"userid":userid})
-        if getUserInfoResult is not None:
-            getUserInfoResult.pop('_id')
+            getUserInfoResult=self.client.myNCUT.User.find_one({"userid":userid},{"_id":0})
         return getUserInfoResult
 
     def getPublicInfo(self):
@@ -61,11 +57,9 @@ class mongoClient ():
         """
         bannner=[]
         notice=[]
-        for eachBanner in self.client.publicInfo["indexBanner"].find():
-            eachBanner.pop('_id')
+        for eachBanner in self.client.publicInfo["indexBanner"].find({},{"_id":0}):
             bannner.append(eachBanner)
-        for eachNotice in self.client.publicInfo["indexNotice"].find():
-            eachNotice.pop('_id')
+        for eachNotice in self.client.publicInfo["indexNotice"].find({},{"_id":0}):
             notice.append(eachNotice)
         return {"indexBanner":bannner,"indexNotice":notice}
 
@@ -75,21 +69,14 @@ class mongoClient ():
         :param courseware: 新课件，字典形式
         :return:
         """
-        getCoursewareResult = self.client.myNCUT.User.find_one({"openid": openid})["courseware"]
-        #获取当前收藏课件
-        if not courseware in getCoursewareResult:
-            #去重
-            getCoursewareResult.append(courseware)
-            newCoursewareList=getCoursewareResult
-            #添加新课件
-            self.client.myNCUT.User.update_one(
-                {"openid": openid},
-                {
-                    "$set": {
-                        "courseware":newCoursewareList
-                    }
+        self.client.myNCUT.User.update_one(
+            {"openid": openid},
+            {
+                "$addToSet": {
+                    "courseware":courseware
                 }
-            )
+            }
+        )
 
     def deleteCourseware(self,openid,courseware):
         """
@@ -97,18 +84,11 @@ class mongoClient ():
         :param courseware:
         :return:
         """
-        getCoursewareResult = self.client.myNCUT.User.find_one({"openid": openid})["courseware"]
-        # 获取当前收藏课件
-        for i in range(len(getCoursewareResult)):
-            if getCoursewareResult[i]['url']==courseware['url']:
-                getCoursewareResult.pop(i)
-                break
-        # 删除
         self.client.myNCUT.User.update_one(
             {"openid": openid},
             {
-                "$set": {
-                    "courseware": getCoursewareResult
+                "$pull": {
+                    "courseware": {"url":courseware["url"]}
                 }
             }
         )
