@@ -226,10 +226,12 @@ def getWifi():
     '''
     openid = request.args.get("openid")
     uid = app.DB.getUserInfo(openid)['userid']
-    return json.dumps({
-        "balance": schoolNet.getNetInfo(uid)[4],
-        "expend": schoolNet.getNetInfo(uid)[7]
-    })
+    # TODO 调成wifi返回数据
+    # return json.dumps({
+    #     "balance": schoolNet.getNetInfo(uid)[4],
+    #     "expend": schoolNet.getNetInfo(uid)[7]
+    # })
+    return schoolNet.getNetInfo(uid)[4]
 
 
 @app.route("/pay/reqpay/wifi", methods=['POST'])
