@@ -231,7 +231,7 @@ def getWifi():
     #     "balance": schoolNet.getNetInfo(uid)[4],
     #     "expend": schoolNet.getNetInfo(uid)[7]
     # })
-    return schoolNet.getNetInfo(uid)[4]
+    return schoolNet.getNetInfo(uid)[7]
 
 
 @app.route("/pay/reqpay/wifi", methods=['POST'])
