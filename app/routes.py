@@ -61,6 +61,34 @@ def user():
     return responseOK(User(openid).baseData)
 
 
+@app.route("/v1/favorites/<type>", methods=["GET", "PUT", "DELETE"])
+def favorites_type(type):
+    if request.method == "GET":
+        if type == "courseware":
+            return responseOK(User(Session(request.headers.get("Token")).openid).getCourseware())
+        elif type == "goods":
+            pass
+    elif request.method == "PUT":
+        id = request.form.get("_id")
+        if type == "courseware":
+            cw = Courseware.getOne(id)
+            if cw is None:
+                return responseError(None, 404, "找不到这个文件")
+            User(Session(request.headers.get("Token")).openid).addCourseware(str(cw["_id"]))
+            return responseOK()
+        elif type == "goods":
+            pass
+    elif request.method == "DELETE":
+        id = request.args.get("_id")
+        if type == "courseware":
+            if User(Session(request.headers.get("Token")).openid).delCourseware(id):
+                return responseOK()
+            else:
+                return responseError(None, 404, "该文件没有被收藏过")
+        elif type == "goods":
+            pass
+
+
 @app.route("/v1/net", methods=["GET"])
 def net():
     openid = Session(request.headers.get("Token")).openid
@@ -78,7 +106,7 @@ def iclass_course():
 
 @app.route("/v1/iclass/courseware", methods=["GET"])
 def iclass_course_code():
-    return responseOK(Course({"course_code": request.args.get("course_code")}).getCourseware())
+    return responseOK(Course.getCourseware(request.args.get("course_code")))
 
 
 @app.route("/v1/iclass/courseware/download", methods=["GET", "POST"])

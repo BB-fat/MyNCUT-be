@@ -4,13 +4,6 @@ import datetime
 
 
 class Courseware():
-    def __init__(self, data):
-        self.type = data.get("type")
-        self.size = data.get("size")
-        self.date = data.get("date")
-        self.filename = data.get("filename")
-        self.url = data.get("url")
-        self.code = data.get("course_code")
 
     @staticmethod
     def privateDowmload(course_code, filename):
@@ -45,3 +38,12 @@ class Courseware():
         else:
             courseware = DB.c.myNCUT.Courseware.find_one({"_id": DB.str2ObjectId(tempFile["id"])})
             return courseware["filename"], requests.get(courseware["url"]).content
+
+    @staticmethod
+    def getOne(id: str):
+        try:
+            cw = DB.c.myNCUT.Courseware.find_one({"_id": DB.str2ObjectId(id)})
+        except:
+            return None
+        cw["_id"] = str(cw["_id"])
+        return cw

@@ -6,18 +6,13 @@ from app.utils.DB import DB
 
 
 class Course():
-    def __init__(self, data):
-        self.name = data.get("course_name")
-        self.code = data.get("course_code")
-        self.teacher = data.get("teacher_name")
-        self.role = data.get("role")
-        self.className = data.get("course_class")
 
-    def getCourseware(self):
+    @staticmethod
+    def getCourseware(course_code):
         """
         获取当前课程所有的课件
         """
-        res = json.loads(requests.get('http://v.ncut.edu.cn/document', params={"code": self.code}).text)
+        res = json.loads(requests.get('http://v.ncut.edu.cn/document', params={"code": course_code}).text)
         if res['data'] == []:
             return None
         wareList = []

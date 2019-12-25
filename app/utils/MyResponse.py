@@ -2,7 +2,7 @@ import json
 from flask import make_response
 
 
-def responseOK(data):
+def responseOK(data=None):
     '''
     请求成功的响应
     :param data: data字段携带的数据
