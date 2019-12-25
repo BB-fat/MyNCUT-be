@@ -1,13 +1,8 @@
-
-DEBUG=False
-
-if DEBUG:
-    # DATABASEIP = '10.211.55.5'
-    DATABASEIP = '10.100.1.222'
-else:
-    DATABASEIP = '10.102.1.36'
-    DB_USER = "myncut"
-    DB_PASSWD = "myNCUT@wx315wdbf"
+# DATABASEIP = '10.211.55.5'
+DATABASEIPDEV = '10.100.1.222'
+DATABASEIP = '10.102.1.36'
+DB_USER = "myncut"
+DB_PASSWD = "myNCUT@wx315wdbf"
 
 yxAPPID = '31b1e992583074382'
 
