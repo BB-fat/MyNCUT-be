@@ -74,7 +74,8 @@ def favorites_type(type):
             cw = Courseware.getOne(id)
             if cw is None:
                 return responseError(None, 404, "找不到这个文件")
-            User(Session(request.headers.get("Token")).openid).addCourseware(str(cw["_id"]))
+            User(Session(request.headers.get("Token")
+                         ).openid).addCourseware(str(cw["_id"]))
             return responseOK()
         elif type == "goods":
             pass
@@ -102,6 +103,12 @@ def iclass_course():
     """
     openid = Session(request.headers.get("Token")).openid
     return responseOK(User(openid).getCourseList())
+
+
+@app.route("/v1/iclass/homework", methods=["GET"])
+def iclass_homework():
+    course_codes = request.args.get("course_code").split(",")
+    return responseOK(Course.getHomework(course_codes))
 
 
 @app.route("/v1/iclass/courseware", methods=["GET"])

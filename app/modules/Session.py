@@ -31,7 +31,8 @@ class Session():
         data['secret'] = wxAPPSECRET
         data['grant_type'] = grant_type
         data['js_code'] = code
-        r = requests.get('https://api.weixin.qq.com/sns/jscode2session', params=data)
+        r = requests.get(
+            'https://api.weixin.qq.com/sns/jscode2session', params=data)
         openid = json.loads(r.text).get("openid")
         if openid is None:
             return None

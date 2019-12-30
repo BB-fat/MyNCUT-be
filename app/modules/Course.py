@@ -8,11 +8,21 @@ from app.utils.DB import DB
 class Course():
 
     @staticmethod
+    def getHomework(course_codes: list):
+        homework = {}
+        for course_code in course_codes:
+            res = requests.get("http://v.ncut.edu.cn/work",
+                               params={"code": course_code})
+            homework[course_code] = json.loads(res.text)["data"]
+        return homework
+
+    @staticmethod
     def getCourseware(course_code):
         """
         获取当前课程所有的课件
         """
-        res = json.loads(requests.get('http://v.ncut.edu.cn/document', params={"code": course_code}).text)
+        res = json.loads(requests.get(
+            'http://v.ncut.edu.cn/document', params={"code": course_code}).text)
         if res['data'] == []:
             return None
         wareList = []
@@ -22,6 +32,7 @@ class Course():
             quote = parseUrl(tempDict['url'])
             tempDict['course_code'] = quote['cidReq']
             tempDict['filename'] = key.split('/')[-1]
+            tempDict["type"] = key.split(".")[-1]
             # TODO 将插入优化成1条语句
             tmp = DB.c.myNCUT.Courseware.find_one(tempDict)
             if tmp is None:
