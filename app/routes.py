@@ -119,17 +119,16 @@ def iclass_course_code():
 @app.route("/v1/iclass/courseware/download", methods=["GET", "POST"])
 def iclass_courseCode_filename():
     if request.method == "GET":
-        course_code = request.args.get("course_code")
-        filename = request.args.get("filename")
-        return responseFile(Courseware.privateDowmload(course_code, filename),
-                            filename.encode("utf-8").decode("latin-1"))
+        cw = Courseware.getOne(request.args.get("id"))
+        if cw is None:
+            return responseError(None, 404, "无法找到文件")
+        return responseFile(Courseware.fileStream(cw), cw["filename"].encode("utf-8").decode("latin-1"), cw["size"])
     elif request.method == "POST":
-        course_code = request.form.get("course_code")
-        filename = request.form.get("filename")
-        id = Courseware.makeUrl(course_code, filename)
-        if id is not None:
+        id1 = request.args.get("id")
+        id2 = Courseware.makeUrl(id1)
+        if id2 is not None:
             return responseOK({
-                "id": id
+                "id": id2
             })
         else:
             return responseError(None, 404, "无法找到文件")
@@ -137,12 +136,12 @@ def iclass_courseCode_filename():
 
 @app.route("/v1/iclass/download", methods=["GET"])
 def iclass_download():
-    id = request.args.get("id")
-    filename, file = Courseware.publicDownload(id)
-    if file is None:
+    realId = Courseware.publicDownload(request.args.get("id"))
+    if realId is None:
         return render_template("failure.html")
     else:
-        return responseFile(file, filename.encode("utf-8").decode("latin-1"))
+        cw = Courseware.getOne(realId)
+        return responseFile(Courseware.fileStream(cw), cw["filename"].encode("utf-8").decode("latin-1"), cw["size"])
 
 # 以下是旧路由
 

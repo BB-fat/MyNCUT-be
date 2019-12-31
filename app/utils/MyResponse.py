@@ -1,5 +1,5 @@
 import json
-from flask import make_response
+from flask import make_response, Response
 
 
 def responseOK(data=None):
@@ -30,7 +30,15 @@ def responseError(data, code: int, m: str):
     })
 
 
-def responseFile(file, filename):
-    res = make_response(file)
-    res.headers['Content-Disposition'] = "attachment;filename=" + filename
-    return res
+def responseFile(file, filename, content_length):
+    '''
+    文件流方式传输文件
+    file:文件流
+    filename:文件名
+    content_length:文件长度
+    '''
+    return Response(file, headers={
+        'Content-Disposition': "attachment;filename=" + filename,
+        "content-type": 'application/octet-stream',
+        "content-length": content_length
+    })

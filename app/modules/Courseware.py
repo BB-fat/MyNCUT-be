@@ -6,16 +6,17 @@ import datetime
 class Courseware():
 
     @staticmethod
-    def privateDowmload(course_code, filename):
-        data = DB.c.myNCUT.Courseware.find_one({"course_code": course_code, "filename": filename})
-        if data is not None:
-            return requests.get(data["url"]).content
-        else:
-            return None
+    def fileStream(cw):
+        '''
+        从多模式服务器请求并生成文件流
+        '''
+        req = requests.get(cw["url"], stream=True)
+        for chunk in req.iter_content(1024*100):
+            yield chunk
 
     @staticmethod
-    def makeUrl(course_code, filename):
-        data = DB.c.myNCUT.Courseware.find_one({"course_code": course_code, "filename": filename})
+    def makeUrl(id):
+        data = Courseware.getOne(id)
         if data is not None:
             tempFile = {
                 "id": data["_id"],
@@ -28,19 +29,25 @@ class Courseware():
 
     @staticmethod
     def publicDownload(id: str):
-        tempFile = None
+        '''
+        传入临时文件id
+        返回真实文件id
+        '''
         try:
-            tempFile = DB.c.myNCUT.TempFile.find_one({"_id": DB.str2ObjectId(id)})
+            tempFile = DB.c.myNCUT.TempFile.find_one(
+                {"_id": DB.str2ObjectId(id)})
         except:
-            pass
+            return None
         if tempFile is None:
-            return None, None
+            return None
         else:
-            courseware = DB.c.myNCUT.Courseware.find_one({"_id": DB.str2ObjectId(tempFile["id"])})
-            return courseware["filename"], requests.get(courseware["url"]).content
+            return tempFile["id"]
 
     @staticmethod
     def getOne(id: str):
+        '''
+        根据id查询并返回一个课件字典
+        '''
         try:
             cw = DB.c.myNCUT.Courseware.find_one({"_id": DB.str2ObjectId(id)})
         except:
