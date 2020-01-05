@@ -32,7 +32,7 @@ class Course():
             quote = parseUrl(tempDict['url'])
             tempDict['course_code'] = quote['cidReq']
             tempDict['filename'] = key.split('/')[-1]
-            tempDict["type"] = key.split(".")[-1]
+            tempDict["type"] = key.split(".")[-1].lower()
             # TODO 将插入优化成1条语句
             tmp = DB.c.myNCUT.Courseware.find_one(tempDict)
             if tmp is None:
