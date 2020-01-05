@@ -80,7 +80,7 @@ def favorites_type(type):
         elif type == "goods":
             pass
     elif request.method == "DELETE":
-        id = request.args.get("_id")
+        id = request.form.get("_id")
         if type == "courseware":
             if User(Session(request.headers.get("Token")).openid).delCourseware(id):
                 return responseOK()
