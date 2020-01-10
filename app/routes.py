@@ -64,10 +64,17 @@ def banner():
     return responseOK(Banner.getAll())
 
 
-@app.route("/v1/user", methods=["GET"])
+@app.route("/v1/user", methods=["GET","PUT"])
 def user():
-    openid = Session(request.headers.get("Token")).openid
-    return responseOK(User(openid).baseData)
+    if request.method=="GET":
+        openid = Session(request.headers.get("Token")).openid
+        return responseOK(User(openid).baseData)
+    elif request.method=="PUT":
+        u=User(Session(request.headers.get("Token")).openid)
+        u.avatarUrl=request.form.get("avatarUrl")
+        u.nickName=request.form.get("nickName")
+        u.update()
+        return responseOK(None)
 
 
 @app.route("/v1/favorites/<type>", methods=["GET", "PUT", "DELETE"])

@@ -16,7 +16,7 @@ class User():
         self.avatarUrl = data.get("avatarUrl")
         self.name = data.get("name")
         self.openid = openid
-        self.courseware = data.get("courseware")
+        self.courseware=data.get("courseware")
         # 此处为了防止和关键字冲突将class改为clazz
         self.clazz = data.get("class")
         self.college = data.get("college")
@@ -44,7 +44,8 @@ class User():
             'https://ucpay.ncut.edu.cn/open/user/user/user-by-code', params=data)
         tempInfo = json.loads(res.text)
         userInfo = {
-            "openid": openid
+            "openid": openid,
+            "courseware":[],
         }
         if tempInfo['d']['sex'] == 1:
             userInfo['sex'] = "男"
@@ -54,6 +55,18 @@ class User():
         userInfo['name'] = tempInfo['d']['name']
         DB.c.myNCUT.User.insert(userInfo)
         return User(openid)
+
+    def update(self):
+        '''
+        更新头像和昵称
+        '''
+        DB.c.myNCUT.User.update_one(
+            {"openid":self.openid},
+            {"$set":{
+                "avatarUrl":self.avatarUrl,
+                "nickName":self.nickName
+            }}
+        )
 
     def getNetInfo(self):
         '''
