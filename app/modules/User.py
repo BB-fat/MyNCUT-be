@@ -2,6 +2,9 @@ from app.utils.DB import DB
 from app.modules.Courseware import Courseware
 from app.modules.Course import Course
 from app.utils.Net import getNetInfo
+import requests
+import json
+from setting import *
 
 
 class User():
@@ -20,6 +23,37 @@ class User():
         self.source = data.get("source")
         data.pop("courseware")
         self.baseData = data
+
+    @staticmethod
+    def OAuth(openid: str, code: str):
+        '''
+        筛选从云校服务器上拿到的数据，返回筛选后的用户信息
+        :param code:
+        '''
+        data = {
+            'appid': yxAPPID,
+            'appsecret': yxAPPSECRET
+        }
+        res = requests.get(
+            'https://ucpay.ncut.edu.cn/open/api/access/token', params=data)
+        data = {
+            'code': code,
+            'access_token': json.loads(res.text)['d']['access_token']
+        }
+        res = requests.get(
+            'https://ucpay.ncut.edu.cn/open/user/user/user-by-code', params=data)
+        tempInfo = json.loads(res.text)
+        userInfo = {
+            "openid": openid
+        }
+        if tempInfo['d']['sex'] == 1:
+            userInfo['sex'] = "男"
+        else:
+            userInfo['sex'] = "女"
+        userInfo['sno'] = tempInfo['d']['userid']
+        userInfo['name'] = tempInfo['d']['name']
+        DB.c.myNCUT.User.insert(userInfo)
+        return User(openid)
 
     def getNetInfo(self):
         '''

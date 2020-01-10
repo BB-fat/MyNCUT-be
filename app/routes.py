@@ -23,7 +23,7 @@ def authMidware():
         # "/test",
         "/"
     ]
-    if request.path in openUrls:
+    if request.path in openUrls or "static" in request.path:
         pass
     else:
         if not Session(request.headers.get("Token")).alive:
@@ -38,13 +38,22 @@ def test():
     # return make_response("Hello world")
 
 
-@app.route("/v1/auth", methods=["POST"])
+@app.route("/v1/auth", methods=["GET", "POST"])
 def auth():
-    token = Session.create(request.form.get("code"))
-    if token is None:
-        return responseError(None, 401, "Unauthorized")
-    else:
-        return responseOK({"Token": token})
+    if request.method == "GET":
+        openid = Session.getOpenid(request.args.get("state"))
+        if openid is None:
+            return responseError(None, 401, "Unauthorized")
+        u = User.OAuth(openid, request.args.get("code"))
+        return render_template("redirect.html", name=u.name)
+    elif request.method == "POST":
+        token = Session.create(request.form.get("code"))
+        if token is None:
+            return responseError(None, 401, "Unauthorized")
+        elif User(Session(token).openid).avatarUrl is None:
+            return responseError({"Token": token}, 402, "需要授权信息")
+        else:
+            return responseOK({"Token": token})
 
 
 @app.route('/v1/banner', methods=["GET"])

@@ -18,13 +18,7 @@ class Session():
             self.alive = False
 
     @staticmethod
-    def create(code: str):
-        '''
-        创建一个Session
-        MongoDB通过TTL索引控制会话的生命周期
-        :param code: 微信临时登陆凭证
-        :return: openid合法的情况下返回token 否则返回None
-        '''
+    def getOpenid(code: str):
         grant_type = 'authorization_code'
         data = {}
         data['appid'] = wxAPPID
@@ -33,7 +27,17 @@ class Session():
         data['js_code'] = code
         r = requests.get(
             'https://api.weixin.qq.com/sns/jscode2session', params=data)
-        openid = json.loads(r.text).get("openid")
+        return json.loads(r.text).get("openid")
+
+    @staticmethod
+    def create(code: str):
+        '''
+        创建一个Session
+        MongoDB通过TTL索引控制会话的生命周期
+        :param code: 微信临时登陆凭证
+        :return: openid合法的情况下返回token 否则返回None
+        '''
+        openid = Session.getOpenid(code)
         if openid is None:
             return None
         if DB.c.myNCUT.User.find_one({"openid": openid}) is not None:
