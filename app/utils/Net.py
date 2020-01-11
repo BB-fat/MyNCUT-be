@@ -5,14 +5,14 @@ import base64
 def str2b64(s):
     return base64.b64encode((s).encode("utf-8")).decode()
 
-def getNetInfo(uid):
+def getNetInfo(sno):
     '''
     传入学号，得到校园网流量信息
     返回的列表中索引7对应的数值为本月已用流量，单位MB
-    :param uid:
+    :param sno:
     :return:
     '''
-    res = requests.get("http://10.0.12.3/DrcomSrv/DrcomServlet?business=" + str2b64("091"+uid)).text
+    res = requests.get("http://10.0.12.3/DrcomSrv/DrcomServlet?business=" + str2b64("091" + sno)).text
     return res.split("\t")
 
 def recharge(uid,amount,order):

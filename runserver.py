@@ -1,5 +1,11 @@
 from app import app
-from setting import *
+from app.utils.DB import DB
+import sys
 
-if __name__=="__main__":
-    app.run(host="127.0.0.1",port=8080,debug=DEBUG)
+if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "-d":
+        debug = True
+    else:
+        debug = False
+    DB.connect(debug)
+    app.run(host="127.0.0.1", port=8080, debug=debug)

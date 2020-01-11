@@ -1,11 +1,3 @@
 from flask import Flask
-from app.modules.mongoClient import *
-
-class myApp(Flask):
-    def __init__(self,name,debug):
-        self.DB=mongoClient(debug)
-        super().__init__(name)
-
-app=myApp(__name__,DEBUG)
-
+app=Flask(__name__)
 from app import routes

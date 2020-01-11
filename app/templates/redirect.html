@@ -1,28 +1,32 @@
 ﻿<!--重定向后的欢迎页面 -->
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8"/>
+	<meta charset="utf-8" />
 	<title>认证成功</title>
 	<link rel="stylesheet" href="/static/css/loginsuccess.css">
 </head>
 
-<body>	
+<body>
 	<div class="main">
-        <img src="/static/img/loginsuccess.png" alt="首页">
-        <div class="word">
-        	<div class="renzheng">{{name}},身份认证成功 :)</div>
-        	<div class="fanhui">即将返回首页</div>            
-        </div>
+		<img src="/static/img/loginsuccess.png" alt="首页">
+		<div class="word">
+			<div class="renzheng">{{name}},身份认证成功 :)</div>
+			<div class="fanhui">即将前往授权页面</div>
+		</div>
 	</div>
 
-	<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js" async defer></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
 	<script>
-		window.onload=function(){
-			setTimeout(function(){
-				wx.miniProgram.navigateBack()
-			},2000)
+		window.onload = function () {
+			setTimeout(function () {
+				wx.miniProgram.redirectTo({
+					"url": "/pages/auth/auth?mode=wechat"
+				})
+			}, 2000)
 		}
 	</script>
 </body>
+
 </html>
