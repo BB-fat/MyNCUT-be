@@ -78,6 +78,14 @@ def user():
         return responseOK(None)
 
 
+@app.route("/v1/user/<sno>")
+def user_sno(sno):
+    d = User.fromSno(sno)
+    if d is None:
+        return responseError(None, 404, "没有这个用户")
+    return responseOK(d)
+
+
 @app.route("/v1/favorites/<type>", methods=["GET", "PUT", "DELETE"])
 def favorites_type(type):
     if request.method == "GET":

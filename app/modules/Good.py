@@ -12,8 +12,8 @@ class Good():
             "time": datetime.datetime.utcnow(),
             "describe": data.get("describe"),
             "price": float(data.get("price")),
-            "photos": data.get("photos"),
-            "state": 0,
+            "photos": data.get("photos").split(","),
+            "state": 1,
             "owner": user.sno,
             "contact": data.get("contact")
         })

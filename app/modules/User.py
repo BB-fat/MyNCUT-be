@@ -16,13 +16,22 @@ class User():
         self.avatarUrl = data.get("avatarUrl")
         self.name = data.get("name")
         self.openid = openid
-        self.courseware=data.get("courseware")
+        self.courseware = data.get("courseware")
         # 此处为了防止和关键字冲突将class改为clazz
         self.clazz = data.get("class")
         self.college = data.get("college")
         self.source = data.get("source")
         data.pop("courseware")
         self.baseData = data
+
+    @staticmethod
+    def fromSno(sno):
+        data = DB.c.myNCUT.User.find_one({"sno": sno}, {"_id": 0})
+        if data is None:
+            return None
+        data.pop("openid")
+        data.pop("courseware")
+        return data
 
     @staticmethod
     def OAuth(openid: str, code: str):
@@ -45,7 +54,7 @@ class User():
         tempInfo = json.loads(res.text)
         userInfo = {
             "openid": openid,
-            "courseware":[],
+            "courseware": [],
         }
         if tempInfo['d']['sex'] == 1:
             userInfo['sex'] = "男"
@@ -61,10 +70,10 @@ class User():
         更新头像和昵称
         '''
         DB.c.myNCUT.User.update_one(
-            {"openid":self.openid},
-            {"$set":{
-                "avatarUrl":self.avatarUrl,
-                "nickName":self.nickName
+            {"openid": self.openid},
+            {"$set": {
+                "avatarUrl": self.avatarUrl,
+                "nickName": self.nickName
             }}
         )
 
