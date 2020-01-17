@@ -43,3 +43,27 @@ class Good():
             item["time"] = str(item["time"])
             res.append(item)
         return res
+
+    @staticmethod
+    def update(_id, data):
+        try:
+            _id = DB.str2ObjectId(_id)
+        except:
+            return False
+        new = {
+            "title": data.get("title"),
+            "time": datetime.datetime.utcnow(),
+            "describe": data.get("describe"),
+            "state": data.get("state"),
+            "contact": data.get("contact")
+        }
+        if data.get("price")is not None:
+            new["price"] = float(data.get("price"))
+        if data.get("photos")is not None:
+            new["photos"] = data.get("photos").split(",")
+        submitData = {}
+        for k in new:
+            if new[k]is not None:
+                submitData[k] = new[k]
+        DB.c.myNCUT.Goods.update_one({"_id": _id}, {"$set": submitData})
+        return True

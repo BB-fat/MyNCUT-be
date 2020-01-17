@@ -169,7 +169,7 @@ def iclass_download():
         return responseFile(Courseware.fileStream(cw), cw["filename"].encode("utf-8").decode("latin-1"), cw["size"])
 
 
-@app.route("/v1/idle", methods=["GET", "POST", "PUT"])
+@app.route("/v1/idle", methods=["GET", "POST"])
 def idle():
     u = User(Session(request.headers.get("Token")).openid)
     if request.method == "GET":
@@ -186,5 +186,12 @@ def idle():
     elif request.method == "POST":
         Good.create(request.form, u)
         return responseOK()
-    elif request.method == "PUT":
-        pass
+
+
+@app.route("/v1/idle/<_id>", methods=["PUT"])
+def idel__id(_id):
+    data = request.form
+    if Good.update(_id, data):
+        return responseOK()
+    else:
+        return responseError(None, 404, "参数非法")
