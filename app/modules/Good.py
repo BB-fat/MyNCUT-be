@@ -36,7 +36,7 @@ class Good():
             args["state"] = int(args["state"])
         if args.get("title") is not None:
             args["title"] = re.compile(args.get("title"))
-        goods = DB.c.myNCUT.Goods.find(args)
+        goods = DB.c.myNCUT.Goods.find(args).sort("time",-1)
         res = []
         for item in goods:
             item["_id"] = str(item["_id"])
@@ -54,7 +54,7 @@ class Good():
             "title": data.get("title"),
             "time": datetime.datetime.utcnow(),
             "describe": data.get("describe"),
-            "state": data.get("state"),
+            "state":int(data.get("state")),
             "contact": data.get("contact")
         }
         if data.get("price")is not None:
