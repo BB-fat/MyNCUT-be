@@ -4,6 +4,7 @@ from app.modules.Session import Session
 from app.modules.User import User
 from app.modules.Course import Course
 from app.modules.Courseware import Courseware
+from app.modules.Good import Good
 from app.utils.MyResponse import *
 from flask import request, render_template
 
@@ -64,17 +65,25 @@ def banner():
     return responseOK(Banner.getAll())
 
 
-@app.route("/v1/user", methods=["GET","PUT"])
+@app.route("/v1/user", methods=["GET", "PUT"])
 def user():
-    if request.method=="GET":
+    if request.method == "GET":
         openid = Session(request.headers.get("Token")).openid
         return responseOK(User(openid).baseData)
-    elif request.method=="PUT":
-        u=User(Session(request.headers.get("Token")).openid)
-        u.avatarUrl=request.form.get("avatarUrl")
-        u.nickName=request.form.get("nickName")
+    elif request.method == "PUT":
+        u = User(Session(request.headers.get("Token")).openid)
+        u.avatarUrl = request.form.get("avatarUrl")
+        u.nickName = request.form.get("nickName")
         u.update()
         return responseOK(None)
+
+
+@app.route("/v1/user/<sno>")
+def user_sno(sno):
+    d = User.fromSno(sno)
+    if d is None:
+        return responseError(None, 404, "没有这个用户")
+    return responseOK(d)
 
 
 @app.route("/v1/favorites/<type>", methods=["GET", "PUT", "DELETE"])
@@ -158,3 +167,31 @@ def iclass_download():
     else:
         cw = Courseware.getOne(realId)
         return responseFile(Courseware.fileStream(cw), cw["filename"].encode("utf-8").decode("latin-1"), cw["size"])
+
+
+@app.route("/v1/idle", methods=["GET", "POST"])
+def idle():
+    u = User(Session(request.headers.get("Token")).openid)
+    if request.method == "GET":
+        _id = request.args.get("_id")
+        if _id is not None:
+            g = Good.findById(_id)
+            if g is not None:
+                return responseOK([g])
+            else:
+                return responseOK([])
+        else:
+            goods = Good.findByArgs(request.args)
+            return responseOK(goods)
+    elif request.method == "POST":
+        Good.create(request.form, u)
+        return responseOK()
+
+
+@app.route("/v1/idle/<_id>", methods=["PUT"])
+def idel__id(_id):
+    data = request.form
+    if Good.update(_id, data):
+        return responseOK()
+    else:
+        return responseError(None, 404, "参数非法")
