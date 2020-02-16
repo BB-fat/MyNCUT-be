@@ -5,6 +5,26 @@ import datetime
 
 class Comment():
     @staticmethod
+    def processComment(comment):
+        comment["_id"] = str(comment["_id"])
+        comment["create_time"] = str(comment["create_time"])
+        comment["from"] = DB.c.myNCUT.User.find_one(
+            {"openid": comment["from_openid"]}, {"_id": 0})
+        if comment["to_openid"] is not None:
+            comment["to"] = DB.c.myNCUT.User.find_one(
+                {"openid": comment["to_openid"]}, {"_id": 0})
+        else:
+            comment["to"] = None
+        return comment
+
+    @staticmethod
+    def getOne(_id):
+        res = DB.c.myNCUT.Comment.find_one({
+            "_id": DB.str2ObjectId(_id)
+        })
+        return Comment.processComment(res)
+
+    @staticmethod
     def get(good_id):
         '''
         获取某个物品的所有评论数据
@@ -13,16 +33,7 @@ class Comment():
             {"good_id": good_id}).sort("create_time")
         comments = []
         for comment in res:
-            comment["_id"] = str(comment["_id"])
-            comment["create_time"] = str(comment["create_time"])
-            comment["from"] = DB.c.myNCUT.User.find_one(
-                {"openid": comment["from_openid"]}, {"_id": 0})
-            if comment["to_openid"] is not None:
-                comment["to"] = DB.c.myNCUT.User.find_one(
-                    {"openid": comment["to_openid"]}, {"_id": 0})
-            else:
-                comment["to"] = None
-            comments.append(comment)
+            comments.append(Comment.processComment(comment))
         return comments
 
     @staticmethod

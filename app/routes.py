@@ -224,8 +224,11 @@ def del_comment_id(good_id):
         return responseOK(Comment.get(good_id))
 
 
-@app.route("/v1/idel-comment", methods=["DELETE"])
+@app.route("/v1/idel-comment", methods=["GET", "DELETE"])
 def idel_comment():
     _id = request.args.get("_id")
-    Comment.delete(_id)
-    return responseOK()
+    if request.method == "DELETE":
+        Comment.delete(_id)
+        return responseOK()
+    elif request.method == "GET":
+        return responseOK(Comment.getOne(_id))
