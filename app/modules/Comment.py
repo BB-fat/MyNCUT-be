@@ -17,8 +17,11 @@ class Comment():
             comment["create_time"] = str(comment["create_time"])
             comment["from"] = DB.c.myNCUT.User.find_one(
                 {"openid": comment["from_openid"]}, {"_id": 0})
-            comment["to"] = DB.c.myNCUT.User.find_one(
-                {"openid": comment["to_openid"]}, {"_id": 0})
+            if comment["to_openid"] is not None:
+                comment["to"] = DB.c.myNCUT.User.find_one(
+                    {"openid": comment["to_openid"]}, {"_id": 0})
+            else:
+                comment["to"] = None
             comments.append(comment)
         return comments
 

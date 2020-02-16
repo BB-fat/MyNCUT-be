@@ -209,11 +209,14 @@ def del_comment_id(good_id):
         reply_id = request.form.get("reply_id")
         if reply_id == "0":
             reply_id = None
+        to_openid = request.form.get("to_openid")
+        if to_openid == "0":
+            to_openid = None
         Comment.create(
             good_id,
             reply_id,
             Session(request.headers.get("Token")).openid,
-            request.form.get("to_openid"),
+            to_openid,
             request.form.get("content")
         )
         return responseOK()
