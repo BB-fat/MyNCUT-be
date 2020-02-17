@@ -8,4 +8,4 @@ if __name__ == "__main__":
     else:
         debug = False
     DB.connect(debug)
-    app.run(host="127.0.0.1", port=8080, debug=debug)
+    app.run(host="0.0.0.0", port=8080, debug=debug)

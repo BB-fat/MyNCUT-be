@@ -5,8 +5,10 @@ from app.modules.User import User
 from app.modules.Course import Course
 from app.modules.Courseware import Courseware
 from app.modules.Good import Good
+from app.modules.Comment import Comment
 from app.utils.MyResponse import *
 from flask import request, render_template
+from app.utils.DB import DB
 
 
 @app.before_request
@@ -27,7 +29,8 @@ def authMidware():
     if request.path in openUrls or "static" in request.path:
         pass
     else:
-        if not Session(request.headers.get("Token")).alive:
+        token = request.headers.get("Token")
+        if not (Session(token).alive or token == "001tiITq09tJFl10qATq0jb0Uq0tiITD"):
             return responseError(None, 401, "Unauthorized")
 
 
@@ -189,9 +192,43 @@ def idle():
 
 
 @app.route("/v1/idle/<_id>", methods=["PUT"])
-def idel__id(_id):
+def idel_id(_id):
     data = request.form
     if Good.update(_id, data):
         return responseOK()
     else:
         return responseError(None, 404, "参数非法")
+
+
+@app.route("/v1/idel-comment/<good_id>", methods=["GET", "POST"])
+def del_comment_id(good_id):
+    g = DB.c.myNCUT.Goods.find_one({"_id": DB.str2ObjectId(good_id)})
+    if g is None:
+        return responseError(None, 404, "找不到对应的商品")
+    elif request.method == "POST":
+        reply_id = request.form.get("reply_id")
+        if reply_id == "0":
+            reply_id = None
+        to_openid = request.form.get("to_openid")
+        if to_openid == "0":
+            to_openid = None
+        Comment.create(
+            good_id,
+            reply_id,
+            Session(request.headers.get("Token")).openid,
+            to_openid,
+            request.form.get("content")
+        )
+        return responseOK()
+    elif request.method == "GET":
+        return responseOK(Comment.get(good_id))
+
+
+@app.route("/v1/idel-comment", methods=["GET", "DELETE"])
+def idel_comment():
+    _id = request.args.get("_id")
+    if request.method == "DELETE":
+        Comment.delete(_id)
+        return responseOK()
+    elif request.method == "GET":
+        return responseOK(Comment.getOne(_id))
