@@ -9,6 +9,7 @@ from app.modules.Comment import Comment
 from app.utils.MyResponse import *
 from flask import request, render_template
 from app.utils.DB import DB
+from app.schoolLife2020 import *
 
 
 @app.before_request
