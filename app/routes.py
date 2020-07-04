@@ -35,12 +35,7 @@ def authMidware():
             return responseError(None, 401, "Unauthorized")
 
 
-@app.route("/test")
-def test():
-    # Session.create()
-    return "1234"
-    pass
-    # return make_response("Hello world")
+
 
 
 @app.route("/v1/auth", methods=["GET", "POST"])
