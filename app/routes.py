@@ -24,7 +24,7 @@ def authMidware():
         "/v1/auth",
         "/v1/banner",
         "/v1/iclass/download",
-        # "/test",
+        "/test",
         "/"
     ]
     if request.path in openUrls or "static" in request.path:
