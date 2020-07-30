@@ -50,7 +50,7 @@ def bullet_chat():
 @app.route("/test")
 def test():
     for i in range(100):
-        DB.c.SL2020.msg.insert({"openid": str(i*100) ,
+        DB.c.SL2020.msg.insert({"openid": str(i * 100) ,
                                 "sendTime": datetime.datetime.utcnow() ,
                                 "avatarUrl": "22222222" ,
                                 "type": "222222" ,
