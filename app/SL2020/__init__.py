@@ -10,7 +10,7 @@ from app.utils.MyResponse import responseOK
 
 import json
 
-from .textfilter.filter import gfw
+from .filter import gfw
 
 
 @app.route("/sl-2020/login" , methods=["GET"])
