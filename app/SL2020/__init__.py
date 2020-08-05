@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 
 from flask import request
 
@@ -8,10 +8,14 @@ from app import app
 from app.modules.Session import Session
 from app.utils.MyResponse import responseOK
 
+import json
 
-@app.route("/sl_2020/login" , methods=["GET"])
+from .textfilter.filter import gfw
+
+
+@app.route("/sl-2020/login" , methods=["GET"])
 def sl2020_login():
-    openid = Session(request.header.get("Token")).openid
+    openid = Session(request.headers.get("Token")).openid
     logined = DB.c.SL2020.user.find({"openid": openid})
 
     if logined != None:
@@ -21,7 +25,7 @@ def sl2020_login():
     return responseOK(None)
 
 
-@app.route("/sl_2020/bullet-chat" , methods=["GET" , "POST"])
+@app.route("/sl-2020/bullet-chat" , methods=["GET" , "POST"])
 def bullet_chat():
     if request.method == "GET":
         msgCursor = DB.c.SL2020.msg.aggregate([{"$sample": {"size": 60}}])
@@ -34,16 +38,18 @@ def bullet_chat():
         return responseOK(msgList)
 
     elif request.method == "POST":
-        openid = Session(request.form.get("Token")).openid
-        msg = request.form.get("msg")
-        u = User(openid)
-        userType = ""
-        DB.c.SL2020.msg.insert({"openid": openid ,
-                                "sendTime": datetime.datetime.utcnow() ,
-                                "avatarUrl": u.avatarUrl ,
-                                "type": userType ,
-                                "msg": msg
-                                })
+        openid = Session(request.headers.get("Token")).openid
+        msg = json.loads(request.get_data())["msg"]
+
+        if '*' not in gfw.filter(msg):
+            u = User(openid)
+            userType = ""
+            DB.c.SL2020.msg.insert({"openid": openid ,
+                                    "sendTime": datetime.datetime.utcnow() ,
+                                    "avatarUrl": u.avatarUrl ,
+                                    "type": userType ,
+                                    "msg": msg
+                                    })
         return responseOK(None)
 
 
@@ -51,8 +57,9 @@ def bullet_chat():
 def test():
     for i in range(100):
         DB.c.SL2020.msg.insert({"openid": str(i * 100) ,
-                                "sendTime": datetime.datetime.utcnow() ,
+                                "sendTime": "222222" ,
                                 "avatarUrl": "22222222" ,
                                 "type": "222222" ,
-                                "msg": "3333333333333"
+                                "msg": str(i * 100)
                                 })
+    return responseOK(None)
