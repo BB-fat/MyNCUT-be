@@ -9,6 +9,7 @@ from app.modules.Comment import Comment
 from app.utils.MyResponse import *
 from flask import request, render_template
 from app.utils.DB import DB
+from app.SL2020 import *
 
 
 @app.before_request
@@ -23,7 +24,7 @@ def authMidware():
         "/v1/auth",
         "/v1/banner",
         "/v1/iclass/download",
-        # "/test",
+        "/test",
         "/"
     ]
     if request.path in openUrls or "static" in request.path:
@@ -34,12 +35,7 @@ def authMidware():
             return responseError(None, 401, "Unauthorized")
 
 
-@app.route("/test")
-def test():
-    # Session.create()
-    return "1234"
-    pass
-    # return make_response("Hello world")
+
 
 
 @app.route("/v1/auth", methods=["GET", "POST"])
